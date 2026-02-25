@@ -1,0 +1,37 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/api/course/**
+        - id: instruction-service
+          uri: lb://instruction-service
+          predicates:
+            - Path=/api/instruction/**
+        - id: statistic-service
+          uri: lb://statistic-service
+          predicates:
+            - Path=/api/statistic/**
+therogram:
+  jwt:
+    location: classpath:therogram.jks
+    alias: therogram
+    password: 123456
+    tokenTTL: 30m
+  auth:
+    excludePaths:
+      - /search/**
+      - /users/login
