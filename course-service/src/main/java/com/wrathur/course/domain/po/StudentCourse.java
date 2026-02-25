@@ -1,5 +1,6 @@
 package com.wrathur.course.domain.po;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.math.BigDecimal;

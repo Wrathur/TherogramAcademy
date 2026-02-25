@@ -1,0 +1,4 @@
+org.springframework.boot,autoconfigure.EnableAutoConfiguration=\
+    com.therogram.common.config.MyBatisConfig,\
+    com.therogram.common.config.MvcConfig,\
+    com.therogram.common.config.JsonConfig

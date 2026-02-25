@@ -1,0 +1,7 @@
+17:06:36:662  INFO 12260 --- [main] com.wrathur.user.UserApplication                          : Starting com.wrathur.user.UserApplication using Java 17.0.18 on Integration-Wrathur with PID 12260 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+17:06:36:663  INFO 12260 --- [main] com.wrathur.user.UserApplication                          : The following 1 profile is active: "dev"
+17:06:36:683  WARN 12260 --- [main] ionWarningsApplicationContextInitializer : 
+
+** WARNING ** : Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package.
+
+
