@@ -13,11 +13,11 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="nacos_config@localhost" uuid="537a5ce9-59e7-42f3-a27c-dac8452058b0">
+    <data-source source="LOCAL" name="nacos@localhost" uuid="66637904-14f0-4f39-b0d6-6ce56988c804">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/nacos_config</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/nacos</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />

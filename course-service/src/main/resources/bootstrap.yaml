@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: course-service
+  profiles:
+    active: dev
+  config:
+    import: optional:nacos:/
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        group: DEFAULT_GROUP
+        file-extension: yaml
+        bootstrap:
+          enable: true
+      discovery:
+        server-addr: 127.0.0.1:8848
+        group: DEFAULT_GROUP
