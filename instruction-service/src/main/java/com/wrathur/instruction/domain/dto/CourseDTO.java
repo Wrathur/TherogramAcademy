@@ -1,19 +1,18 @@
-package com.wrathur.course.domain.po;
+package com.wrathur.instruction.domain.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class Course {
+public class CourseDTO {
     private Integer id;
     private String name;
     private String profile;
     private String target;
     private String content;
     private String outline;
-    private Integer reviewStatus; //ENUM: PENDING/APPROVED/REJECTED
+    private Integer reviewStatus;
     private Integer subjectId;
     private Integer typeId;
     private LocalDateTime createTime;

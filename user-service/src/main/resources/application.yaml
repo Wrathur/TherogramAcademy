@@ -8,7 +8,7 @@ spring:
   datasource:
     url: jdbc:mysql://${therogram.db.host}:3306/user-service?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
+    username: nacos
     password: ${therogram.db.pw}
   config:
     import: optional:nacos::${spring.application.name}.yaml # 使用optional前缀表示Nacos不可用时也不阻止启动

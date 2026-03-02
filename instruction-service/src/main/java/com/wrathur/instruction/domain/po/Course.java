@@ -1,6 +1,5 @@
-package com.wrathur.course.domain.po;
+package com.wrathur.instruction.domain.po;
 
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;

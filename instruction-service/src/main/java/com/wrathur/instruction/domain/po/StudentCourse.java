@@ -1,4 +1,4 @@
-package com.wrathur.course.domain.po;
+package com.wrathur.instruction.domain.po;
 
 import lombok.Data;
 
