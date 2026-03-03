@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 public class HomeworkVO {
     private Integer id;
     private String name;
+    private String type;
     private String deadline;
     private String content;
     private String attachment;
@@ -21,10 +22,6 @@ public class HomeworkVO {
     }
 
     public void setScore(BigDecimal score) {
-        this.score = score != null ? String.format("%.1f", score) : "未评分";
-    }
-
-    public void setIsReviewed(Boolean isReviewed) {
-        this.reviewStatus = isReviewed != null && isReviewed ? "已批阅" : "未批阅";
+        this.score = score != null ? String.format("%.1f", score) : "PENDING";
     }
 }

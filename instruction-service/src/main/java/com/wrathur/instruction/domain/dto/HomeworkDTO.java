@@ -9,10 +9,11 @@ import java.time.LocalDateTime;
 public class HomeworkDTO {
     private Integer id;
     private String name;
+    private Integer type;
     private String deadline;
     private String content;
     private String attachment;
-    private Integer reviewStatus;
+    private String reviewStatus;
     private BigDecimal score;
     private Integer courseId;
     private LocalDateTime createTime;

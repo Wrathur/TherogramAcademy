@@ -9,7 +9,7 @@ public class User {
     private Integer id;
     private String account;
     private String password;
-    private Integer roleType;
+    private String roleType;
     private String profile;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;

@@ -9,10 +9,11 @@ import java.time.LocalDateTime;
 public class Homework {
     private Integer id;
     private String name;
+    private Integer type;
     private LocalDateTime deadline;
     private String content;
     private String attachment;
-    private Boolean reviewStatus; //ENUM: PENDING/APPROVED/REJECTED
+    private String reviewStatus; //ENUM: PENDING/APPROVED/REJECTED
     private BigDecimal score;
     private Integer courseId;
     private LocalDateTime create_time;

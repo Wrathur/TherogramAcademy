@@ -14,19 +14,10 @@ public class CourseVO {
     private String content;
     private String outline;
     private String reviewStatus;
-    private String subjectName;
-    private String typeName;
+    private Integer subjectId;
+    private Integer typeId;
     private String createTime;
     private String updateTime;
-
-    public void setReviewStatus(Integer reviewStatus) {
-        this.reviewStatus = switch (reviewStatus) {
-            case 0 -> "待审核";
-            case 1 -> "已通过";
-            case 2 -> "已拒绝";
-            default -> "未知";
-        };
-    }
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));

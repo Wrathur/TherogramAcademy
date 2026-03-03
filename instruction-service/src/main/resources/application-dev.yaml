@@ -1,4 +1,4 @@
 therogram:
   db:
-    host: mysql
-    pw: nacos
+    host: localhost
+    pw: 123456

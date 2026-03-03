@@ -12,7 +12,7 @@ public class CourseDTO {
     private String target;
     private String content;
     private String outline;
-    private Integer reviewStatus;
+    private String reviewStatus;
     private Integer subjectId;
     private Integer typeId;
     private LocalDateTime createTime;
