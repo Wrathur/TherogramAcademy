@@ -11,8 +11,8 @@ public interface IUserService {
     public void modifyUser(UserDTO userDTO);
 
     // 删除用户
-    public void deleteUser(UserDTO userDTO);
+    public void deleteUser(Integer id);
 
     // 获取用户详情
-    public UserVO getUserDetail(Integer userId);
+    public UserVO getUserDetail(Integer id);
 }

@@ -10,6 +10,8 @@ public class UserDTO {
     private String account;
     private String roleType;
     private String profile;
+    private Boolean idDeleted;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
+    private LocalDateTime deleteTime;
 }

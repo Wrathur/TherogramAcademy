@@ -14,14 +14,23 @@ public class HomeworkVO {
     private String deadline;
     private String content;
     private String attachment;
-    private String reviewStatus;
-    private String score;
+    private String createTime;
+    private String updateTime;
+    private String deleteTime;
 
     public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
-    public void setScore(BigDecimal score) {
-        this.score = score != null ? String.format("%.1f", score) : "PENDING";
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+
+    public void setDeleteTime(LocalDateTime deleteTime) {
+        this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 }

@@ -13,9 +13,9 @@ public class HomeworkDTO {
     private String deadline;
     private String content;
     private String attachment;
-    private String reviewStatus;
-    private BigDecimal score;
+    private Boolean isDeleted;
     private Integer courseId;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
+    private LocalDateTime deleteTime;
 }

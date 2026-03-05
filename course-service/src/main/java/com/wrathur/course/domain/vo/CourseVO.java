@@ -16,8 +16,11 @@ public class CourseVO {
     private String reviewStatus;
     private Integer subjectId;
     private Integer typeId;
+    private String rejectedReason;
     private String createTime;
     private String updateTime;
+    private String reviewTime;
+    private String deleteTime;
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
@@ -25,5 +28,13 @@ public class CourseVO {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
+
+    public void setReviewTime(LocalDateTime reviewTime) {
+        this.reviewTime = reviewTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
+
+    public void setDeleteTime(LocalDateTime deleteTime) {
+        this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 }

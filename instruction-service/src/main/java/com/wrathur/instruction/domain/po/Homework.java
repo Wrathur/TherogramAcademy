@@ -1,11 +1,14 @@
 package com.wrathur.instruction.domain.po;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
+@TableName("homework")
 public class Homework {
     private Integer id;
     private String name;
@@ -13,9 +16,10 @@ public class Homework {
     private LocalDateTime deadline;
     private String content;
     private String attachment;
-    private String reviewStatus; //ENUM: PENDING/APPROVED/REJECTED
-    private BigDecimal score;
+    @TableField("is_deleted")
+    private Boolean isDeleted;
     private Integer courseId;
-    private LocalDateTime create_time;
-    private LocalDateTime update_time;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
+    private LocalDateTime deleteTime;
 }

@@ -1,5 +1,6 @@
 package com.wrathur.user.domain.po;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,9 @@ public class User {
     private String password;
     private String roleType;
     private String profile;
+    @TableField("is_deleted")
+    private Boolean idDeleted;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
+    private LocalDateTime deleteTime;
 }

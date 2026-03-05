@@ -8,6 +8,6 @@ import java.time.LocalDateTime;
 public class CourseSubjectDTO {
     private Integer id;
     private String name;
-    private LocalDateTime create_time;
-    private LocalDateTime update_time;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
 }

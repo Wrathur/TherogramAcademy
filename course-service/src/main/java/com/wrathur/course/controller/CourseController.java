@@ -9,28 +9,28 @@ import com.wrathur.course.domain.vo.CourseVO;
 import com.wrathur.course.service.ICourseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/course")
 @Api(tags = "课程服务")
 public class CourseController {
 
     private final ICourseService courseService;
 
-    public CourseController(ICourseService courseService) {
-        this.courseService = courseService;
-    }
-
     @PostMapping("/create")
     @ApiOperation("创建课程")
     public Result<String> createCourse(@RequestBody CourseDTO courseDTO) {
-        log.info("新增课程：{}", courseDTO);
+        log.info("创建课程：{}", courseDTO);
         courseService.createCourse(courseDTO);
+//        courseService.save(BeanUtil.copyProperties(courseDTO, Course.class));
         return Result.success();
     }
 
@@ -50,18 +50,18 @@ public class CourseController {
         return Result.success();
     }
 
+    @GetMapping("/page")
+    @ApiOperation("获取课程分页")
+    public Result<IPage<CourseVO>> getCoursePages(@RequestBody CourseQueryDTO courseQueryDTO) {
+        log.info("获取课程列表：{}", courseQueryDTO);
+        return Result.success(courseService.getCoursePages(courseQueryDTO));
+    }
+
     @GetMapping("/{id}")
     @ApiOperation("获取课程详情")
     public Result<CourseVO> getCourseDetail(@PathVariable Integer id) {
         log.info("获取课程详情：{}", id);
         return Result.success(courseService.getCourseDetail(id));
-    }
-
-    @GetMapping("/page")
-    @ApiOperation("获取课程列表")
-    public Result<IPage<CourseVO>> getAllCourses(CourseQueryDTO courseQueryDTO) {
-        log.info("获取课程列表：{}", courseQueryDTO);
-        return Result.success(courseService.getAllCourses(courseQueryDTO));
     }
 
     @PatchMapping("/review/{reviewStatus}")
@@ -72,11 +72,19 @@ public class CourseController {
         return Result.success();
     }
 
-    @PostMapping("/select/{id}")
+    @PostMapping("/select/{studentId}/{courseId}")
     @ApiOperation("选修课程")
-    public Result<String> selectCourse(@PathVariable Integer id, @RequestBody CourseDTO courseDTO) {
-        log.info("学生{}选修课程：{}", id, courseDTO);
-        courseService.selectCourse(id, courseDTO);
+    public Result<String> selectCourse(@PathVariable Integer studentId, @PathVariable Integer courseId) {
+        log.info("学生{}选修课程：{}", studentId, courseId);
+        courseService.selectCourse(studentId, courseId);
+        return Result.success();
+    }
+
+    @DeleteMapping("/deselect/{studentId}/{courseId}")
+    @ApiOperation("退选课程")
+    public Result<String> deselectCourse(@PathVariable Integer studentId, @PathVariable Integer courseId) {
+        log.info("学生{}退选课程：{}", studentId, courseId);
+        courseService.deselectCourse(studentId, courseId);
         return Result.success();
     }
 
@@ -86,5 +94,12 @@ public class CourseController {
         log.info("评定学生{}的课程{}：{}", studentCourseDTO.getStudentId(), studentCourseDTO.getCourseId(), score);
         courseService.evaluateCourse(score, studentCourseDTO);
         return Result.success();
+    }
+
+    @GetMapping("/student/{id}")
+    @ApiOperation("通过课程获取所有未退选的学生")
+    public List<Integer> getStudentIdsByCourseId(@PathVariable Integer id) {
+        log.info("通过课程{}获取所有未退选的学生", id);
+        return courseService.getStudentIdsByCourseId(id);
     }
 }
