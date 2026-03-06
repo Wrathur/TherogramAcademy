@@ -2,6 +2,7 @@ package com.wrathur.instruction.domain.vo;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -19,7 +20,7 @@ public class StudentHomeworkVO {
     private String evaluateTime;
     private String deleteTime;
 
-    public void setScore(Double score) {
+    public void setScore(BigDecimal score) {
         this.score = score != null ? String.format("%.1f", score) : "PENDING";
     }
 

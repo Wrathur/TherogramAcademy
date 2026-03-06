@@ -13,6 +13,8 @@ public class HomeworkQueryDTO {
     private String name;
     @ApiModelProperty("类型")
     private Integer type;
+    @ApiModelProperty("删除状态")
+    private Boolean isDeleted;
     @ApiModelProperty("起始提交人数")
     private Integer startSubmitCount;
     @ApiModelProperty("结束提交人数")

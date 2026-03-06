@@ -68,9 +68,6 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
     // 获取教学资源分页
     @Override
     public IPage<CourseResourceVO> getCourseResourcePages(CourseResourceQueryDTO courseResourceQueryDTO) {
-        // 构建分页对象
-        Page<CourseResource> page = new Page<>(courseResourceQueryDTO.getPageNum(), courseResourceQueryDTO.getPageSize());
-
         // 构建查询条件
         LambdaQueryWrapper<CourseResource> pageWrapper = new LambdaQueryWrapper<>();
 
@@ -119,6 +116,9 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
                 pageWrapper.orderByDesc(CourseResource::getCreateTime);
             }
         }
+
+        // 构建分页对象
+        Page<CourseResource> page = new Page<>(courseResourceQueryDTO.getPageNum(), courseResourceQueryDTO.getPageSize());
 
         // 执行分页查询
         IPage<CourseResource> courseResourcePage = courseResourceMapper.selectPage(page, pageWrapper);

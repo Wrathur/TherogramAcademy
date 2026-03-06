@@ -15,6 +15,7 @@ public class Homework {
     private LocalDateTime deadline;
     private String content;
     private String attachment;
+    private Integer submitCount;
     @TableField("is_deleted")
     private Boolean isDeleted;
     private Integer courseId;

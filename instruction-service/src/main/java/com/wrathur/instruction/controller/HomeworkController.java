@@ -5,7 +5,9 @@ import com.wrathur.common.result.Result;
 import com.wrathur.instruction.domain.dto.HomeworkDTO;
 import com.wrathur.instruction.domain.dto.HomeworkQueryDTO;
 import com.wrathur.instruction.domain.dto.StudentHomeworkDTO;
+import com.wrathur.instruction.domain.dto.StudentHomeworkQueryDTO;
 import com.wrathur.instruction.domain.vo.HomeworkVO;
+import com.wrathur.instruction.domain.vo.StudentHomeworkVO;
 import com.wrathur.instruction.service.IHomeworkService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -49,18 +51,32 @@ public class HomeworkController {
         return Result.success();
     }
 
-    @GetMapping("/page")
+    @GetMapping("/page/{id}")
     @ApiOperation("获取作业分页")
-    public Result<IPage<HomeworkVO>> getHomeworkPages(@RequestBody HomeworkQueryDTO homeworkQueryDTO) {
-        log.info("获取作业分页：{}", homeworkQueryDTO);
-        return Result.success(homeworkService.getHomeworkPages(homeworkQueryDTO));
+    public Result<IPage<HomeworkVO>> getHomeworkPages(@PathVariable Integer id, @RequestBody HomeworkQueryDTO homeworkQueryDTO) {
+        log.info("教师获取课程{}的作业分页：{}", id, homeworkQueryDTO);
+        return Result.success(homeworkService.getHomeworkPages(id, homeworkQueryDTO));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/studentPage/{id}")
+    @ApiOperation("获取学生作业分页")
+    public Result<IPage<HomeworkVO>> getStudentHomeworkPages(@PathVariable Integer id, @RequestBody StudentHomeworkQueryDTO studentHomeworkQueryDTO) {
+        log.info("学生{}获取学生作业分页：{}", id, studentHomeworkQueryDTO);
+        return Result.success(homeworkService.getStudentHomeworkPages(id, studentHomeworkQueryDTO));
+    }
+
+    @GetMapping("/detail/{id}")
     @ApiOperation("获取作业详情")
     public Result<HomeworkVO> getHomeworkDetail(@PathVariable Integer id) {
         log.info("获取作业详情：{}", id);
         return Result.success(homeworkService.getHomeworkDetail(id));
+    }
+
+    @GetMapping("/studentDetail/{studentId}/{homeworkId}")
+    @ApiOperation("获取学生作业详情")
+    public Result<StudentHomeworkVO> getStudentHomeworkDetail(@PathVariable Integer studentId, @PathVariable Integer homeworkId) {
+        log.info("获取学生{}作业详情：{}", studentId, homeworkId);
+        return Result.success(homeworkService.getStudentHomeworkDetail(studentId, homeworkId));
     }
 
     @PostMapping("/submit/{attachment}")

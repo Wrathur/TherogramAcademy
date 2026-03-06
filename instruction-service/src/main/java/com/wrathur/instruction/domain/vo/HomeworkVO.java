@@ -14,6 +14,7 @@ public class HomeworkVO {
     private String deadline;
     private String content;
     private String attachment;
+    private Integer submitCount;
     private String createTime;
     private String updateTime;
     private String deleteTime;

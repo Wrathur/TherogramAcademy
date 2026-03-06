@@ -118,53 +118,50 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     // 获取课程分页
     @Override
     public IPage<CourseVO> getCoursePages(Integer id, CourseQueryDTO courseQueryDTO) {
-        // 构建分页对象
-        Page<Course> page = new Page<>(courseQueryDTO.getPageNum(), courseQueryDTO.getPageSize());
-
         // 构建查询条件
-        LambdaQueryWrapper<Course> coursePageWrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<Course> pageWrapper = new LambdaQueryWrapper<>();
 
         // 过滤未过审课程
-        coursePageWrapper.eq(Course::getReviewStatus, "APPROVED");
+        pageWrapper.eq(Course::getReviewStatus, "APPROVED");
         // 过滤已删除课程
-        coursePageWrapper.eq(Course::getIsDeleted, false);
+        pageWrapper.eq(Course::getIsDeleted, false);
 
         // 模糊查询名称
         if (courseQueryDTO.getName() != null && StringUtils.isNotBlank(courseQueryDTO.getName())) {
-            coursePageWrapper.like(Course::getName, "%" + courseQueryDTO.getName() + "%");
+            pageWrapper.like(Course::getName, "%" + courseQueryDTO.getName() + "%");
         }
         // 精确查询学科
         if (courseQueryDTO.getSubjectId() != null) {
-            coursePageWrapper.eq(Course::getSubjectId, courseQueryDTO.getSubjectId());
+            pageWrapper.eq(Course::getSubjectId, courseQueryDTO.getSubjectId());
         }
         // 精确查询类型
         if (courseQueryDTO.getTypeId() != null) {
-            coursePageWrapper.eq(Course::getTypeId, courseQueryDTO.getTypeId());
+            pageWrapper.eq(Course::getTypeId, courseQueryDTO.getTypeId());
         }
 
         // 范围查询选课人数
         if (courseQueryDTO.getStartSelectCount() != null) {
-            coursePageWrapper.ge(Course::getSelectCount, courseQueryDTO.getStartSelectCount());
+            pageWrapper.ge(Course::getSelectCount, courseQueryDTO.getStartSelectCount());
         }
         if (courseQueryDTO.getEndSelectCount() != null) {
-            coursePageWrapper.le(Course::getSelectCount, courseQueryDTO.getEndSelectCount());
+            pageWrapper.le(Course::getSelectCount, courseQueryDTO.getEndSelectCount());
         }
         // 范围查询创建时间
         if (courseQueryDTO.getStartCreateTime() != null) {
-            coursePageWrapper.ge(Course::getCreateTime, courseQueryDTO.getStartCreateTime());
+            pageWrapper.ge(Course::getCreateTime, courseQueryDTO.getStartCreateTime());
         }
         if (courseQueryDTO.getEndCreateTime() != null) {
-            coursePageWrapper.le(Course::getCreateTime, courseQueryDTO.getEndCreateTime());
+            pageWrapper.le(Course::getCreateTime, courseQueryDTO.getEndCreateTime());
         }
 
         // 筛选后的课程ID列表
-        List<Object> courseIdsObj = courseMapper.selectObjs(coursePageWrapper);
+        List<Object> courseIdsObj = courseMapper.selectObjs(pageWrapper);
         List<Integer> courseIds = courseIdsObj.stream()
                 .map(obj -> (Integer) obj)
                 .collect(Collectors.toList());
 
         // 过滤已选修课程
-        if (courseQueryDTO.getIsSelected()) {
+        if (courseQueryDTO.getIsSelected() != null && courseQueryDTO.getIsSelected()) {
             // 获取该学生已选修的课程ID
             LambdaQueryWrapper<StudentCourse> studentCoursePageWrapper = new LambdaQueryWrapper<>();
             List<Object> selectCourseIdsObj = studentCourseMapper.selectObjs(studentCoursePageWrapper
@@ -184,28 +181,31 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
             return new Page<>();
         }
 
-        coursePageWrapper.in(Course::getId, courseIds);
+        pageWrapper.in(Course::getId, courseIds);
         // 按ID排序
-        coursePageWrapper.orderByDesc(Course::getId);
+        pageWrapper.orderByDesc(Course::getId);
         // 按选课人数排序
         if (courseQueryDTO.getSelectCountAsc() != null) {
             if (courseQueryDTO.getSelectCountAsc()) {
-                coursePageWrapper.orderByAsc(Course::getSelectCount);
+                pageWrapper.orderByAsc(Course::getSelectCount);
             } else {
-                coursePageWrapper.orderByDesc(Course::getSelectCount);
+                pageWrapper.orderByDesc(Course::getSelectCount);
             }
         }
         // 按创建时间排序
         if (courseQueryDTO.getSelectCountAsc() != null) {
             if (courseQueryDTO.getSelectCountAsc()) {
-                coursePageWrapper.orderByAsc(Course::getCreateTime);
+                pageWrapper.orderByAsc(Course::getCreateTime);
             } else {
-                coursePageWrapper.orderByDesc(Course::getCreateTime);
+                pageWrapper.orderByDesc(Course::getCreateTime);
             }
         }
 
+        // 构建分页对象
+        Page<Course> page = new Page<>(courseQueryDTO.getPageNum(), courseQueryDTO.getPageSize());
+
         // 执行分页查询
-        IPage<Course> coursePage = courseMapper.selectPage(page, coursePageWrapper);
+        IPage<Course> coursePage = courseMapper.selectPage(page, pageWrapper);
 
         // 转换为VO
         List<CourseVO> courseVOS = coursePage.getRecords().stream()
@@ -219,72 +219,72 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     // 获取创建课程分页
     @Override
     public IPage<CourseVO> getCreateCoursePages(Integer id, CourseQueryDTO courseQueryDTO) {
-        // 构建分页对象
-        Page<Course> page = new Page<>(courseQueryDTO.getPageNum(), courseQueryDTO.getPageSize());
-
         // 构建查询条件
-        LambdaQueryWrapper<Course> coursePageWrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<Course> pageWrapper = new LambdaQueryWrapper<>();
 
         // 过滤非该教师创建的课程
-        coursePageWrapper.eq(Course::getTeacherId, id);
+        pageWrapper.eq(Course::getTeacherId, id);
 
         // 模糊查询名称
         if (courseQueryDTO.getName() != null && StringUtils.isNotBlank(courseQueryDTO.getName())) {
-            coursePageWrapper.like(Course::getName, "%" + courseQueryDTO.getName() + "%");
+            pageWrapper.like(Course::getName, "%" + courseQueryDTO.getName() + "%");
         }
         // 精确查询审核状态
         if (courseQueryDTO.getReviewStatus() != null) {
-            coursePageWrapper.eq(Course::getReviewStatus, courseQueryDTO.getReviewStatus());
+            pageWrapper.eq(Course::getReviewStatus, courseQueryDTO.getReviewStatus());
         }
         // 精确查询学科
         if (courseQueryDTO.getSubjectId() != null) {
-            coursePageWrapper.eq(Course::getSubjectId, courseQueryDTO.getSubjectId());
+            pageWrapper.eq(Course::getSubjectId, courseQueryDTO.getSubjectId());
         }
         // 精确查询类型
         if (courseQueryDTO.getTypeId() != null) {
-            coursePageWrapper.eq(Course::getTypeId, courseQueryDTO.getTypeId());
+            pageWrapper.eq(Course::getTypeId, courseQueryDTO.getTypeId());
         }
         // 精确查询删除状态
         if (courseQueryDTO.getIsDeleted() != null && courseQueryDTO.getIsDeleted()) {
-            coursePageWrapper.eq(Course::getIsDeleted, false);
+            pageWrapper.eq(Course::getIsDeleted, false);
         }
 
         // 范围查询选课人数
         if (courseQueryDTO.getStartSelectCount() != null) {
-            coursePageWrapper.ge(Course::getSelectCount, courseQueryDTO.getStartSelectCount());
+            pageWrapper.ge(Course::getSelectCount, courseQueryDTO.getStartSelectCount());
         }
         if (courseQueryDTO.getEndSelectCount() != null) {
-            coursePageWrapper.le(Course::getSelectCount, courseQueryDTO.getEndSelectCount());
+            pageWrapper.le(Course::getSelectCount, courseQueryDTO.getEndSelectCount());
         }
         // 范围查询创建时间
         if (courseQueryDTO.getStartCreateTime() != null) {
-            coursePageWrapper.ge(Course::getCreateTime, courseQueryDTO.getStartCreateTime());
+            pageWrapper.ge(Course::getCreateTime, courseQueryDTO.getStartCreateTime());
         }
         if (courseQueryDTO.getEndCreateTime() != null) {
-            coursePageWrapper.le(Course::getCreateTime, courseQueryDTO.getEndCreateTime());
+            pageWrapper.le(Course::getCreateTime, courseQueryDTO.getEndCreateTime());
         }
 
         // 按ID排序
-        coursePageWrapper.orderByDesc(Course::getId);
+        pageWrapper.orderByDesc(Course::getId);
         // 按选课人数排序
         if (courseQueryDTO.getSelectCountAsc() != null) {
             if (courseQueryDTO.getSelectCountAsc()) {
-                coursePageWrapper.orderByAsc(Course::getSelectCount);
+                pageWrapper.orderByAsc(Course::getSelectCount);
             } else {
-                coursePageWrapper.orderByDesc(Course::getSelectCount);
+                pageWrapper.orderByDesc(Course::getSelectCount);
             }
         }
         // 按创建时间排序
         if (courseQueryDTO.getCreateTimeAsc() != null) {
             if (courseQueryDTO.getCreateTimeAsc()) {
-                coursePageWrapper.orderByAsc(Course::getCreateTime);
+                pageWrapper.orderByAsc(Course::getCreateTime);
             } else {
-                coursePageWrapper.orderByDesc(Course::getCreateTime);
+                pageWrapper.orderByDesc(Course::getCreateTime);
             }
         }
 
+        // 构建分页对象
+        Page<Course> page = new Page<>(courseQueryDTO.getPageNum(), courseQueryDTO.getPageSize());
+
         // 执行分页查询
-        IPage<Course> coursePage = courseMapper.selectPage(page, coursePageWrapper);
+        IPage<Course> coursePage = courseMapper.selectPage(page, pageWrapper);
 
         // 转换为VO
         List<CourseVO> courseVOS = coursePage.getRecords().stream()
@@ -298,35 +298,32 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     // 获取选修课程分页
     @Override
     public IPage<CourseVO> getSelectCoursePages(Integer id, StudentCourseQueryDTO studentCourseQueryDTO) {
-        // 构建分页对象
-        Page<Course> page = new Page<>(studentCourseQueryDTO.getPageNum(), studentCourseQueryDTO.getPageSize());
-
-        // 从学生课程关联表获取课程ID列表
+        // 构建查询条件，从学生课程关联表获取已选修课程ID列表
         LambdaQueryWrapper<StudentCourse> studentCoursePageWrapper = new LambdaQueryWrapper<>();
         studentCoursePageWrapper.eq(StudentCourse::getStudentId, id);
 
-        // 进度范围查询（关联表字段）
+        // 范围查询进度（关联表字段）
         if (studentCourseQueryDTO.getStartProgress() != null) {
             studentCoursePageWrapper.ge(StudentCourse::getProgress, studentCourseQueryDTO.getStartProgress());
         }
         if (studentCourseQueryDTO.getEndProgress() != null) {
             studentCoursePageWrapper.le(StudentCourse::getProgress, studentCourseQueryDTO.getEndProgress());
         }
-        // 学习时间范围查询（关联表字段）
+        // 范围查询学习时间（关联表字段）
         if (studentCourseQueryDTO.getStartStudyTime() != null) {
             studentCoursePageWrapper.ge(StudentCourse::getStudyTime, studentCourseQueryDTO.getStartStudyTime());
         }
         if (studentCourseQueryDTO.getEndStudyTime() != null) {
             studentCoursePageWrapper.le(StudentCourse::getStudyTime, studentCourseQueryDTO.getEndStudyTime());
         }
-        // 分数范围查询（关联表字段）
+        // 范围查询分数（关联表字段）
         if (studentCourseQueryDTO.getStartScore() != null) {
             studentCoursePageWrapper.ge(StudentCourse::getScore, studentCourseQueryDTO.getStartScore());
         }
         if (studentCourseQueryDTO.getEndScore() != null) {
             studentCoursePageWrapper.le(StudentCourse::getScore, studentCourseQueryDTO.getEndScore());
         }
-        // 选修时间范围查询（关联表字段）
+        // 范围查询选修时间（关联表字段）
         if (studentCourseQueryDTO.getStartSelectTime() != null) {
             studentCoursePageWrapper.ge(StudentCourse::getSelectTime, studentCourseQueryDTO.getStartSelectTime());
         }
@@ -412,7 +409,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         // 按ID排序（课程表字段）
         coursePageWrapper.orderByDesc(Course::getId);
         // 按选课人数排序（课程表字段）
-        if(studentCourseQueryDTO.getSelectCountAsc() != null) {
+        if (studentCourseQueryDTO.getSelectCountAsc() != null) {
             if (studentCourseQueryDTO.getSelectCountAsc()) {
                 coursePageWrapper.orderByAsc(Course::getSelectCount);
             } else {
@@ -420,13 +417,16 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
             }
         }
         // 按创建时间排序（课程表字段）
-        if(studentCourseQueryDTO.getSelectCountAsc() != null) {
+        if (studentCourseQueryDTO.getSelectCountAsc() != null) {
             if (studentCourseQueryDTO.getSelectCountAsc()) {
                 coursePageWrapper.orderByAsc(Course::getCreateTime);
             } else {
                 coursePageWrapper.orderByDesc(Course::getCreateTime);
             }
         }
+
+        // 构建分页对象
+        Page<Course> page = new Page<>(studentCourseQueryDTO.getPageNum(), studentCourseQueryDTO.getPageSize());
 
         // 执行分页查询
         IPage<Course> coursePage = courseMapper.selectPage(page, coursePageWrapper);
@@ -493,8 +493,12 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     }
 
     @Override
-    public StudentCourseVO getSelectCourseDetail(Integer id) {
-        StudentCourse studentCourse = studentCourseMapper.selectById(id);
+    public StudentCourseVO getSelectCourseDetail(Integer studentId, Integer courseId) {
+        LambdaQueryWrapper<StudentCourse> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(StudentCourse::getStudentId, studentId)
+                .eq(StudentCourse::getCourseId, courseId)
+                .eq(StudentCourse::getIsDeleted, false);
+        StudentCourse studentCourse = studentCourseMapper.selectOne(queryWrapper);
         StudentCourseVO studentCourseVO = new StudentCourseVO();
         BeanUtils.copyProperties(studentCourse, studentCourseVO);
 

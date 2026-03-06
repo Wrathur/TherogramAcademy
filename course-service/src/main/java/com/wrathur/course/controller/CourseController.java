@@ -87,11 +87,11 @@ public class CourseController {
         return Result.success(courseService.getCreateCourseDetail(id));
     }
 
-    @GetMapping("/selectDetail/{id}")
+    @GetMapping("/selectDetail/{studentId}/{courseId}")
     @ApiOperation("获取选修课程详情")
-    public Result<StudentCourseVO> getSelectCourseDetail(@PathVariable Integer id) {
-        log.info("获取选修课程详情：{}", id);
-        return Result.success(courseService.getSelectCourseDetail(id));
+    public Result<StudentCourseVO> getSelectCourseDetail(@PathVariable Integer studentId, @PathVariable Integer courseId) {
+        log.info("{}获取选修课程详情：{}", studentId, courseId);
+        return Result.success(courseService.getSelectCourseDetail(studentId, courseId));
     }
 
     @PatchMapping("/review/{reviewStatus}")

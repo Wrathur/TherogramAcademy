@@ -13,6 +13,7 @@ public class HomeworkDTO {
     private String deadline;
     private String content;
     private String attachment;
+    private Integer submitCount;
     private Boolean isDeleted;
     private Integer courseId;
     private LocalDateTime createTime;

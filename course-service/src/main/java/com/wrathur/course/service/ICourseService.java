@@ -39,7 +39,7 @@ public interface ICourseService extends IService<Course> {
     public CourseVO getCreateCourseDetail(Integer id);
 
     // 获取选修课程详情
-    public StudentCourseVO getSelectCourseDetail(Integer id);
+    public StudentCourseVO getSelectCourseDetail(Integer studentId, Integer courseId);
 
     // 审核课程
     public void reviewCourse(String reviewStatus, CourseDTO courseDTO);

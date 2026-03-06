@@ -75,8 +75,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         // 构建查询条件
         LambdaQueryWrapper<User> pageWrapper = new LambdaQueryWrapper<>();
 
-        // 过滤已删除课程资源
-        pageWrapper.eq(User::getIsDeleted, false);
+        // 过滤已删除用户
+        if(userQueryDTO.getIsDeleted() != null && userQueryDTO.getIsDeleted()){
+            pageWrapper.eq(User::getIsDeleted, false);
+        }
 
         // 模糊查询账号
         if (userQueryDTO.getAccount() != null && !userQueryDTO.getAccount().isEmpty()) {
