@@ -1,6 +1,8 @@
 package com.wrathur.statistic.service;
 
 
+import com.wrathur.statistic.domain.dto.UserDTO;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;

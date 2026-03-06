@@ -13,6 +13,7 @@ public class CourseResource {
     private String name;
     private String uri;
     private String resourceType; //VIDEO/MATERIAL/REFERENCE
+    private Integer viewCount;
     @TableField("is_deleted")
     private Boolean isDeleted;
     private Integer courseId;

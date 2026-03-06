@@ -1,6 +1,8 @@
 package com.wrathur.course.domain.vo;
 
+import com.wrathur.api.client.UserServiceClient;
 import lombok.Data;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -16,11 +18,20 @@ public class CourseVO {
     private String reviewStatus;
     private Integer subjectId;
     private Integer typeId;
+    private String teacherId;
     private String rejectedReason;
+    private Integer selectCount;
     private String createTime;
     private String updateTime;
     private String reviewTime;
     private String deleteTime;
+
+    @Setter
+    private UserServiceClient userServiceClient;
+
+    public void setTeacherId(Integer id) {
+        this.teacherId = userServiceClient.getUsernameById(id);
+    }
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));

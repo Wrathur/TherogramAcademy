@@ -1,4 +1,4 @@
-package com.wrathur.instruction.domain.dto;
+package com.wrathur.user.domain.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,22 +7,20 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@ApiModel(description = "课程资源分页查询条件")
-public class CourseResourceQueryDTO {
-    @ApiModelProperty("名称")
-    private String name;
+@ApiModel(description = "用户分页查询条件")
+public class UserQueryDTO {
+    @ApiModelProperty("账号")
+    private String account;
+    @ApiModelProperty("用户名")
+    private String username;
     @ApiModelProperty("类型")
-    private Integer resourceType;
-    @ApiModelProperty("起始查看次数")
-    private Integer startViewCount;
-    @ApiModelProperty("结束查看次数")
-    private Integer endViewCount;
+    private Integer roleType;
+    @ApiModelProperty("删除状态")
+    private Boolean isDeleted;
     @ApiModelProperty("起始创建时间")
     private LocalDateTime startCreateTime;
     @ApiModelProperty("结束创建时间")
     private LocalDateTime endCreateTime;
-    @ApiModelProperty("是否按查看次数升序")
-    private Boolean viewCountAsc;
     @ApiModelProperty("是否按创建时间升序")
     private Boolean createTimeAsc;
     private Integer pageNum = 1;

@@ -5,7 +5,9 @@ import com.wrathur.common.result.Result;
 import com.wrathur.course.domain.dto.CourseDTO;
 import com.wrathur.course.domain.dto.CourseQueryDTO;
 import com.wrathur.course.domain.dto.StudentCourseDTO;
+import com.wrathur.course.domain.dto.StudentCourseQueryDTO;
 import com.wrathur.course.domain.vo.CourseVO;
+import com.wrathur.course.domain.vo.StudentCourseVO;
 import com.wrathur.course.service.ICourseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -50,18 +52,46 @@ public class CourseController {
         return Result.success();
     }
 
-    @GetMapping("/page")
+    @GetMapping("/page/{id}")
     @ApiOperation("获取课程分页")
-    public Result<IPage<CourseVO>> getCoursePages(@RequestBody CourseQueryDTO courseQueryDTO) {
-        log.info("获取课程列表：{}", courseQueryDTO);
-        return Result.success(courseService.getCoursePages(courseQueryDTO));
+    public Result<IPage<CourseVO>> getCoursePages(@PathVariable Integer id, @RequestBody CourseQueryDTO courseQueryDTO) {
+        log.info("{}获取课程分页：{}", id, courseQueryDTO);
+        return Result.success(courseService.getCoursePages(id, courseQueryDTO));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/createPage/{id}")
+    @ApiOperation("获取创建课程分页")
+    public Result<IPage<CourseVO>> getCreateCoursePages(@PathVariable Integer id, @RequestBody CourseQueryDTO courseQueryDTO) {
+        log.info("教师{}获取创建课程分页：{}", id, courseQueryDTO);
+        return Result.success(courseService.getCreateCoursePages(id, courseQueryDTO));
+    }
+
+    @GetMapping("/selectPage/{id}")
+    @ApiOperation("获取选修课程分页")
+    public Result<IPage<CourseVO>> getSelectCoursePages(@PathVariable Integer id, @RequestBody StudentCourseQueryDTO studentCourseQueryDTO) {
+        log.info("学生{}获取选修课程分页：{}", id, studentCourseQueryDTO);
+        return Result.success(courseService.getSelectCoursePages(id, studentCourseQueryDTO));
+    }
+
+    @GetMapping("/detail/{id}")
     @ApiOperation("获取课程详情")
     public Result<CourseVO> getCourseDetail(@PathVariable Integer id) {
         log.info("获取课程详情：{}", id);
         return Result.success(courseService.getCourseDetail(id));
+    }
+
+    @GetMapping("/createDetail/{id}")
+    @ApiOperation("获取创建课程详情")
+    public Result<CourseVO> getCreateCourseDetail(@PathVariable Integer id) {
+        log.info("获取创建课程详情：{}", id);
+        return Result.success(courseService.getCreateCourseDetail(id));
+    }
+
+    @GetMapping("/selectDetail/{id}")
+    @ApiOperation("获取选修课程详情")
+    public Result<StudentCourseVO> getSelectCourseDetail(@PathVariable Integer id) {
+        log.info("获取选修课程详情：{}", id);
+        return Result.success(courseService.getSelectCourseDetail(id));
     }
 
     @PatchMapping("/review/{reviewStatus}")

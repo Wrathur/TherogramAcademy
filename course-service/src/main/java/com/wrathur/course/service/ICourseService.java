@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.wrathur.course.domain.dto.CourseDTO;
 import com.wrathur.course.domain.dto.CourseQueryDTO;
 import com.wrathur.course.domain.dto.StudentCourseDTO;
+import com.wrathur.course.domain.dto.StudentCourseQueryDTO;
 import com.wrathur.course.domain.po.Course;
 import com.wrathur.course.domain.vo.CourseVO;
+import com.wrathur.course.domain.vo.StudentCourseVO;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -22,10 +24,22 @@ public interface ICourseService extends IService<Course> {
     public void deleteCourse(Integer id);
 
     // 获取课程分页
-    public IPage<CourseVO> getCoursePages(CourseQueryDTO courseQueryDTO);
+    public IPage<CourseVO> getCoursePages(Integer id, CourseQueryDTO courseQueryDTO);
+
+    // 获取创建课程分页
+    public IPage<CourseVO> getCreateCoursePages(Integer id, CourseQueryDTO courseQueryDTO);
+
+    // 获取选修课程分页
+    public IPage<CourseVO> getSelectCoursePages(Integer id, StudentCourseQueryDTO studentCourseQueryDTO);
 
     // 获取课程详情
     public CourseVO getCourseDetail(Integer id);
+
+    // 获取创建课程详情
+    public CourseVO getCreateCourseDetail(Integer id);
+
+    // 获取选修课程详情
+    public StudentCourseVO getSelectCourseDetail(Integer id);
 
     // 审核课程
     public void reviewCourse(String reviewStatus, CourseDTO courseDTO);

@@ -11,6 +11,7 @@ public class CourseResourceVO {
     private String name;
     private String uri;
     private String resourceType;
+    private Integer viewCount;
     private Integer courseId;
     private String createTime;
     private String updateTime;

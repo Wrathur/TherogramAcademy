@@ -74,6 +74,9 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
         // 构建查询条件
         LambdaQueryWrapper<CourseResource> pageWrapper = new LambdaQueryWrapper<>();
 
+        // 过滤已删除课程资源
+        pageWrapper.eq(CourseResource::getIsDeleted, false);
+
         // 模糊查询名称
         if (courseResourceQueryDTO.getName() != null && !courseResourceQueryDTO.getName().isEmpty()) {
             pageWrapper.like(CourseResource::getName, courseResourceQueryDTO.getName());
@@ -82,6 +85,14 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
         if (courseResourceQueryDTO.getResourceType() != null) {
             pageWrapper.eq(CourseResource::getResourceType, courseResourceQueryDTO.getResourceType());
         }
+
+        // 范围查询查看次数
+        if (courseResourceQueryDTO.getStartViewCount() != null) {
+            pageWrapper.ge(CourseResource::getViewCount, courseResourceQueryDTO.getStartViewCount());
+        }
+        if (courseResourceQueryDTO.getEndViewCount() != null) {
+            pageWrapper.le(CourseResource::getViewCount, courseResourceQueryDTO.getEndViewCount());
+        }
         // 范围查询创建时间
         if (courseResourceQueryDTO.getStartCreateTime() != null) {
             pageWrapper.ge(CourseResource::getCreateTime, courseResourceQueryDTO.getStartCreateTime());
@@ -89,24 +100,50 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
         if (courseResourceQueryDTO.getEndCreateTime() != null) {
             pageWrapper.le(CourseResource::getCreateTime, courseResourceQueryDTO.getEndCreateTime());
         }
-        // 过滤已删除课程
-        pageWrapper.eq(CourseResource::getIsDeleted, false);
+
+        // 按ID排序
+        pageWrapper.orderByDesc(CourseResource::getId);
+        // 按查看次数排序
+        if (courseResourceQueryDTO.getViewCountAsc() != null) {
+            if (courseResourceQueryDTO.getViewCountAsc()) {
+                pageWrapper.orderByAsc(CourseResource::getViewCount);
+            } else {
+                pageWrapper.orderByDesc(CourseResource::getViewCount);
+            }
+        }
+        // 按创建时间排序
+        if (courseResourceQueryDTO.getCreateTimeAsc() != null) {
+            if (courseResourceQueryDTO.getCreateTimeAsc()) {
+                pageWrapper.orderByAsc(CourseResource::getCreateTime);
+            } else {
+                pageWrapper.orderByDesc(CourseResource::getCreateTime);
+            }
+        }
 
         // 执行分页查询
         IPage<CourseResource> courseResourcePage = courseResourceMapper.selectPage(page, pageWrapper);
 
         // 转换为VO
-        List<CourseResourceVO> courseResourceVOS = courseResourcePage.getRecords().stream()
-                .map(courseResource -> {
-                    CourseResourceVO courseResourceVO = new CourseResourceVO();
-                    BeanUtils.copyProperties(courseResource, courseResourceVO);
-                    courseResourceVO.setCreateTime(courseResource.getCreateTime());
-                    courseResourceVO.setUpdateTime(courseResource.getUpdateTime());
-                    courseResourceVO.setDeleteTime(courseResource.getDeleteTime());
-                    return courseResourceVO;
-                }).collect(Collectors.toList());
+        List<CourseResourceVO> courseVOS = courseResourcePage.getRecords().stream()
+                .map(this::convertCourseResourceToVO)
+                .collect(Collectors.toList());
 
         // 构建返回的分页VO
+        return convertPageResult(courseResourcePage, courseVOS);
+    }
+
+    //转化VO
+    private CourseResourceVO convertCourseResourceToVO(CourseResource courseResource) {
+        CourseResourceVO courseResourceVO = new CourseResourceVO();
+        BeanUtils.copyProperties(courseResource, courseResourceVO);
+        courseResourceVO.setCreateTime(courseResource.getCreateTime());
+        courseResourceVO.setUpdateTime(courseResource.getUpdateTime());
+        courseResourceVO.setDeleteTime(courseResource.getDeleteTime());
+        return courseResourceVO;
+    }
+
+    //转化分页结果
+    private IPage<CourseResourceVO> convertPageResult(IPage<CourseResource> courseResourcePage, List<CourseResourceVO> courseResourceVOS) {
         IPage<CourseResourceVO> resultPage = new Page<>();
         resultPage.setRecords(courseResourceVOS);
         resultPage.setTotal(courseResourcePage.getTotal());

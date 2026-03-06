@@ -13,14 +13,24 @@ public class HomeworkQueryDTO {
     private String name;
     @ApiModelProperty("类型")
     private Integer type;
-    @ApiModelProperty("批阅状态")
-    private Integer reviewStatus;
-    @ApiModelProperty("分数")
-    private Integer score;
+    @ApiModelProperty("起始提交人数")
+    private Integer startSubmitCount;
+    @ApiModelProperty("结束提交人数")
+    private Integer endSubmitCount;
+    @ApiModelProperty("起始截至时间")
+    private LocalDateTime startDeadline;
+    @ApiModelProperty("结束截至时间")
+    private LocalDateTime endDeadline;
     @ApiModelProperty("起始创建时间")
     private LocalDateTime startCreateTime;
     @ApiModelProperty("结束创建时间")
     private LocalDateTime endCreateTime;
+    @ApiModelProperty("是否按提交人数升序")
+    private Boolean submitCountAsc;
+    @ApiModelProperty("是否按截至时间升序")
+    private Boolean deadlineAsc;
+    @ApiModelProperty("是否按创建时间升序")
+    private Boolean createTimeAsc;
     private Integer pageNum = 1;
     private Integer pageSize = 10;
 }

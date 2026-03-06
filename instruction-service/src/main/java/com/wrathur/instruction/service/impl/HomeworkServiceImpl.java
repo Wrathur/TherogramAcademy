@@ -1,6 +1,7 @@
 package com.wrathur.instruction.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -21,9 +22,11 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,6 +43,7 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
 
     // 创建作业
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void createHomework(HomeworkDTO homeworkDTO) {
         Homework homework = new Homework();
         BeanUtils.copyProperties(homeworkDTO, homework);
@@ -48,7 +52,7 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
         homework.setUpdateTime(LocalDateTime.now());
         homeworkMapper.insert(homework);
 
-        //查询选修了该课程的所有学生，将其添加到学生作业表，远程调用课程服务获取该课程所有未退选的学生
+        // 查询选修了该课程的所有学生，将其添加到学生作业表，远程调用课程服务获取该课程所有未退选的学生
         List<Integer> studentIds = courseServiceClient.getStudentIdsByCourseId(homeworkDTO.getCourseId());
 
         // 为每个学生创建学生作业关联表项
@@ -67,8 +71,9 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
 
     // 修改作业
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void modifyHomework(Integer id, HomeworkDTO homeworkDTO) {
-        Homework homework = new Homework();
+        Homework homework = homeworkMapper.selectById(id);
         BeanUtils.copyProperties(homeworkDTO, homework);
         homework.setUpdateTime(LocalDateTime.now());
 
@@ -79,11 +84,21 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
 
     // 删除作业
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void deleteHomework(Integer id) {
-        homeworkMapper.deleteById(id);
+        // 查询该作业，将其从作业表逻辑删除
+        homeworkMapper.update(null,
+                new LambdaUpdateWrapper<Homework>()
+                        .eq(Homework::getId, id)
+                        .set(Homework::getIsDeleted, true)
+                        .set(Homework::getDeleteTime, LocalDateTime.now()));
 
-        //远程调用课程服务，查询选修了该课程的所有学生，将其从学生作业表逻辑删除
-
+        // 查询该作业的所有学生，将其从学生作业表逻辑删除
+        studentHomeworkMapper.update(null,
+                new LambdaUpdateWrapper<StudentHomework>()
+                        .eq(StudentHomework::getHomeworkId, id)
+                        .set(StudentHomework::getIsDeleted, true)
+                        .set(StudentHomework::getDeleteTime, LocalDateTime.now()));
     }
 
     // 获取作业分页
@@ -93,41 +108,50 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
         Page<Homework> page = new Page<>(homeworkQueryDTO.getPageNum(), homeworkQueryDTO.getPageSize());
 
         // 构建查询条件
-        LambdaQueryWrapper<Homework> queryWrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<Homework> pageWrapper = new LambdaQueryWrapper<>();
 
         // 模糊查询名称
         if (homeworkQueryDTO.getName() != null && !homeworkQueryDTO.getName().isEmpty()) {
-            queryWrapper.like(Homework::getName, homeworkQueryDTO.getName());
+            pageWrapper.like(Homework::getName, homeworkQueryDTO.getName());
         }
         // 精确查询类型
         if (homeworkQueryDTO.getType() != null) {
-            queryWrapper.eq(Homework::getType, homeworkQueryDTO.getType());
+            pageWrapper.eq(Homework::getType, homeworkQueryDTO.getType());
         }
         // 精确查询批阅状态
         if (homeworkQueryDTO.getReviewStatus() != null) {
-            queryWrapper.eq(Homework::getReviewStatus, homeworkQueryDTO.getReviewStatus());
+            pageWrapper.eq(Homework::getReviewStatus, homeworkQueryDTO.getReviewStatus());
         }
         // 精确查询分数
         if (homeworkQueryDTO.getScore() != null) {
-            queryWrapper.eq(Homework::getScore, homeworkQueryDTO.getScore());
+            pageWrapper.eq(Homework::getScore, homeworkQueryDTO.getScore());
         }
 
         // 执行分页查询
-        IPage<Homework> homeworkPage = homeworkMapper.selectPage(page, queryWrapper);
+        IPage<Homework> homeworkPage = homeworkMapper.selectPage(page, pageWrapper);
 
         // 转换为VO
         List<HomeworkVO> homeworkVOS = homeworkPage.getRecords().stream()
-                .map(homework -> {
-                    HomeworkVO homeworkVO = new HomeworkVO();
-                    BeanUtils.copyProperties(homework, homeworkVO);
-                    homeworkVO.setDeadline(homework.getDeadline());
-                    homeworkVO.setCreateTime(homework.getCreateTime());
-                    homeworkVO.setUpdateTime(homework.getUpdateTime());
-                    return homeworkVO;
-                })
+                .map(this::convertHomeworkToVO)
                 .collect(Collectors.toList());
 
         // 构建返回的分页VO
+        return convertPageResult(homeworkPage, homeworkVOS);
+    }
+
+    //转化VO
+    private HomeworkVO convertHomeworkToVO(Homework homework) {
+        HomeworkVO homeworkVO = new HomeworkVO();
+        BeanUtils.copyProperties(homework, homeworkVO);
+        homeworkVO.setDeadline(homework.getDeadline());
+        homeworkVO.setCreateTime(homework.getCreateTime());
+        homeworkVO.setUpdateTime(homework.getUpdateTime());
+        homeworkVO.setDeleteTime(homework.getDeleteTime());
+        return homeworkVO;
+    }
+
+    //转化分页结果
+    private IPage<HomeworkVO> convertPageResult(IPage<Homework> homeworkPage, List<HomeworkVO> homeworkVOS) {
         IPage<HomeworkVO> resultPage = new Page<>();
         resultPage.setRecords(homeworkVOS);
         resultPage.setTotal(homeworkPage.getTotal());
@@ -148,11 +172,13 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
         homeworkVO.setDeadline(homework.getDeadline());
         homeworkVO.setCreateTime(homework.getCreateTime());
         homeworkVO.setUpdateTime(homework.getUpdateTime());
+        homeworkVO.setDeleteTime(homework.getDeleteTime());
         return homeworkVO;
     }
 
     // 提交作业
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void submitHomework(String attachment, StudentHomeworkDTO studentHomeworkDTO) {
         StudentHomework studentHomework = new StudentHomework();
         studentHomework.setAttachment(attachment);
@@ -162,6 +188,7 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
 
     // 评定作业
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void evaluateHomework(BigDecimal score, StudentHomeworkDTO studentHomeworkDTO) {
         StudentHomework studentHomework = new StudentHomework();
         BeanUtils.copyProperties(studentHomeworkDTO, studentHomework);
@@ -179,5 +206,11 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
     @Override
     public List<Integer> getHomeworkIdsByCourseId(Integer id) {
         return homeworkMapper.selectHomeworkIdsByCourseId(id);
+    }
+
+    // 通过课程ID列表获取所有未删除的作业
+    @Override
+    public List<Integer> getHomeworkIdsByCourseIds(List<Integer> ids) {
+        return homeworkMapper.selectHomeworkIdsByCourseIds(ids);
     }
 }

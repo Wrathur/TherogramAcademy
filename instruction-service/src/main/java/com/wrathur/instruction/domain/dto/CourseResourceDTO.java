@@ -10,6 +10,7 @@ public class CourseResourceDTO {
     private String name;
     private String uri;
     private String resourceType; // VIDEO/MATERIAL/REFERENCE
+    private Integer viewCount;
     private Boolean isDeleted;
     private Integer courseId;
     private LocalDateTime createTime;

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public class UserDTO {
     private Integer id;
     private String account;
+    private String username;
     private String roleType;
     private String profile;
     private Boolean idDeleted;

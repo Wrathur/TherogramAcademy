@@ -10,6 +10,7 @@ public class StudentCourseDTO {
     private Integer studentId;
     private Integer courseId;
     private Integer progress;
+    private Integer studyTime;
     private BigDecimal score;
     private Boolean isDeleted;
     private LocalDateTime createTime;

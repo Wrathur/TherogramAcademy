@@ -19,10 +19,12 @@ public class Course {
     private String outline;
     private String reviewStatus; //ENUM: PENDING/APPROVED/REJECTED
     private String rejectedReason;
+    private Integer selectCount;
     @TableField("is_deleted")
     private Boolean isDeleted;
     private Integer subjectId;
     private Integer typeId;
+    private Integer teacherId;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
     private LocalDateTime reviewTime;

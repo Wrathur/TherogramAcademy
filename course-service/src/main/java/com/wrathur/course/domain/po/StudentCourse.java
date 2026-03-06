@@ -13,6 +13,7 @@ public class StudentCourse {
     private Integer studentId;
     private Integer courseId;
     private Integer progress;
+    private Integer studyTime;
     private BigDecimal score;
     @TableField("is_deleted")
     private Boolean isDeleted;

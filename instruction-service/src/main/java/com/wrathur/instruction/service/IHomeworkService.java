@@ -33,4 +33,7 @@ public interface IHomeworkService {
 
     // 通过课程获取所有未删除的作业
     public List<Integer> getHomeworkIdsByCourseId(Integer id);
+
+    // 通过课程ID列表获取所有未删除的作业
+    public List<Integer> getHomeworkIdsByCourseIds(List<Integer> ids);
 }

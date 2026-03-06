@@ -48,7 +48,7 @@ public class CourseResourceController {
     @GetMapping("/page")
     @ApiOperation("获取教学资源分页")
     public Result<IPage<CourseResourceVO>> getCourseResourcePages(@RequestBody CourseResourceQueryDTO courseResourceQueryDTO) {
-        log.info("获取教学资源列表：{}", courseResourceQueryDTO);
+        log.info("获取教学资源分页：{}", courseResourceQueryDTO);
         return Result.success(courseResourceService.getCourseResourcePages(courseResourceQueryDTO));
     }
 

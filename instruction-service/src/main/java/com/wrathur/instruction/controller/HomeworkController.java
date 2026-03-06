@@ -52,7 +52,7 @@ public class HomeworkController {
     @GetMapping("/page")
     @ApiOperation("获取作业分页")
     public Result<IPage<HomeworkVO>> getHomeworkPages(@RequestBody HomeworkQueryDTO homeworkQueryDTO) {
-        log.info("获取作业列表：{}", homeworkQueryDTO);
+        log.info("获取作业分页：{}", homeworkQueryDTO);
         return Result.success(homeworkService.getHomeworkPages(homeworkQueryDTO));
     }
 
@@ -84,5 +84,12 @@ public class HomeworkController {
     public List<Integer> getHomeworkIdsByCourseId(@PathVariable Integer id) {
         log.info("通过课程{}获取所有未删除的作业", id);
         return homeworkService.getHomeworkIdsByCourseId(id);
+    }
+
+    @GetMapping("/courses")
+    @ApiOperation("通过课程ID列表获取所有未删除的作业")
+    public List<Integer> getHomeworkIdsByCourseId(@RequestBody List<Integer> ids) {
+        log.info("通过课程ID列表{}获取所有未删除的作业", ids);
+        return homeworkService.getHomeworkIdsByCourseIds(ids);
     }
 }

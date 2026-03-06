@@ -17,10 +17,22 @@ public class CourseQueryDTO {
     private Integer subjectId;
     @ApiModelProperty("类型")
     private Integer typeId;
+    @ApiModelProperty("选修状态")
+    private Boolean isSelected;
+    @ApiModelProperty("删除状态")
+    private Boolean isDeleted;
+    @ApiModelProperty("起始选课人数")
+    private Integer startSelectCount;
+    @ApiModelProperty("结束选课人数")
+    private Integer endSelectCount;
     @ApiModelProperty("起始创建时间")
     private LocalDateTime startCreateTime;
     @ApiModelProperty("结束创建时间")
     private LocalDateTime endCreateTime;
+    @ApiModelProperty("是否按选课人数升序")
+    private Boolean selectCountAsc;
+    @ApiModelProperty("是否按创建时间升序")
+    private Boolean createTimeAsc;
     private Integer pageNum = 1;
     private Integer pageSize = 10;
 }
