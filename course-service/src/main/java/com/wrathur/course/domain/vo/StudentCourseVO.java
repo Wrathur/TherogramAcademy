@@ -46,15 +46,15 @@ public class StudentCourseVO {
     }
 
     public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        this.updateTime = updateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public void setSelectTime(LocalDateTime selectTime) {
-        this.selectTime = selectTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        this.selectTime = selectTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public void setEvaluateTime(LocalDateTime evaluateTime) {

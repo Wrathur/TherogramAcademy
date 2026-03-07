@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.wrathur.common.result.Result;
 import com.wrathur.course.domain.dto.CourseDTO;
 import com.wrathur.course.domain.dto.CourseQueryDTO;
-import com.wrathur.course.domain.dto.StudentCourseDTO;
 import com.wrathur.course.domain.dto.StudentCourseQueryDTO;
 import com.wrathur.course.domain.vo.CourseVO;
 import com.wrathur.course.domain.vo.StudentCourseVO;
@@ -32,7 +31,6 @@ public class CourseController {
     public Result<String> createCourse(@RequestBody CourseDTO courseDTO) {
         log.info("创建课程：{}", courseDTO);
         courseService.createCourse(courseDTO);
-//        courseService.save(BeanUtil.copyProperties(courseDTO, Course.class));
         return Result.success();
     }
 
@@ -118,11 +116,11 @@ public class CourseController {
         return Result.success();
     }
 
-    @PatchMapping("/evaluate/{score}")
+    @PatchMapping("/evaluate/{score}/{studentId}/{courseId}")
     @ApiOperation("评定课程")
-    public Result<String> evaluateCourse(@PathVariable BigDecimal score, @RequestBody StudentCourseDTO studentCourseDTO) {
-        log.info("评定学生{}的课程{}：{}", studentCourseDTO.getStudentId(), studentCourseDTO.getCourseId(), score);
-        courseService.evaluateCourse(score, studentCourseDTO);
+    public Result<String> evaluateCourse(@PathVariable BigDecimal score, @PathVariable Integer studentId, @PathVariable Integer courseId) {
+        log.info("评定学生{}的课程{}：{}", studentId, courseId, score);
+        courseService.evaluateCourse(score, studentId, courseId);
         return Result.success();
     }
 

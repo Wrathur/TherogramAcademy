@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "course-service", url = "http://course-service")
+@FeignClient(name = "course-service", url = "http://localhost:8082")
 public interface CourseServiceClient {
     @GetMapping("/course/student/{id}")
-    List<Integer> getStudentIdsByCourseId(@PathVariable("id") Integer id);
+    List<Integer> getStudentIdsByCourseId(@PathVariable Integer id);
 }

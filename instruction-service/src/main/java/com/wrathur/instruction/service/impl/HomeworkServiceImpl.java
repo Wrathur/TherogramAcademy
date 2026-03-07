@@ -21,7 +21,6 @@ import com.wrathur.instruction.mapper.HomeworkMapper;
 import com.wrathur.instruction.mapper.StudentHomeworkMapper;
 import com.wrathur.instruction.service.IHomeworkService;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -39,9 +38,7 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
 
     private final HomeworkMapper homeworkMapper;
     private final StudentHomeworkMapper studentHomeworkMapper;
-
-    @Setter
-    private CourseServiceClient courseServiceClient;
+    private final CourseServiceClient courseServiceClient;
 
     // 创建作业
     @Override

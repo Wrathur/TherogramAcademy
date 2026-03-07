@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.wrathur</groupId>
         <artifactId>TherogramAcademy</artifactId>
@@ -12,92 +13,111 @@
 
     <artifactId>therogram-common</artifactId>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <!-- 已继承父模块的 java.version 等属性，此处无需重复定义 -->
 
     <dependencies>
-        <!-- Spring Boot Starter-->
+        <!-- Spring Boot 核心 Starter（版本由父模块管理） -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-        <!--apache工具包-->
+
+        <!-- Apache Commons Pool2（版本由父模块管理） -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
         </dependency>
-        <!--hutool工具包-->
+
+        <!-- Hutool 工具包（版本由父模块管理） -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
-        <!--完成SpringMVC自动装配-->
+
+        <!-- Spring Web MVC（仅用于工具类，编译时提供，版本由父模块管理） -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!--日志-->
+
+        <!-- Spring Boot 日志 Starter（版本由父模块管理） -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
+
+        <!-- 移除 tomcat-embed-core（硬编码版本且不兼容 Spring Boot 3），
+             如需 Servlet API 相关工具，请使用 Jakarta Servlet API -->
+        <!-- 如果确实需要 Servlet API，可添加以下依赖（scope provided）：
         <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>9.0.73</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        -->
+
+        <!-- MyBatis-Plus 核心模块（版本由父模块管理，scope provided 表示仅编译时使用） -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-core</artifactId>
-            <version>${mybatis-plus.version}</version>
+            <version>3.5.5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-extension</artifactId>
-            <version>${mybatis-plus.version}</version>
+            <version>3.5.5</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Hibernate Validator（版本由父模块管理，Jakarta 命名空间） -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
+
+        <!-- Spring Boot 自动配置模块（版本由父模块管理） -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
+
+        <!-- Knife4j 替换为兼容 Spring Boot 3 的版本（基于 OpenAPI 3 和 Jakarta） -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
             <version>4.1.0</version>
         </dependency>
-        <!--caffeine-->
+
+        <!-- Caffeine 缓存（版本由父模块管理） -->
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
         </dependency>
-        <!--AMQP依赖-->
+
+        <!-- Spring AMQP 和 RabbitMQ 支持（scope provided，版本由父模块管理） -->
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-amqp</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!--Spring整合Rabbit依赖-->
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!--json处理-->
+
+        <!-- Jackson XML 支持（scope provided，版本由父模块管理） -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 </project>

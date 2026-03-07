@@ -11,7 +11,6 @@ import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.wrathur.api.client.InstructionServiceClient;
 import com.wrathur.course.domain.dto.CourseDTO;
 import com.wrathur.course.domain.dto.CourseQueryDTO;
-import com.wrathur.course.domain.dto.StudentCourseDTO;
 import com.wrathur.course.domain.dto.StudentCourseQueryDTO;
 import com.wrathur.course.domain.po.Course;
 import com.wrathur.course.domain.po.Homework;
@@ -25,7 +24,6 @@ import com.wrathur.course.mapper.StudentCourseMapper;
 import com.wrathur.course.mapper.StudentHomeworkMapper;
 import com.wrathur.course.service.ICourseService;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -45,9 +43,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     private final StudentCourseMapper studentCourseMapper;
     private final HomeworkMapper homeworkMapper;
     private final StudentHomeworkMapper studentHomeworkMapper;
-
-    @Setter
-    private InstructionServiceClient instructionServiceClient;
+    private final InstructionServiceClient instructionServiceClient;
 
     // 创建课程
     @Override
@@ -605,15 +601,18 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     // 评定课程
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void evaluateCourse(BigDecimal score, StudentCourseDTO studentCourseDTO) {
-        StudentCourse studentCourse = new StudentCourse();
-        BeanUtils.copyProperties(studentCourseDTO, studentCourse);
+    public void evaluateCourse(BigDecimal score, Integer studentId, Integer courseId) {
+        LambdaQueryWrapper<StudentCourse> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(StudentCourse::getStudentId, studentId)
+                .eq(StudentCourse::getCourseId, courseId)
+                .eq(StudentCourse::getIsDeleted, false);
+        StudentCourse studentCourse = studentCourseMapper.selectOne(queryWrapper);
         studentCourse.setScore(score);
         studentCourse.setEvaluateTime(LocalDateTime.now());
 
         MPJLambdaWrapper<StudentCourse> evaluateWrapper = new MPJLambdaWrapper<>();
-        evaluateWrapper.eq(StudentCourse::getStudentId, studentCourseDTO.getStudentId())
-                .eq(StudentCourse::getCourseId, studentCourseDTO.getCourseId());
+        evaluateWrapper.eq(StudentCourse::getStudentId, studentId)
+                .eq(StudentCourse::getCourseId, courseId);
         studentCourseMapper.update(studentCourse, evaluateWrapper);
     }
 

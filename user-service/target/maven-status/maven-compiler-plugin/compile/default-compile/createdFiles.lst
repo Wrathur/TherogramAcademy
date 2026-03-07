@@ -1,0 +1,9 @@
+com\wrathur\user\UserApplication.class
+com\wrathur\user\mapper\UserMapper.class
+com\wrathur\user\domain\dto\UserDTO.class
+com\wrathur\user\domain\vo\UserVO.class
+com\wrathur\user\controller\UserController.class
+com\wrathur\user\service\IUserService.class
+com\wrathur\user\domain\dto\UserQueryDTO.class
+com\wrathur\user\domain\po\User.class
+com\wrathur\user\service\impl\UserServiceImpl.class

@@ -1,0 +1,5 @@
+com\wrathur\api\client\UserServiceClient.class
+com\wrathur\api\client\CourseServiceClient.class
+com\wrathur\api\client\InstructionServiceClient.class
+com\wrathur\api\config\DefaultFeignConfig.class
+com\wrathur\api\config\DefaultFeignConfig$1.class

@@ -34,15 +34,15 @@ public class CourseVO {
     }
 
     public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        this.updateTime = updateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public void setReviewTime(LocalDateTime reviewTime) {
-        this.reviewTime = reviewTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        this.reviewTime = reviewTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public void setDeleteTime(LocalDateTime deleteTime) {

@@ -1,25 +1,38 @@
 package com.wrathur.statistic.service;
 
 
-import com.wrathur.statistic.domain.dto.UserDTO;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
 public interface ICourseStatisticService {
-    // 课程数量统计（全站/个人）
-    public Integer courseCountStatistic(UserDTO userDTO);
+    // 全站课程数量统计
+    public Integer overallCourseCountStatistic();
 
-    // 选课人数统计（全站/个人）
-    public Integer totalSelectCountStatistic(UserDTO userDTO);
+    // 个人课程数量统计
+    public Integer personalCourseCountStatistic(Integer id);
 
-    // 课程完成率平均统计（全站/个人）
-    public BigDecimal courseCompletionRateAverageStatistic(UserDTO userDTO);
+    // 全站选课人数统计
+    public Integer overallTotalSelectCountStatistic();
 
-    // 课程完成率排行统计（全站/个人）
-    public Map<String, BigDecimal> courseCompletionRateRankStatistic(UserDTO userDTO);
+    // 个人选课人数统计
+    public Integer personalTotalSelectCountStatistic(Integer id);
 
-    // 课程完成率分段统计（全站/个人）
-    public List<Integer> courseCompletionRateSectionalStatistic(UserDTO userDTO);
+    // 全站课程完成率平均统计
+    public BigDecimal overallCourseCompletionRateAverageStatistic();
+
+    // 个人课程完成率平均统计
+    public BigDecimal personalCourseCompletionRateAverageStatistic(Integer id);
+
+    // 全站课程完成率排行统计
+    public Map<String, BigDecimal> overallCourseCompletionRateRankStatistic();
+
+    // 个人课程完成率排行统计
+    public Map<String, BigDecimal> personalCourseCompletionRateRankStatistic(Integer id);
+
+    // 全站课程完成率分段统计
+    public List<Integer> overallCourseCompletionRateSectionalStatistic();
+
+    // 个人课程完成率分段统计
+    public List<Integer> personalCourseCompletionRateSectionalStatistic(Integer id);
 }

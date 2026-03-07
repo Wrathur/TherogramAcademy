@@ -1,0 +1,7 @@
+com\wrathur\statistic\controller\CourseStatisticController.class
+com\wrathur\statistic\service\impl\CourseStatisticServiceImpl.class
+com\wrathur\statistic\service\IInstructionStatisticService.class
+com\wrathur\statistic\service\impl\InstructionStatisticServiceImpl.class
+com\wrathur\statistic\service\ICourseStatisticService.class
+com\wrathur\statistic\StatisticApplication.class
+com\wrathur\statistic\controller\InstructionStatisticController.class

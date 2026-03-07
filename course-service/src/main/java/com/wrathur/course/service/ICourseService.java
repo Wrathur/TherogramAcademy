@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.wrathur.course.domain.dto.CourseDTO;
 import com.wrathur.course.domain.dto.CourseQueryDTO;
-import com.wrathur.course.domain.dto.StudentCourseDTO;
 import com.wrathur.course.domain.dto.StudentCourseQueryDTO;
 import com.wrathur.course.domain.po.Course;
 import com.wrathur.course.domain.vo.CourseVO;
@@ -51,7 +50,7 @@ public interface ICourseService extends IService<Course> {
     void deselectCourse(Integer studentId, Integer courseId);
 
     // 评定课程
-    public void evaluateCourse(BigDecimal score, StudentCourseDTO studentCourseDTO);
+    public void evaluateCourse(BigDecimal score, Integer studentId, Integer courseId);
 
     // 通过课程获取所有未退选的学生
     public List<Integer> getStudentIdsByCourseId(Integer id);

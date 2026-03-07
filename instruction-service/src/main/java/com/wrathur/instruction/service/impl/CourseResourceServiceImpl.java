@@ -35,6 +35,7 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
     public void createCourseResource(CourseResourceDTO courseResourceDTO) {
         CourseResource courseResource = new CourseResource();
         BeanUtils.copyProperties(courseResourceDTO, courseResource);
+        courseResource.setViewCount(0);
         courseResource.setIsDeleted(false);
         courseResource.setCreateTime(LocalDateTime.now());
         courseResource.setUpdateTime(LocalDateTime.now());
@@ -157,6 +158,10 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
     @Override
     public CourseResourceVO getCourseResourceDetail(Integer id) {
         CourseResource courseResource = courseResourceMapper.selectById(id);
+        courseResource.setViewCount(courseResource.getViewCount() + 1);
+        UpdateWrapper<CourseResource> detailWrapper = new UpdateWrapper<>();
+        detailWrapper.eq("id", id);
+        courseResourceMapper.update(courseResource, detailWrapper);
         CourseResourceVO courseResourceVO = new CourseResourceVO();
         BeanUtils.copyProperties(courseResource, courseResourceVO);
 
