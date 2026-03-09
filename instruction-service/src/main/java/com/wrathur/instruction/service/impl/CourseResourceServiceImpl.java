@@ -2,7 +2,6 @@ package com.wrathur.instruction.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -49,10 +48,9 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
         CourseResource courseResource = courseResourceMapper.selectById(id);
         BeanUtils.copyProperties(courseResourceDTO, courseResource);
         courseResource.setUpdateTime(LocalDateTime.now());
-
-        UpdateWrapper<CourseResource> modifyWrapper = new UpdateWrapper<>();
-        modifyWrapper.eq("id", id);
-        courseResourceMapper.update(courseResource, modifyWrapper);
+        courseResourceMapper.update(courseResource,
+                new LambdaUpdateWrapper<CourseResource>()
+                        .eq(CourseResource::getId, id));
     }
 
     // 删除教学资源
@@ -68,10 +66,12 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
 
     // 获取教学资源分页
     @Override
-    public IPage<CourseResourceVO> getCourseResourcePages(CourseResourceQueryDTO courseResourceQueryDTO) {
+    public IPage<CourseResourceVO> getCourseResourcePages(Integer id, CourseResourceQueryDTO courseResourceQueryDTO) {
         // 构建查询条件
         LambdaQueryWrapper<CourseResource> pageWrapper = new LambdaQueryWrapper<>();
 
+        // 过滤非本课程资源
+        pageWrapper.eq(CourseResource::getCourseId, id);
         // 过滤已删除课程资源
         pageWrapper.eq(CourseResource::getIsDeleted, false);
 
@@ -99,22 +99,38 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
             pageWrapper.le(CourseResource::getCreateTime, courseResourceQueryDTO.getEndCreateTime());
         }
 
-        // 按ID排序
-        pageWrapper.orderByDesc(CourseResource::getId);
-        // 按查看次数排序
-        if (courseResourceQueryDTO.getViewCountAsc() != null) {
-            if (courseResourceQueryDTO.getViewCountAsc()) {
-                pageWrapper.orderByAsc(CourseResource::getViewCount);
+        // 排序
+        if (courseResourceQueryDTO.getSortType() != null && courseResourceQueryDTO.getIsAsc() != null) {
+            if (courseResourceQueryDTO.getIsAsc()) {
+                switch (courseResourceQueryDTO.getSortType()) {
+                    case 0:
+                        pageWrapper.orderByAsc(CourseResource::getOrderId);
+                        break;
+                    case 1:
+                        pageWrapper.orderByAsc(CourseResource::getViewCount);
+                        break;
+                    case 2:
+                        pageWrapper.orderByAsc(CourseResource::getCreateTime);
+                        break;
+                    default:
+                        pageWrapper.orderByAsc(CourseResource::getId);
+                        break;
+                }
             } else {
-                pageWrapper.orderByDesc(CourseResource::getViewCount);
-            }
-        }
-        // 按创建时间排序
-        if (courseResourceQueryDTO.getCreateTimeAsc() != null) {
-            if (courseResourceQueryDTO.getCreateTimeAsc()) {
-                pageWrapper.orderByAsc(CourseResource::getCreateTime);
-            } else {
-                pageWrapper.orderByDesc(CourseResource::getCreateTime);
+                switch (courseResourceQueryDTO.getSortType()) {
+                    case 0:
+                        pageWrapper.orderByDesc(CourseResource::getOrderId);
+                        break;
+                    case 1:
+                        pageWrapper.orderByDesc(CourseResource::getViewCount);
+                        break;
+                    case 2:
+                        pageWrapper.orderByDesc(CourseResource::getCreateTime);
+                        break;
+                    default:
+                        pageWrapper.orderByDesc(CourseResource::getId);
+                        break;
+                }
             }
         }
 
@@ -159,9 +175,10 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
     public CourseResourceVO getCourseResourceDetail(Integer id) {
         CourseResource courseResource = courseResourceMapper.selectById(id);
         courseResource.setViewCount(courseResource.getViewCount() + 1);
-        UpdateWrapper<CourseResource> detailWrapper = new UpdateWrapper<>();
-        detailWrapper.eq("id", id);
-        courseResourceMapper.update(courseResource, detailWrapper);
+        courseResourceMapper.update(courseResource,
+                new LambdaUpdateWrapper<CourseResource>()
+                        .eq(CourseResource::getId, id));
+
         CourseResourceVO courseResourceVO = new CourseResourceVO();
         BeanUtils.copyProperties(courseResource, courseResourceVO);
 
@@ -170,5 +187,16 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
         courseResourceVO.setUpdateTime(courseResource.getUpdateTime());
         courseResourceVO.setDeleteTime(courseResource.getDeleteTime());
         return courseResourceVO;
+    }
+
+    // 通过课程获取所有未删除的教学资源
+    @Override
+    public List<Integer> getCourseResourceIdsByCourseId(Integer id) {
+        return baseMapper.selectObjs(new LambdaQueryWrapper<CourseResource>()
+                        .eq(CourseResource::getCourseId, id)
+                        .eq(CourseResource::getIsDeleted, false)
+                        .select(CourseResource::getId)).stream()
+                .map(obj -> (Integer) obj)
+                .collect(Collectors.toList());
     }
 }

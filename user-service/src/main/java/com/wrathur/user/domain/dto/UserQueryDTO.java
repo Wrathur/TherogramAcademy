@@ -14,15 +14,17 @@ public class UserQueryDTO {
     @ApiModelProperty("用户名")
     private String username;
     @ApiModelProperty("类型")
-    private Integer roleType;
+    private String roleType;
     @ApiModelProperty("删除状态")
     private Boolean isDeleted;
     @ApiModelProperty("起始创建时间")
     private LocalDateTime startCreateTime;
     @ApiModelProperty("结束创建时间")
     private LocalDateTime endCreateTime;
-    @ApiModelProperty("是否按创建时间升序")
-    private Boolean createTimeAsc;
+    @ApiModelProperty("排序方式")
+    private Integer sortType; //0：创建时间
+    @ApiModelProperty("是否升序")
+    private Boolean isAsc;
     private Integer pageNum = 1;
     private Integer pageSize = 10;
 }

@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 @Data
 public class CourseResourceDTO {
     private Integer id;
+    private Integer orderId;
     private String name;
     private String uri;
     private String resourceType; // VIDEO/MATERIAL/REFERENCE

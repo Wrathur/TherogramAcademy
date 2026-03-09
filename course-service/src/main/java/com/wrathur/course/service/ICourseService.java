@@ -5,14 +5,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.wrathur.course.domain.dto.CourseDTO;
 import com.wrathur.course.domain.dto.CourseQueryDTO;
 import com.wrathur.course.domain.dto.StudentCourseQueryDTO;
-import com.wrathur.course.domain.po.Course;
+import com.wrathur.course.domain.po.StudentCourse;
 import com.wrathur.course.domain.vo.CourseVO;
 import com.wrathur.course.domain.vo.StudentCourseVO;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface ICourseService extends IService<Course> {
+public interface ICourseService extends IService<StudentCourse> {
     // 创建课程
     public void createCourse(CourseDTO courseDTO);
 

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class Homework {
     private Integer id;
     private String name;
-    private Integer type;
+    private String type;
     private LocalDateTime deadline;
     private String content;
     private String attachment;

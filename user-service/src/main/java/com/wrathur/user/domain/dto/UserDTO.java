@@ -9,6 +9,7 @@ public class UserDTO {
     private Integer id;
     private String account;
     private String username;
+    private String password;
     private String roleType;
     private String profile;
     private Boolean isDeleted;

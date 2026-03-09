@@ -40,18 +40,10 @@ public class StudentCourseQueryDTO {
     private LocalDateTime startSelectTime;
     @ApiModelProperty("结束选修时间（关联表字段）")
     private LocalDateTime endSelectTime;
-    @ApiModelProperty("是否按选课人数升序（课程表字段）")
-    private Boolean selectCountAsc;
-    @ApiModelProperty("是否按进度升序（关联表字段）")
-    private Boolean progressAsc;
-    @ApiModelProperty("是否按学习时间升序（关联表字段）")
-    private Boolean studyTimeAsc;
-    @ApiModelProperty("是否按分数升序（关联表字段）")
-    private Boolean scoreAsc;
-    @ApiModelProperty("是否按创建时间升序（课程表字段）")
-    private Boolean createTimeAsc;
-    @ApiModelProperty("是否按选课时间升序（关联表字段）")
-    private Boolean selectTimeAsc;
+    @ApiModelProperty("排序方式")
+    private Integer sortType; // 0：选课人数（课程表字段） 1：创建时间（课程表字段） 2：进度（关联表字段） 3：学习时间（关联表字段） 4：分数（关联表字段） 5：选课时间排序（关联表字段）
+    @ApiModelProperty("是否升序")
+    private Boolean isAsc;
     private Integer pageNum = 1;
     private Integer pageSize = 10;
 }

@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wrathur.course.mapper.StudentHomeworkMapper">
+<mapper namespace="com.wrathur.instruction.mapper.StudentHomeworkMapper">
     <insert id="insertBatch" parameterType="java.util.List">
         INSERT INTO student_homework
-        (student_id, homework_id, attachment, review_status,
-        score, rejected_reason,is_deleted, create_time,
-        update_time, submit_time, evaluate_time, delete_time)
+        (student_id, homework_id, review_status, is_deleted, create_time, update_time)
         VALUES
-        <foreach collection="list" item="item" separator=",">
-            (#{item.studentId}, #{item.homeworkId}, #{item.attachment}, #{item.reviewStatus},
-            #{item.score}, #{item.rejectedReason}, #{item.isDeleted}, #{item.createTime},
-            #{item.updateTime}, #{item.submitTime}, #{item.evaluateTime}, #{item.deleteTime})
+        <foreach collection="list" item="sh" separator=",">
+            (#{sh.studentId}, #{sh.homeworkId}, #{sh.reviewStatus}, #{sh.isDeleted}, #{sh.createTime}, #{sh.updateTime})
         </foreach>
     </insert>
 </mapper>

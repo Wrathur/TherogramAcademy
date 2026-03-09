@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 public class HomeworkDTO {
     private Integer id;
     private String name;
-    private Integer type;
-    private String deadline;
+    private String type;
+    private LocalDateTime deadline;
     private String content;
     private String attachment;
     private Integer submitCount;

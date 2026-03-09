@@ -9,6 +9,9 @@ import java.util.List;
 
 @FeignClient(name = "instruction-service", url = "http://localhost:8083")
 public interface InstructionServiceClient {
+    @GetMapping("/courseResource/course/{id}")
+    List<Integer> getCourseResourceIdsByCourseId(@PathVariable Integer id);
+
     @GetMapping("/homework/course/{id}")
     List<Integer> getHomeworkIdsByCourseId(@PathVariable Integer id);
 

@@ -3,25 +3,19 @@ package com.wrathur.course.service.impl;
 import com.alibaba.cloud.commons.lang.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.wrathur.api.client.InstructionServiceClient;
+import com.wrathur.api.client.UserServiceClient;
 import com.wrathur.course.domain.dto.CourseDTO;
 import com.wrathur.course.domain.dto.CourseQueryDTO;
 import com.wrathur.course.domain.dto.StudentCourseQueryDTO;
-import com.wrathur.course.domain.po.Course;
-import com.wrathur.course.domain.po.Homework;
-import com.wrathur.course.domain.po.StudentCourse;
-import com.wrathur.course.domain.po.StudentHomework;
+import com.wrathur.course.domain.po.*;
 import com.wrathur.course.domain.vo.CourseVO;
 import com.wrathur.course.domain.vo.StudentCourseVO;
-import com.wrathur.course.mapper.CourseMapper;
-import com.wrathur.course.mapper.HomeworkMapper;
-import com.wrathur.course.mapper.StudentCourseMapper;
-import com.wrathur.course.mapper.StudentHomeworkMapper;
+import com.wrathur.course.mapper.*;
 import com.wrathur.course.service.ICourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,18 +26,21 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> implements ICourseService {
+public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentCourse> implements ICourseService {
 
     private final CourseMapper courseMapper;
     private final StudentCourseMapper studentCourseMapper;
+    private final CourseResourceMapper courseResourceMapper;
     private final HomeworkMapper homeworkMapper;
     private final StudentHomeworkMapper studentHomeworkMapper;
     private final InstructionServiceClient instructionServiceClient;
+    private final UserServiceClient userServiceClient;
 
     // 创建课程
     @Override
@@ -66,10 +63,9 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         Course course = courseMapper.selectById(id);
         BeanUtils.copyProperties(courseDTO, course);
         course.setUpdateTime(LocalDateTime.now());
-
-        UpdateWrapper<Course> modifyWrapper = new UpdateWrapper<>();
-        modifyWrapper.eq("id", id);
-        courseMapper.update(course, modifyWrapper);
+        courseMapper.update(course,
+                new LambdaUpdateWrapper<Course>()
+                        .eq(Course::getId, id));
     }
 
     // 删除课程
@@ -89,6 +85,19 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
                         .eq(StudentCourse::getCourseId, id)
                         .set(StudentCourse::getIsDeleted, true)
                         .set(StudentCourse::getDeleteTime, LocalDateTime.now()));
+
+        // 远程调用教学服务获取该课程所有未删除的教学资源
+        List<Integer> courseResourceIds = instructionServiceClient.getCourseResourceIdsByCourseId(id);
+
+        // 查询该课程的所有教学资源，将其从教学资源表逻辑删除
+        if (courseResourceIds != null && !courseResourceIds.isEmpty()) {
+            // 删除作业表项
+            courseResourceMapper.update(null,
+                    new LambdaUpdateWrapper<CourseResource>()
+                            .in(CourseResource::getId, courseResourceIds)
+                            .set(CourseResource::getIsDeleted, true)
+                            .set(CourseResource::getDeleteTime, LocalDateTime.now()));
+        }
 
         // 远程调用教学服务获取该课程所有未删除的作业
         List<Integer> homeworkIds = instructionServiceClient.getHomeworkIdsByCourseId(id);
@@ -156,14 +165,19 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
                 .map(obj -> (Integer) obj)
                 .collect(Collectors.toList());
 
+        // 如果没有符合条件的课程
+        if (courseIds.isEmpty()) {
+            return new Page<>();
+        }
+
         // 过滤已选修课程
         if (courseQueryDTO.getIsSelected() != null && courseQueryDTO.getIsSelected()) {
             // 获取该学生已选修的课程ID
-            LambdaQueryWrapper<StudentCourse> studentCoursePageWrapper = new LambdaQueryWrapper<>();
-            List<Object> selectCourseIdsObj = studentCourseMapper.selectObjs(studentCoursePageWrapper
-                    .select(StudentCourse::getCourseId)
-                    .eq(StudentCourse::getStudentId, id)
-                    .in(StudentCourse::getCourseId, courseIds));
+            List<Object> selectCourseIdsObj = studentCourseMapper.selectObjs(
+                    new LambdaQueryWrapper<StudentCourse>()
+                            .select(StudentCourse::getCourseId)
+                            .eq(StudentCourse::getStudentId, id)
+                            .in(StudentCourse::getCourseId, courseIds));
             List<Integer> selectCourseIds = selectCourseIdsObj.stream()
                     .map(obj -> (Integer) obj)
                     .toList();
@@ -178,22 +192,33 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         }
 
         pageWrapper.in(Course::getId, courseIds);
-        // 按ID排序
-        pageWrapper.orderByDesc(Course::getId);
-        // 按选课人数排序
-        if (courseQueryDTO.getSelectCountAsc() != null) {
-            if (courseQueryDTO.getSelectCountAsc()) {
-                pageWrapper.orderByAsc(Course::getSelectCount);
+
+        // 排序
+        if (courseQueryDTO.getSortType() != null && courseQueryDTO.getIsAsc() != null) {
+            if (courseQueryDTO.getIsAsc()) {
+                switch (courseQueryDTO.getSortType()) {
+                    case 0:
+                        pageWrapper.orderByAsc(Course::getSelectCount);
+                        break;
+                    case 1:
+                        pageWrapper.orderByAsc(Course::getCreateTime);
+                        break;
+                    default:
+                        pageWrapper.orderByAsc(Course::getId);
+                        break;
+                }
             } else {
-                pageWrapper.orderByDesc(Course::getSelectCount);
-            }
-        }
-        // 按创建时间排序
-        if (courseQueryDTO.getSelectCountAsc() != null) {
-            if (courseQueryDTO.getSelectCountAsc()) {
-                pageWrapper.orderByAsc(Course::getCreateTime);
-            } else {
-                pageWrapper.orderByDesc(Course::getCreateTime);
+                switch (courseQueryDTO.getSortType()) {
+                    case 0:
+                        pageWrapper.orderByDesc(Course::getSelectCount);
+                        break;
+                    case 1:
+                        pageWrapper.orderByDesc(Course::getCreateTime);
+                        break;
+                    default:
+                        pageWrapper.orderByDesc(Course::getId);
+                        break;
+                }
             }
         }
 
@@ -257,22 +282,32 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
             pageWrapper.le(Course::getCreateTime, courseQueryDTO.getEndCreateTime());
         }
 
-        // 按ID排序
-        pageWrapper.orderByDesc(Course::getId);
-        // 按选课人数排序
-        if (courseQueryDTO.getSelectCountAsc() != null) {
-            if (courseQueryDTO.getSelectCountAsc()) {
-                pageWrapper.orderByAsc(Course::getSelectCount);
+        // 排序
+        if (courseQueryDTO.getSortType() != null && courseQueryDTO.getIsAsc() != null) {
+            if (courseQueryDTO.getIsAsc()) {
+                switch (courseQueryDTO.getSortType()) {
+                    case 0:
+                        pageWrapper.orderByAsc(Course::getSelectCount);
+                        break;
+                    case 1:
+                        pageWrapper.orderByAsc(Course::getCreateTime);
+                        break;
+                    default:
+                        pageWrapper.orderByAsc(Course::getId);
+                        break;
+                }
             } else {
-                pageWrapper.orderByDesc(Course::getSelectCount);
-            }
-        }
-        // 按创建时间排序
-        if (courseQueryDTO.getCreateTimeAsc() != null) {
-            if (courseQueryDTO.getCreateTimeAsc()) {
-                pageWrapper.orderByAsc(Course::getCreateTime);
-            } else {
-                pageWrapper.orderByDesc(Course::getCreateTime);
+                switch (courseQueryDTO.getSortType()) {
+                    case 0:
+                        pageWrapper.orderByDesc(Course::getSelectCount);
+                        break;
+                    case 1:
+                        pageWrapper.orderByDesc(Course::getCreateTime);
+                        break;
+                    default:
+                        pageWrapper.orderByDesc(Course::getId);
+                        break;
+                }
             }
         }
 
@@ -280,166 +315,48 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         Page<Course> page = new Page<>(courseQueryDTO.getPageNum(), courseQueryDTO.getPageSize());
 
         // 执行分页查询
-        IPage<Course> coursePage = courseMapper.selectPage(page, pageWrapper);
+        IPage<Course> createCoursePage = courseMapper.selectPage(page, pageWrapper);
 
         // 转换为VO
-        List<CourseVO> courseVOS = coursePage.getRecords().stream()
+        List<CourseVO> courseVOS = createCoursePage.getRecords().stream()
                 .map(this::convertCourseToVO)
                 .collect(Collectors.toList());
 
         // 构建返回的分页VO
-        return convertPageResult(coursePage, courseVOS);
+        return convertPageResult(createCoursePage, courseVOS);
     }
 
     // 获取选修课程分页
     @Override
     public IPage<CourseVO> getSelectCoursePages(Integer id, StudentCourseQueryDTO studentCourseQueryDTO) {
-        // 构建查询条件，从学生课程关联表获取已选修课程ID列表
-        LambdaQueryWrapper<StudentCourse> studentCoursePageWrapper = new LambdaQueryWrapper<>();
-        studentCoursePageWrapper.eq(StudentCourse::getStudentId, id);
-
-        // 范围查询进度（关联表字段）
-        if (studentCourseQueryDTO.getStartProgress() != null) {
-            studentCoursePageWrapper.ge(StudentCourse::getProgress, studentCourseQueryDTO.getStartProgress());
-        }
-        if (studentCourseQueryDTO.getEndProgress() != null) {
-            studentCoursePageWrapper.le(StudentCourse::getProgress, studentCourseQueryDTO.getEndProgress());
-        }
-        // 范围查询学习时间（关联表字段）
-        if (studentCourseQueryDTO.getStartStudyTime() != null) {
-            studentCoursePageWrapper.ge(StudentCourse::getStudyTime, studentCourseQueryDTO.getStartStudyTime());
-        }
-        if (studentCourseQueryDTO.getEndStudyTime() != null) {
-            studentCoursePageWrapper.le(StudentCourse::getStudyTime, studentCourseQueryDTO.getEndStudyTime());
-        }
-        // 范围查询分数（关联表字段）
-        if (studentCourseQueryDTO.getStartScore() != null) {
-            studentCoursePageWrapper.ge(StudentCourse::getScore, studentCourseQueryDTO.getStartScore());
-        }
-        if (studentCourseQueryDTO.getEndScore() != null) {
-            studentCoursePageWrapper.le(StudentCourse::getScore, studentCourseQueryDTO.getEndScore());
-        }
-        // 范围查询选修时间（关联表字段）
-        if (studentCourseQueryDTO.getStartSelectTime() != null) {
-            studentCoursePageWrapper.ge(StudentCourse::getSelectTime, studentCourseQueryDTO.getStartSelectTime());
-        }
-        if (studentCourseQueryDTO.getEndSelectTime() != null) {
-            studentCoursePageWrapper.le(StudentCourse::getSelectTime, studentCourseQueryDTO.getEndSelectTime());
-        }
-
-        // 按进度排序
-        if (studentCourseQueryDTO.getProgressAsc() != null) {
-            if (studentCourseQueryDTO.getProgressAsc()) {
-                studentCoursePageWrapper.orderByAsc(StudentCourse::getProgress);
-            } else {
-                studentCoursePageWrapper.orderByDesc(StudentCourse::getProgress);
-            }
-        }
-        // 按学习时间排序
-        if (studentCourseQueryDTO.getStudyTimeAsc() != null) {
-            if (studentCourseQueryDTO.getStudyTimeAsc()) {
-                studentCoursePageWrapper.orderByAsc(StudentCourse::getStudyTime);
-            } else {
-                studentCoursePageWrapper.orderByDesc(StudentCourse::getStudyTime);
-            }
-        }
-        // 按分数排序
-        if (studentCourseQueryDTO.getScoreAsc() != null) {
-            if (studentCourseQueryDTO.getScoreAsc()) {
-                studentCoursePageWrapper.orderByAsc(StudentCourse::getScore);
-            } else {
-                studentCoursePageWrapper.orderByDesc(StudentCourse::getScore);
-            }
-        }
-        // 按选课时间排序
-        if (studentCourseQueryDTO.getSelectTimeAsc() != null) {
-            if (studentCourseQueryDTO.getSelectTimeAsc()) {
-                studentCoursePageWrapper.orderByAsc(StudentCourse::getSelectTime);
-            } else {
-                studentCoursePageWrapper.orderByDesc(StudentCourse::getSelectTime);
-            }
-        }
-
-        List<Object> courseIds = studentCourseMapper.selectObjs(studentCoursePageWrapper);
-
-        // 如果没有符合条件的课程
-        if (courseIds == null || courseIds.isEmpty()) {
-            return new Page<>();
-        }
-
-        // 从课程表查询符合条件的课程
-        LambdaQueryWrapper<Course> coursePageWrapper = new LambdaQueryWrapper<>();
-        coursePageWrapper.in(Course::getId, courseIds);
-
-        // 过滤已删除课程（课程表字段）
-        coursePageWrapper.eq(Course::getIsDeleted, false);
-
-        // 模糊查询名称（课程表字段）
-        if (studentCourseQueryDTO.getName() != null && StringUtils.isNotBlank(studentCourseQueryDTO.getName())) {
-            coursePageWrapper.like(Course::getName, "%" + studentCourseQueryDTO.getName() + "%");
-        }
-        // 精确查询学科（课程表字段）
-        if (studentCourseQueryDTO.getSubjectId() != null) {
-            coursePageWrapper.eq(Course::getSubjectId, studentCourseQueryDTO.getSubjectId());
-        }
-        // 精确查询类型（课程表字段）
-        if (studentCourseQueryDTO.getTypeId() != null) {
-            coursePageWrapper.eq(Course::getTypeId, studentCourseQueryDTO.getTypeId());
-        }
-
-        // 范围查询选课人数（课程表字段）
-        if (studentCourseQueryDTO.getStartSelectCount() != null) {
-            coursePageWrapper.ge(Course::getSelectCount, studentCourseQueryDTO.getStartSelectCount());
-        }
-        if (studentCourseQueryDTO.getEndSelectCount() != null) {
-            coursePageWrapper.le(Course::getSelectCount, studentCourseQueryDTO.getEndSelectCount());
-        }
-        // 范围查询创建时间（课程表字段）
-        if (studentCourseQueryDTO.getStartCreateTime() != null) {
-            coursePageWrapper.ge(Course::getCreateTime, studentCourseQueryDTO.getStartCreateTime());
-        }
-        if (studentCourseQueryDTO.getEndCreateTime() != null) {
-            coursePageWrapper.le(Course::getCreateTime, studentCourseQueryDTO.getEndCreateTime());
-        }
-
-        // 按ID排序（课程表字段）
-        coursePageWrapper.orderByDesc(Course::getId);
-        // 按选课人数排序（课程表字段）
-        if (studentCourseQueryDTO.getSelectCountAsc() != null) {
-            if (studentCourseQueryDTO.getSelectCountAsc()) {
-                coursePageWrapper.orderByAsc(Course::getSelectCount);
-            } else {
-                coursePageWrapper.orderByDesc(Course::getSelectCount);
-            }
-        }
-        // 按创建时间排序（课程表字段）
-        if (studentCourseQueryDTO.getSelectCountAsc() != null) {
-            if (studentCourseQueryDTO.getSelectCountAsc()) {
-                coursePageWrapper.orderByAsc(Course::getCreateTime);
-            } else {
-                coursePageWrapper.orderByDesc(Course::getCreateTime);
-            }
-        }
-
         // 构建分页对象
-        Page<Course> page = new Page<>(studentCourseQueryDTO.getPageNum(), studentCourseQueryDTO.getPageSize());
+        Page<CourseVO> page = new Page<>(studentCourseQueryDTO.getPageNum(), studentCourseQueryDTO.getPageSize());
 
         // 执行分页查询
-        IPage<Course> coursePage = courseMapper.selectPage(page, coursePageWrapper);
+        IPage<CourseVO> selectCoursePage = courseMapper.selectStudentCoursePage(page, id, studentCourseQueryDTO);
 
         // 转换为VO
-        List<CourseVO> courseVOS = coursePage.getRecords().stream()
-                .map(this::convertCourseToVO)
-                .collect(Collectors.toList());
+        selectCoursePage.getRecords().forEach(courseVO -> {
+            courseVO.setTeacherId(userServiceClient.getUsernameById(Integer.valueOf(courseVO.getTeacherId())));
+            StudentCourse studentCourse = studentCourseMapper.selectOne(
+                    new LambdaQueryWrapper<StudentCourse>()
+                            .eq(StudentCourse::getStudentId, id)
+                            .eq(StudentCourse::getCourseId, courseVO.getId()));
+            courseVO.setProgress(studentCourse.getProgress());
+            courseVO.setStudyTime(studentCourse.getStudyTime());
+            courseVO.setScore(studentCourse.getScore());
+            courseVO.setSelectTime(studentCourse.getSelectTime());
+        });
 
         // 构建返回的分页VO
-        return convertPageResult(coursePage, courseVOS);
+        return selectCoursePage;
     }
 
     //转化VO
     private CourseVO convertCourseToVO(Course course) {
         CourseVO courseVO = new CourseVO();
         BeanUtils.copyProperties(course, courseVO);
+        courseVO.setTeacherId(userServiceClient.getUsernameById(course.getTeacherId()));
         courseVO.setCreateTime(course.getCreateTime());
         courseVO.setUpdateTime(course.getUpdateTime());
         courseVO.setReviewTime(course.getReviewTime());
@@ -466,7 +383,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         BeanUtils.copyProperties(course, courseVO);
 
         // 特殊属性需要额外赋值
-        courseVO.setTeacherId(course.getTeacherId());
+        courseVO.setTeacherId(userServiceClient.getUsernameById(course.getTeacherId()));
         courseVO.setCreateTime(course.getCreateTime());
         courseVO.setUpdateTime(course.getUpdateTime());
         courseVO.setReviewTime(course.getReviewTime());
@@ -490,11 +407,10 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
     @Override
     public StudentCourseVO getSelectCourseDetail(Integer studentId, Integer courseId) {
-        LambdaQueryWrapper<StudentCourse> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(StudentCourse::getStudentId, studentId)
-                .eq(StudentCourse::getCourseId, courseId)
-                .eq(StudentCourse::getIsDeleted, false);
-        StudentCourse studentCourse = studentCourseMapper.selectOne(queryWrapper);
+        StudentCourse studentCourse = studentCourseMapper.selectOne(
+                new LambdaQueryWrapper<StudentCourse>().eq(StudentCourse::getStudentId, studentId)
+                        .eq(StudentCourse::getCourseId, courseId)
+                        .eq(StudentCourse::getIsDeleted, false));
         StudentCourseVO studentCourseVO = new StudentCourseVO();
         BeanUtils.copyProperties(studentCourse, studentCourseVO);
 
@@ -514,54 +430,130 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void reviewCourse(String reviewStatus, CourseDTO courseDTO) {
-        Course course = courseMapper.selectById(courseDTO.getId());
-        course.setReviewStatus(reviewStatus);
-        course.setReviewTime(LocalDateTime.now());
-        if (reviewStatus.equals("REJECTED")) {
-            course.setRejectedReason(courseDTO.getRejectedReason());
+        // 构建更新条件
+        LambdaUpdateWrapper<Course> reviewWrapper = new LambdaUpdateWrapper<>();
+        reviewWrapper.eq(Course::getId, courseDTO.getId());
+
+        // 设置审核状态和时间
+        reviewWrapper.set(Course::getReviewStatus, reviewStatus);
+        reviewWrapper.set(Course::getReviewTime, LocalDateTime.now());
+
+        // 设置拒绝原因（审核通过时为 null）
+        if ("REJECTED".equals(reviewStatus)) {
+            reviewWrapper.set(Course::getRejectedReason, courseDTO.getRejectedReason());
+        } else {
+            reviewWrapper.set(Course::getRejectedReason, null);
         }
 
-        UpdateWrapper<Course> reviewWrapper = new UpdateWrapper<>();
-        reviewWrapper.eq("id", courseDTO.getId());
-        courseMapper.update(course, reviewWrapper);
+        // 执行更新
+        courseMapper.update(null, reviewWrapper);
     }
 
     // 选修课程
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void selectCourse(Integer studentId, Integer courseId) {
-        StudentCourse studentCourse = new StudentCourse();
-        studentCourse.setStudentId(studentId);
-        studentCourse.setCourseId(courseId);
-        studentCourse.setProgress(0);
-        studentCourse.setStudyTime(0);
-        studentCourse.setCreateTime(LocalDateTime.now());
-        studentCourse.setUpdateTime(LocalDateTime.now());
-        studentCourse.setSelectTime(LocalDateTime.now());
-        studentCourseMapper.insert(studentCourse);
+        // 处理学生课程关联表
+        StudentCourse existingCourse = studentCourseMapper.selectOne(
+                new LambdaQueryWrapper<StudentCourse>()
+                        .eq(StudentCourse::getStudentId, studentId)
+                        .eq(StudentCourse::getCourseId, courseId)
+                        .eq(StudentCourse::getIsDeleted, false)
+        );
 
-        // 选课人数增加
+        // 如果已存在未删除记录，直接返回
+        if (existingCourse != null) {
+            return;
+        }
+
+        // 检查是否存在已删除的记录
+        StudentCourse deletedCourse = studentCourseMapper.selectOne(
+                new LambdaQueryWrapper<StudentCourse>()
+                        .eq(StudentCourse::getStudentId, studentId)
+                        .eq(StudentCourse::getCourseId, courseId)
+                        .eq(StudentCourse::getIsDeleted, true)
+        );
+
+        if (deletedCourse != null) {
+            // 恢复已删除的课程记录
+            deletedCourse.setIsDeleted(false);
+            deletedCourse.setUpdateTime(LocalDateTime.now());
+            deletedCourse.setSelectTime(LocalDateTime.now());
+            // 由于是复合主键，不能用updateById，应使用 update
+            studentCourseMapper.update(deletedCourse,
+                    new LambdaUpdateWrapper<StudentCourse>()
+                            .eq(StudentCourse::getStudentId, studentId)
+                            .eq(StudentCourse::getCourseId, courseId));
+        } else {
+            // 新增课程记录
+            StudentCourse studentCourse = new StudentCourse();
+            studentCourse.setStudentId(studentId);
+            studentCourse.setCourseId(courseId);
+            studentCourse.setProgress(0);
+            studentCourse.setStudyTime(0);
+            studentCourse.setCreateTime(LocalDateTime.now());
+            studentCourse.setUpdateTime(LocalDateTime.now());
+            studentCourse.setSelectTime(LocalDateTime.now());
+            studentCourseMapper.insert(studentCourse);
+        }
+
+        // 更新课程选课人数
         Course course = courseMapper.selectById(courseId);
         course.setSelectCount(course.getSelectCount() + 1);
-        UpdateWrapper<Course> selectWrapper = new UpdateWrapper<>();
-        selectWrapper.eq("id", courseId);
-        courseMapper.update(course, selectWrapper);
+        courseMapper.updateById(course);
 
-        // 远程调用教学服务获取该课程所有未删除的作业
+        // 处理学生作业关联表
         List<Integer> homeworkIds = instructionServiceClient.getHomeworkIdsByCourseId(courseId);
+        if (homeworkIds != null && !homeworkIds.isEmpty()) {
+            // 批量处理作业关联表
+            List<StudentHomework> homeworkList = homeworkIds.stream()
+                    .map(homeworkId -> {
+                        // 检查该作业是否存在
+                        StudentHomework existingHomework = studentHomeworkMapper.selectOne(
+                                new LambdaQueryWrapper<StudentHomework>()
+                                        .eq(StudentHomework::getStudentId, studentId)
+                                        .eq(StudentHomework::getHomeworkId, homeworkId)
+                                        .eq(StudentHomework::getIsDeleted, false)
+                        );
 
-        // 为每个作业创建学生作业关联表项
-        studentHomeworkMapper.insertBatch(homeworkIds.stream()
-                .map(homeworkId -> {
-                    StudentHomework studentHomework = new StudentHomework();
-                    studentHomework.setStudentId(studentId);
-                    studentHomework.setHomeworkId(homeworkId);
-                    studentHomework.setReviewStatus("UNSUBMITTED");
-                    studentHomework.setIsDeleted(false);
-                    studentHomework.setCreateTime(LocalDateTime.now());
-                    studentHomework.setUpdateTime(LocalDateTime.now());
-                    return studentHomework;
-                }).collect(Collectors.toList()));
+                        // 如果已存在未删除记录，直接返回
+                        if (existingHomework != null) {
+                            return null;
+                        }
+
+                        // 检查是否存在已删除的记录
+                        StudentHomework deletedHomework = studentHomeworkMapper.selectOne(
+                                new LambdaQueryWrapper<StudentHomework>()
+                                        .eq(StudentHomework::getStudentId, studentId)
+                                        .eq(StudentHomework::getHomeworkId, homeworkId)
+                                        .eq(StudentHomework::getIsDeleted, true)
+                        );
+
+                        if (deletedHomework != null) {
+                            // 恢复已删除的作业记录
+                            deletedHomework.setIsDeleted(false);
+                            deletedHomework.setUpdateTime(LocalDateTime.now());
+                            return deletedHomework;
+                        } else {
+                            // 新增作业记录
+                            StudentHomework studentHomework = new StudentHomework();
+                            studentHomework.setStudentId(studentId);
+                            studentHomework.setHomeworkId(homeworkId);
+                            studentHomework.setReviewStatus("UNSUBMITTED");
+                            studentHomework.setIsDeleted(false);
+                            studentHomework.setCreateTime(LocalDateTime.now());
+                            studentHomework.setUpdateTime(LocalDateTime.now());
+                            return studentHomework;
+                        }
+                    })
+                    .filter(Objects::nonNull) // 过滤掉已存在的记录
+                    .collect(Collectors.toList());
+
+            // 批量插入/更新
+            if (!homeworkList.isEmpty()) {
+                studentHomeworkMapper.insertBatch(homeworkList);
+            }
+        }
     }
 
     // 退选课程
@@ -579,9 +571,9 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         // 选课人数减少
         Course course = courseMapper.selectById(courseId);
         course.setSelectCount(course.getSelectCount() - 1);
-        UpdateWrapper<Course> selectWrapper = new UpdateWrapper<>();
-        selectWrapper.eq("id", courseId);
-        courseMapper.update(course, selectWrapper);
+        courseMapper.update(course,
+                new LambdaUpdateWrapper<Course>()
+                        .eq(Course::getId, courseId));
 
         // 远程调用教学服务获取该课程所有未删除的作业
         List<Integer> homeworkIds = instructionServiceClient.getHomeworkIdsByCourseId(courseId);
@@ -602,23 +594,28 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void evaluateCourse(BigDecimal score, Integer studentId, Integer courseId) {
-        LambdaQueryWrapper<StudentCourse> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(StudentCourse::getStudentId, studentId)
-                .eq(StudentCourse::getCourseId, courseId)
-                .eq(StudentCourse::getIsDeleted, false);
-        StudentCourse studentCourse = studentCourseMapper.selectOne(queryWrapper);
+        StudentCourse studentCourse = studentCourseMapper.selectOne(
+                new LambdaQueryWrapper<StudentCourse>()
+                        .eq(StudentCourse::getStudentId, studentId)
+                        .eq(StudentCourse::getCourseId, courseId)
+                        .eq(StudentCourse::getIsDeleted, false));
         studentCourse.setScore(score);
         studentCourse.setEvaluateTime(LocalDateTime.now());
 
-        MPJLambdaWrapper<StudentCourse> evaluateWrapper = new MPJLambdaWrapper<>();
-        evaluateWrapper.eq(StudentCourse::getStudentId, studentId)
-                .eq(StudentCourse::getCourseId, courseId);
-        studentCourseMapper.update(studentCourse, evaluateWrapper);
+        studentCourseMapper.update(studentCourse,
+                new MPJLambdaWrapper<StudentCourse>()
+                        .eq(StudentCourse::getStudentId, studentId)
+                        .eq(StudentCourse::getCourseId, courseId));
     }
 
     // 通过课程获取所有未退选的学生
     @Override
     public List<Integer> getStudentIdsByCourseId(Integer id) {
-        return studentCourseMapper.selectStudentIdsByCourseId(id);
+        return baseMapper.selectObjs(new LambdaQueryWrapper<StudentCourse>()
+                        .eq(StudentCourse::getCourseId, id)
+                        .eq(StudentCourse::getIsDeleted, false)
+                        .select(StudentCourse::getStudentId)).stream()
+                .map(obj -> (Integer) obj)
+                .collect(Collectors.toList());
     }
 }

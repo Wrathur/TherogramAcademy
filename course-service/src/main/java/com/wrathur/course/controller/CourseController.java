@@ -50,21 +50,21 @@ public class CourseController {
         return Result.success();
     }
 
-    @GetMapping("/page/{id}")
+    @PostMapping("/page/{id}")
     @ApiOperation("获取课程分页")
     public Result<IPage<CourseVO>> getCoursePages(@PathVariable Integer id, @RequestBody CourseQueryDTO courseQueryDTO) {
-        log.info("{}获取课程分页：{}", id, courseQueryDTO);
+        log.info("用户{}获取课程分页：{}", id, courseQueryDTO);
         return Result.success(courseService.getCoursePages(id, courseQueryDTO));
     }
 
-    @GetMapping("/createPage/{id}")
+    @PostMapping("/createPage/{id}")
     @ApiOperation("获取创建课程分页")
     public Result<IPage<CourseVO>> getCreateCoursePages(@PathVariable Integer id, @RequestBody CourseQueryDTO courseQueryDTO) {
         log.info("教师{}获取创建课程分页：{}", id, courseQueryDTO);
         return Result.success(courseService.getCreateCoursePages(id, courseQueryDTO));
     }
 
-    @GetMapping("/selectPage/{id}")
+    @PostMapping("/selectPage/{id}")
     @ApiOperation("获取选修课程分页")
     public Result<IPage<CourseVO>> getSelectCoursePages(@PathVariable Integer id, @RequestBody StudentCourseQueryDTO studentCourseQueryDTO) {
         log.info("学生{}获取选修课程分页：{}", id, studentCourseQueryDTO);

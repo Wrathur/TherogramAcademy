@@ -21,10 +21,10 @@ public class CourseResourceQueryDTO {
     private LocalDateTime startCreateTime;
     @ApiModelProperty("结束创建时间")
     private LocalDateTime endCreateTime;
-    @ApiModelProperty("是否按查看次数升序")
-    private Boolean viewCountAsc;
-    @ApiModelProperty("是否按创建时间升序")
-    private Boolean createTimeAsc;
+    @ApiModelProperty("排序方式")
+    private Integer sortType; // 0：id 1：查看次数 2：创建时间
+    @ApiModelProperty("是否升序")
+    private Boolean isAsc;
     private Integer pageNum = 1;
     private Integer pageSize = 10;
 }

@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @TableName("course_resource")
 public class CourseResource {
     private Integer id;
+    private Integer orderId;
     private String name;
     private String uri;
     private String resourceType; //VIDEO/MATERIAL/REFERENCE

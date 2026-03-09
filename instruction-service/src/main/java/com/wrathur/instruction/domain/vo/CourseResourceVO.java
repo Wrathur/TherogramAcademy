@@ -8,10 +8,12 @@ import java.time.format.DateTimeFormatter;
 @Data
 public class CourseResourceVO {
     private Integer id;
+    private Integer orderId;
     private String name;
     private String uri;
     private String resourceType;
     private Integer viewCount;
+    private Boolean isDeleted;
     private Integer courseId;
     private String createTime;
     private String updateTime;
@@ -26,6 +28,8 @@ public class CourseResourceVO {
     }
 
     public void setDeleteTime(LocalDateTime deleteTime) {
-        this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        if (deleteTime != null) {
+            this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
     }
 }

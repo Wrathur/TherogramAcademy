@@ -12,7 +12,7 @@ public class HomeworkQueryDTO {
     @ApiModelProperty("名称")
     private String name;
     @ApiModelProperty("类型")
-    private Integer type;
+    private String type;
     @ApiModelProperty("删除状态")
     private Boolean isDeleted;
     @ApiModelProperty("起始提交人数")
@@ -27,12 +27,10 @@ public class HomeworkQueryDTO {
     private LocalDateTime startCreateTime;
     @ApiModelProperty("结束创建时间")
     private LocalDateTime endCreateTime;
-    @ApiModelProperty("是否按提交人数升序")
-    private Boolean submitCountAsc;
-    @ApiModelProperty("是否按截至时间升序")
-    private Boolean deadlineAsc;
-    @ApiModelProperty("是否按创建时间升序")
-    private Boolean createTimeAsc;
+    @ApiModelProperty("排序方式")
+    private Integer sortType; // 0：提交人数 1：截至时间 2：创建时间
+    @ApiModelProperty("是否升序")
+    private Boolean isAsc;
     private Integer pageNum = 1;
     private Integer pageSize = 10;
 }

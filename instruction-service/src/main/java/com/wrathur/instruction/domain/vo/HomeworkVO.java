@@ -15,9 +15,15 @@ public class HomeworkVO {
     private String content;
     private String attachment;
     private Integer submitCount;
+    private Boolean isDeleted;
     private String createTime;
     private String updateTime;
     private String deleteTime;
+
+    // 关联表字段
+    private String reviewStatus;
+    private String score;
+    private String submitTime;
 
     public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -32,6 +38,18 @@ public class HomeworkVO {
     }
 
     public void setDeleteTime(LocalDateTime deleteTime) {
-        this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        if (deleteTime != null) {
+            this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
+    }
+
+    public void setScore(BigDecimal score) {
+        this.score = score != null ? String.format("%.1f", score) : "PENDING";
+    }
+
+    public void setSubmitTime(LocalDateTime submitTime) {
+        if (submitTime != null) {
+            this.submitTime = submitTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
     }
 }

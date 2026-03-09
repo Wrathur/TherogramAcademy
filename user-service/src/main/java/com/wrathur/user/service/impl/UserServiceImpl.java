@@ -2,7 +2,6 @@ package com.wrathur.user.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -49,8 +48,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         BeanUtils.copyProperties(userDTO, user);
         user.setUpdateTime(LocalDateTime.now());
 
-        UpdateWrapper<User> modifyWrapper = new UpdateWrapper<>();
-        modifyWrapper.eq("id", id);
+        LambdaUpdateWrapper<User> modifyWrapper = new LambdaUpdateWrapper<>();
+        modifyWrapper.eq(User::getId, id);
         userMapper.update(user, modifyWrapper);
     }
 
@@ -68,15 +67,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     // 获取用户分页
     @Override
-    public IPage<UserVO> getUserPages(UserQueryDTO userQueryDTO) {
+    public IPage<UserVO> getUserPages(Integer id, UserQueryDTO userQueryDTO) {
         // 构建分页对象
         Page<User> page = new Page<>(userQueryDTO.getPageNum(), userQueryDTO.getPageSize());
 
         // 构建查询条件
         LambdaQueryWrapper<User> pageWrapper = new LambdaQueryWrapper<>();
 
+        // 过滤用户自身
+        pageWrapper.ne(User::getId, id);
         // 过滤已删除用户
-        if(userQueryDTO.getIsDeleted() != null && userQueryDTO.getIsDeleted()){
+        if (userQueryDTO.getIsDeleted() != null && userQueryDTO.getIsDeleted()) {
             pageWrapper.eq(User::getIsDeleted, false);
         }
 
@@ -92,10 +93,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if (userQueryDTO.getRoleType() != null) {
             pageWrapper.eq(User::getRoleType, userQueryDTO.getRoleType());
         }
-        // 精确查询删除状态
-        if (userQueryDTO.getIsDeleted()) {
-            pageWrapper.eq(User::getIsDeleted, false);
-        }
 
         // 范围查询创建时间
         if (userQueryDTO.getStartCreateTime() != null) {
@@ -105,14 +102,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             pageWrapper.le(User::getCreateTime, userQueryDTO.getEndCreateTime());
         }
 
-        // 按ID排序
-        pageWrapper.orderByDesc(User::getId);
-        // 按创建时间排序
-        if (userQueryDTO.getCreateTimeAsc() != null) {
-            if (userQueryDTO.getCreateTimeAsc()) {
-                pageWrapper.orderByAsc(User::getCreateTime);
+        // 排序
+        if (userQueryDTO.getSortType() != null && userQueryDTO.getIsAsc() != null) {
+            if (userQueryDTO.getIsAsc()) {
+                if (userQueryDTO.getSortType() == 0) {
+                    pageWrapper.orderByAsc(User::getCreateTime);
+                } else {
+                    pageWrapper.orderByAsc(User::getId);
+                }
             } else {
-                pageWrapper.orderByDesc(User::getCreateTime);
+                if (userQueryDTO.getSortType() == 0) {
+                    pageWrapper.orderByDesc(User::getCreateTime);
+                } else {
+                    pageWrapper.orderByDesc(User::getId);
+                }
             }
         }
 

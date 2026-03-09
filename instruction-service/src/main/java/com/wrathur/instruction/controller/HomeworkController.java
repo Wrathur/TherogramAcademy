@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Slf4j
@@ -51,14 +50,14 @@ public class HomeworkController {
         return Result.success();
     }
 
-    @GetMapping("/page/{id}")
+    @PostMapping("/page/{id}")
     @ApiOperation("获取作业分页")
     public Result<IPage<HomeworkVO>> getHomeworkPages(@PathVariable Integer id, @RequestBody HomeworkQueryDTO homeworkQueryDTO) {
         log.info("教师获取课程{}的作业分页：{}", id, homeworkQueryDTO);
         return Result.success(homeworkService.getHomeworkPages(id, homeworkQueryDTO));
     }
 
-    @GetMapping("/studentPage/{id}")
+    @PostMapping("/studentPage/{id}")
     @ApiOperation("获取学生作业分页")
     public Result<IPage<HomeworkVO>> getStudentHomeworkPages(@PathVariable Integer id, @RequestBody StudentHomeworkQueryDTO studentHomeworkQueryDTO) {
         log.info("学生{}获取学生作业分页：{}", id, studentHomeworkQueryDTO);
@@ -79,19 +78,19 @@ public class HomeworkController {
         return Result.success(homeworkService.getStudentHomeworkDetail(studentId, homeworkId));
     }
 
-    @PostMapping("/submit/{attachment}")
+    @PostMapping("/submit")
     @ApiOperation("提交作业")
-    public Result<String> submitHomework(@PathVariable String attachment, @RequestBody StudentHomeworkDTO studentHomeworkDTO) {
-        log.info("学生{}提交作业：{}", studentHomeworkDTO.getStudentId(), attachment);
-        homeworkService.submitHomework(attachment, studentHomeworkDTO);
+    public Result<String> submitHomework(@RequestBody StudentHomeworkDTO studentHomeworkDTO) {
+        log.info("学生{}提交作业", studentHomeworkDTO.getStudentId());
+        homeworkService.submitHomework(studentHomeworkDTO);
         return Result.success();
     }
 
-    @PatchMapping("/evaluate/{score}")
+    @PatchMapping("/evaluate")
     @ApiOperation("评定作业")
-    public Result<String> evaluateHomework(@PathVariable BigDecimal score, @RequestBody StudentHomeworkDTO studentHomeworkDTO) {
+    public Result<String> evaluateHomework(@RequestBody StudentHomeworkDTO studentHomeworkDTO) {
         log.info("评定学生{}的作业{}", studentHomeworkDTO.getStudentId(), studentHomeworkDTO.getHomeworkId());
-        homeworkService.evaluateHomework(score, studentHomeworkDTO);
+        homeworkService.evaluateHomework(studentHomeworkDTO);
         return Result.success();
     }
 

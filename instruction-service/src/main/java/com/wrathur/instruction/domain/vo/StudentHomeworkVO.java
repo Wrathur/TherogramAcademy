@@ -14,6 +14,7 @@ public class StudentHomeworkVO {
     private String reviewStatus;
     private String score;
     private String rejectedReason;
+    private Boolean isDeleted;
     private String createTime;
     private String updateTime;
     private String submitTime;
@@ -33,14 +34,20 @@ public class StudentHomeworkVO {
     }
 
     public void setSubmitTime(LocalDateTime submitTime) {
-        this.submitTime = submitTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        if (submitTime != null) {
+            this.submitTime = submitTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
     }
 
     public void setEvaluateTime(LocalDateTime evaluateTime) {
-        this.evaluateTime = evaluateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        if (evaluateTime != null) {
+            this.evaluateTime = evaluateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
     }
 
     public void setDeleteTime(LocalDateTime deleteTime) {
-        this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        if (deleteTime != null) {
+            this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
     }
 }

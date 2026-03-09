@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -45,17 +47,24 @@ public class CourseResourceController {
         return Result.success();
     }
 
-    @GetMapping("/page")
+    @PostMapping("/page/{id}")
     @ApiOperation("获取教学资源分页")
-    public Result<IPage<CourseResourceVO>> getCourseResourcePages(@RequestBody CourseResourceQueryDTO courseResourceQueryDTO) {
-        log.info("获取教学资源分页：{}", courseResourceQueryDTO);
-        return Result.success(courseResourceService.getCourseResourcePages(courseResourceQueryDTO));
+    public Result<IPage<CourseResourceVO>> getCourseResourcePages(@PathVariable Integer id, @RequestBody CourseResourceQueryDTO courseResourceQueryDTO) {
+        log.info("获取课程{}的教学资源分页：{}", id, courseResourceQueryDTO);
+        return Result.success(courseResourceService.getCourseResourcePages(id, courseResourceQueryDTO));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/detail/{id}")
     @ApiOperation("获取教学资源详情")
     public Result<CourseResourceVO> getCourseResourceDetail(@PathVariable Integer id) {
         log.info("获取教学资源详情：{}", id);
         return Result.success(courseResourceService.getCourseResourceDetail(id));
+    }
+
+    @GetMapping("/course/{id}")
+    @ApiOperation("通过课程获取所有未删除的教学资源")
+    public List<Integer> getCourseResourceIdsByCourseId(@PathVariable Integer id) {
+        log.info("通过课程{}获取所有未删除的教学资源", id);
+        return courseResourceService.getCourseResourceIdsByCourseId(id);
     }
 }

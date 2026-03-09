@@ -45,14 +45,14 @@ public class UserController {
         return Result.success();
     }
 
-    @GetMapping("/page")
+    @PostMapping("/page/{id}")
     @ApiOperation("获取用户分页")
-    public Result<IPage<UserVO>> getUserPages(@RequestBody UserQueryDTO courseResourceQueryDTO) {
-        log.info("获取用户分页：{}", courseResourceQueryDTO);
-        return Result.success(userService.getUserPages(courseResourceQueryDTO));
+    public Result<IPage<UserVO>> getUserPages(@PathVariable Integer id, @RequestBody UserQueryDTO courseResourceQueryDTO) {
+        log.info("用户{}获取用户分页：{}", id, courseResourceQueryDTO);
+        return Result.success(userService.getUserPages(id, courseResourceQueryDTO));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/detail/{id}")
     @ApiOperation("获取用户详情")
     public Result<UserVO> getUserDetail(@PathVariable Integer id) {
         log.info("获取用户详情：{}", id);

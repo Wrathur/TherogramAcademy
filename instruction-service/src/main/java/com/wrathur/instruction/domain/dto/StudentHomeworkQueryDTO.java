@@ -13,9 +13,9 @@ public class StudentHomeworkQueryDTO {
     @ApiModelProperty("名称（作业表字段）")
     private String name;
     @ApiModelProperty("类型（作业表字段）")
-    private Integer type;
+    private String type;
     @ApiModelProperty("批阅状态（关联表字段）")
-    private Integer reviewStatus;
+    private String reviewStatus;
     @ApiModelProperty("起始分数（关联表字段）")
     private BigDecimal startScore;
     @ApiModelProperty("结束分数（关联表字段）")
@@ -32,14 +32,10 @@ public class StudentHomeworkQueryDTO {
     private LocalDateTime startSubmitTime;
     @ApiModelProperty("结束提交时间（关联表字段）")
     private LocalDateTime endSubmitTime;
-    @ApiModelProperty("是否按分数升序（关联表字段）")
-    private Boolean scoreAsc;
-    @ApiModelProperty("是否按截至时间升序（作业表字段）")
-    private Boolean deadlineAsc;
-    @ApiModelProperty("是否按创建时间升序（作业表字段）")
-    private Boolean createTimeAsc;
-    @ApiModelProperty("是否按提交时间升序（关联表字段）")
-    private Boolean submitTimeAsc;
+    @ApiModelProperty("排序方式")
+    private Integer sortType; // 0：截至时间（作业表字段） 1：创建时间（作业表字段） 2：分数（关联表字段） 3：提交时间（关联表字段）
+    @ApiModelProperty("是否升序")
+    private Boolean isAsc;
     private Integer pageNum = 1;
     private Integer pageSize = 10;
 }

@@ -17,7 +17,7 @@ public interface IUserService {
     public void deleteUser(Integer id);
 
     // 获取用户分页
-    public IPage<UserVO> getUserPages(UserQueryDTO userQueryDTO);
+    public IPage<UserVO> getUserPages(Integer id, UserQueryDTO userQueryDTO);
 
     // 获取用户详情
     public UserVO getUserDetail(Integer id);

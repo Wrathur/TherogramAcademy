@@ -10,8 +10,10 @@ public class UserVO {
     private Integer id;
     private String account;
     private String username;
+    private String password;
     private String roleType;
     private String profile;
+    private Boolean isDeleted;
     private String createTime;
     private String updateTime;
     private String deleteTime;
@@ -25,6 +27,8 @@ public class UserVO {
     }
 
     public void setDeleteTime(LocalDateTime deleteTime) {
-        this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        if (deleteTime != null) {
+            this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
     }
 }

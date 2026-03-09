@@ -13,6 +13,7 @@ public class StudentCourseVO {
     private String progress;
     private String studyTime;
     private String score;
+    private Boolean isDeleted;
     private String createTime;
     private String updateTime;
     private String selectTime;
@@ -20,7 +21,9 @@ public class StudentCourseVO {
     private String deleteTime;
 
     public void setProgress(Integer progress) {
-        this.progress = progress != 0 ? progress + "%" : "0%";
+        if (progress != null) {
+            this.progress = progress != 0 ? progress + "%" : "0%";
+        }
     }
 
     public void setStudyTime(Integer studyTime) {
@@ -54,14 +57,20 @@ public class StudentCourseVO {
     }
 
     public void setSelectTime(LocalDateTime selectTime) {
-        this.selectTime = selectTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        if (selectTime != null) {
+            this.selectTime = selectTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
     }
 
     public void setEvaluateTime(LocalDateTime evaluateTime) {
-        this.evaluateTime = evaluateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        if(evaluateTime != null){
+            this.evaluateTime = evaluateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
     }
 
     public void setDeleteTime(LocalDateTime deleteTime) {
-        this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        if (deleteTime != null) {
+            this.deleteTime = deleteTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
     }
 }

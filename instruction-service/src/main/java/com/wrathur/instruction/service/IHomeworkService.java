@@ -34,10 +34,10 @@ public interface IHomeworkService {
     public StudentHomeworkVO getStudentHomeworkDetail(Integer studentId, Integer homeworkId);
 
     // 提交作业
-    public void submitHomework(String attachment, StudentHomeworkDTO studentHomeworkDTO);
+    public void submitHomework(StudentHomeworkDTO studentHomeworkDTO);
 
     // 评定作业
-    public void evaluateHomework(BigDecimal score, StudentHomeworkDTO studentHomeworkDTO);
+    public void evaluateHomework(StudentHomeworkDTO studentHomeworkDTO);
 
     // 通过课程获取所有未删除的作业
     public List<Integer> getHomeworkIdsByCourseId(Integer id);
