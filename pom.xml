@@ -40,7 +40,7 @@
         <spring-boot.version>3.2.5</spring-boot.version>               <!-- 与 parent 一致，用于子模块显式引用（可选） -->
         <spring-cloud.version>2023.0.4</spring-cloud.version>          <!-- 对应 Spring Boot 3.2.x 的 Spring Cloud 版本 -->
         <!-- Spring Cloud Alibaba 适配 Spring Boot 3.2.x 的版本（2023.0.1.0 为当前最新稳定版） -->
-        <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2023.0.0.0-RC1</spring-cloud-alibaba.version>
         <!-- 数据库驱动（使用较新稳定版） -->
         <mysql.version>8.0.33</mysql.version>
         <!-- MyBatis-Plus 适配 Spring Boot 3.x 的版本（3.5.5+ 已全面支持 Jakarta EE 9+） -->

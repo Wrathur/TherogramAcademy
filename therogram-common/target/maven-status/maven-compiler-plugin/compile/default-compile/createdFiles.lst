@@ -4,5 +4,6 @@ com\wrathur\common\exception\DbException.class
 com\wrathur\common\result\Result.class
 com\wrathur\common\exception\CommonException.class
 com\wrathur\common\exception\BadRequestException.class
+com\wrathur\common\config\MyBatisConfig.class
 com\wrathur\common\exception\ForbiddenException.class
 com\wrathur\common\utils\UserContext.class

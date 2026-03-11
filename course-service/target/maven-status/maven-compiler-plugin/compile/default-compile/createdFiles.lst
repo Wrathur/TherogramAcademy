@@ -16,9 +16,11 @@ com\wrathur\course\domain\po\Homework.class
 com\wrathur\course\mapper\StudentHomeworkMapper.class
 com\wrathur\course\service\ICourseService.class
 com\wrathur\course\domain\dto\CourseSubjectDTO.class
+com\wrathur\course\domain\po\CourseResource.class
 com\wrathur\course\domain\po\StudentHomework.class
 com\wrathur\course\mapper\CourseMapper.class
 com\wrathur\course\mapper\StudentCourseMapper.class
 com\wrathur\course\domain\vo\CourseVO.class
 com\wrathur\course\domain\vo\CourseTypeVO.class
 com\wrathur\course\domain\po\Course.class
+com\wrathur\course\mapper\CourseResourceMapper.class

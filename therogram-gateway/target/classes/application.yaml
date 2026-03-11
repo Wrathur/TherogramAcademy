@@ -3,26 +3,8 @@ server:
 spring:
   application:
     name: gateway
-    gateway:
-      routes:
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/api/user/**
-        - id: course-service
-          uri: lb://course-service
-          predicates:
-            - Path=/api/course/**
-        - id: instruction-service
-          uri: lb://instruction-service
-          predicates:
-            - Path=/api/instruction/**
-        - id: statistic-service
-          uri: lb://statistic-service
-          predicates:
-            - Path=/api/statistic/**
   config:
-    import: optional:nacos::${spring.application.name}.yaml # 使用optional前缀表示Nacos不可用时也不阻止启动
+    import: optional:nacos:${spring.application.name}.yaml # 使用optional前缀表示Nacos不可用时也不阻止启动
   cloud:
     nacos:
       config:
@@ -31,6 +13,36 @@ spring:
         file-extension: yaml        # 配置文件格式，默认为 properties
       discovery:
         server-addr: 127.0.0.1:8848 # 服务发现地址
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/course/**
+        - id: instruction-service
+          uri: lb://instruction-service
+          predicates:
+            - Path=/courseResource/**,/homework/**
+        - id: statistic-service
+          uri: lb://statistic-service
+          predicates:
+            - Path=/statistic/**
+      filter:
+        forwarded-headers:
+          enabled: false   # 禁用 ForwardedHeadersFilter
+          remove-non-proxy-headers:
+            enabled: false    # 一并禁用其他头过滤器（可选）
+    loadbalancer:
+      nacos:
+        enabled: true
+      cache:
+        enabled: false
+    discovery:
+      enabled: true
 therogram:
   jwt:
     location: classpath:therogram.jks
@@ -39,5 +51,10 @@ therogram:
     tokenTTL: 30m
   auth:
     excludePaths:
-      - /search/**
-      - /users/login
+      - /user/create
+#logging:
+#  level:
+#    org.springframework.cloud.loadbalancer: DEBUG
+#    org.springframework.cloud.gateway: DEBUG
+#    com.alibaba.cloud.nacos: DEBUG
+#    org.springframework.cloud.client.discovery: DEBUG

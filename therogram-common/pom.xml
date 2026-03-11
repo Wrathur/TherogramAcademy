@@ -17,10 +17,10 @@
 
     <dependencies>
         <!-- Spring Boot 核心 Starter（版本由父模块管理） -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
 
         <!-- Apache Commons Pool2（版本由父模块管理） -->
         <dependency>
@@ -42,20 +42,10 @@
         </dependency>
 
         <!-- Spring Boot 日志 Starter（版本由父模块管理） -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-        </dependency>
-
-        <!-- 移除 tomcat-embed-core（硬编码版本且不兼容 Spring Boot 3），
-             如需 Servlet API 相关工具，请使用 Jakarta Servlet API -->
-        <!-- 如果确实需要 Servlet API，可添加以下依赖（scope provided）：
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-logging</artifactId>-->
+<!--        </dependency>-->
 
         <!-- MyBatis-Plus 核心模块（版本由父模块管理，scope provided 表示仅编译时使用） -->
         <dependency>

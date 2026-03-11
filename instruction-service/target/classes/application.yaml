@@ -11,7 +11,7 @@ spring:
     username: root
     password: ${therogram.db.pw}
   config:
-    import: optional:nacos::${spring.application.name}.yaml # 使用optional前缀表示Nacos不可用时也不阻止启动
+    import: optional:nacos:${spring.application.name}.yaml # 使用optional前缀表示Nacos不可用时也不阻止启动
   cloud:
     nacos:
       config:

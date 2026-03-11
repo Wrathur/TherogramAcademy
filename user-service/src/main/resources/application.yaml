@@ -11,7 +11,7 @@ spring:
     username: root
     password: ${therogram.db.pw}
   config:
-    import: optional:nacos::${spring.application.name}.yaml # 使用optional前缀表示Nacos不可用时也不阻止启动
+    import: optional:nacos:${spring.application.name}.yaml # 使用optional前缀表示Nacos不可用时也不阻止启动
   cloud:
     nacos:
       config:
@@ -19,6 +19,7 @@ spring:
         group: DEFAULT_GROUP
         file-extension: yaml        # 配置文件格式，默认为 properties
       discovery:
+
         server-addr: 127.0.0.1:8848 # 服务发现地址
         username: nacos
         password: nacos
@@ -40,3 +41,8 @@ logging:
     dateformat: HH:mm:ss:SSS
   file:
     path: "logs/${spring.application.name}"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
