@@ -23,32 +23,31 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>   <!-- 保持与 Spring Boot 3.2.x 一致 -->
+        <version>3.3.8</version>
         <relativePath/>
     </parent>
 
     <properties>
-        <!-- JDK 版本 -->
-        <java.version>17</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- JDK 版本升级至 21 -->
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
-        <!-- 统一管理版本属性（关键组件） -->
         <therogram.version>1.0.0</therogram.version>               <!-- 与 parent 一致，用于子模块显式引用（可选） -->
-        <spring-boot.version>3.2.5</spring-boot.version>               <!-- 与 parent 一致，用于子模块显式引用（可选） -->
-        <spring-cloud.version>2023.0.4</spring-cloud.version>          <!-- 对应 Spring Boot 3.2.x 的 Spring Cloud 版本 -->
-        <!-- Spring Cloud Alibaba 适配 Spring Boot 3.2.x 的版本（2023.0.1.0 为当前最新稳定版） -->
-        <spring-cloud-alibaba.version>2023.0.0.0-RC1</spring-cloud-alibaba.version>
-        <!-- 数据库驱动（使用较新稳定版） -->
+
+        <!-- 核心框架版本升级 -->
+        <spring-boot.version>3.3.8</spring-boot.version>        <!-- 最新 3.3.x -->
+        <spring-cloud.version>2023.0.5</spring-cloud.version>   <!-- 对应 Boot 3.3.x -->
+        <spring-cloud-alibaba.version>2023.0.3.4</spring-cloud-alibaba.version> <!-- 修复版 -->
+
+        <!-- 其他依赖版本可保持不变或酌情升级 -->
         <mysql.version>8.0.33</mysql.version>
-        <!-- MyBatis-Plus 适配 Spring Boot 3.x 的版本（3.5.5+ 已全面支持 Jakarta EE 9+） -->
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
-        <!-- Hutool 工具包（5.8.x 完全支持 JDK 17） -->
+        <mybatis-plus-core.version>3.5.5</mybatis-plus-core.version>
+        <mybatis-plus-extension.version>3.5.5</mybatis-plus-extension.version>
         <hutool.version>5.8.27</hutool.version>
-        <!-- Lombok 必须 ≥ 1.18.30 才能完美兼容 JDK 17 -->
         <lombok.version>1.18.32</lombok.version>
+        <knife4j-openapi2-spring-boot-starter.version>4.1.0</knife4j-openapi2-spring-boot-starter.version>
     </properties>
 
     <!-- 仓库配置（阿里云镜像加速） -->
@@ -132,6 +131,9 @@
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
                     </configuration>
                 </plugin>
                 <!-- Spring Boot 打包插件（子模块如需打包可引用） -->
