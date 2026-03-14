@@ -5,15 +5,20 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wrathur.common.exception.BadRequestException;
+import com.wrathur.common.utils.UserContext;
+import com.wrathur.user.config.JwtProperties;
 import com.wrathur.user.domain.dto.UserDTO;
 import com.wrathur.user.domain.dto.UserQueryDTO;
 import com.wrathur.user.domain.po.User;
 import com.wrathur.user.domain.vo.UserVO;
 import com.wrathur.user.mapper.UserMapper;
 import com.wrathur.user.service.IUserService;
+import com.wrathur.user.utils.JwtTool;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +30,12 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+
+    private final PasswordEncoder passwordEncoder;
+
+    private final JwtTool jwtTool;
+
+    private final JwtProperties jwtProperties;
 
     private final UserMapper userMapper;
 
@@ -40,26 +51,53 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         userMapper.insert(user);
     }
 
+    @Override
+    public UserVO loginUser(UserDTO userDTO) {
+        User user = userMapper.selectOne(
+                new LambdaQueryWrapper<User>()
+                        .eq(User::getAccount, userDTO.getAccount()));
+
+        if (user == null || user.getIsDeleted() == true) {
+            throw new BadRequestException("用户不存在");
+        }
+//        log.warn(userDTO.getPassword(), user.getPassword());
+//        if (user.getAccount().equals(userDTO.getAccount()) && passwordEncoder.matches(userDTO.getPassword(), user.getPassword())) {
+        if (user.getAccount().equals(userDTO.getAccount()) && userDTO.getPassword().equals(user.getPassword())) {
+            UserVO userVO = new UserVO();
+            BeanUtils.copyProperties(user, userVO);
+
+            //特殊属性需要额外赋值
+            userVO.setCreateTime(user.getCreateTime());
+            userVO.setUpdateTime(user.getUpdateTime());
+            userVO.setDeleteTime(user.getDeleteTime());
+            String token = jwtTool.createToken(user.getId(), jwtProperties.getTokenTTL());
+            userVO.setToken(token);
+            return userVO;
+        } else {
+            throw new BadRequestException("用户名或密码错误");
+        }
+    }
+
     // 修改用户
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void modifyUser(Integer id, UserDTO userDTO) {
-        User user = userMapper.selectById(id);
+    public void modifyUser(UserDTO userDTO) {
+        User user = userMapper.selectById(UserContext.getUser());
         BeanUtils.copyProperties(userDTO, user);
         user.setUpdateTime(LocalDateTime.now());
 
         LambdaUpdateWrapper<User> modifyWrapper = new LambdaUpdateWrapper<>();
-        modifyWrapper.eq(User::getId, id);
+        modifyWrapper.eq(User::getId, UserContext.getUser());
         userMapper.update(user, modifyWrapper);
     }
 
     // 删除用户
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void deleteUser(Integer id) {
+    public void deleteUser() {
         userMapper.update(null,
                 new LambdaUpdateWrapper<User>()
-                        .eq(User::getId, id)
+                        .eq(User::getId, UserContext.getUser())
                         .set(User::getUsername, "账户已注销")
                         .set(User::getIsDeleted, true)
                         .set(User::getDeleteTime, LocalDateTime.now()));
@@ -67,7 +105,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     // 获取用户分页
     @Override
-    public IPage<UserVO> getUserPages(Integer id, UserQueryDTO userQueryDTO) {
+    public IPage<UserVO> getUserPages(UserQueryDTO userQueryDTO) {
         // 构建分页对象
         Page<User> page = new Page<>(userQueryDTO.getPageNum(), userQueryDTO.getPageSize());
 
@@ -75,7 +113,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         LambdaQueryWrapper<User> pageWrapper = new LambdaQueryWrapper<>();
 
         // 过滤用户自身
-        pageWrapper.ne(User::getId, id);
+        pageWrapper.ne(User::getId, UserContext.getUser());
         // 过滤已删除用户
         if (userQueryDTO.getIsDeleted() != null && userQueryDTO.getIsDeleted()) {
             pageWrapper.eq(User::getIsDeleted, false);
@@ -154,8 +192,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     // 获取用户详情
     @Override
-    public UserVO getUserDetail(Integer id) {
-        User user = userMapper.selectById(id);
+    public UserVO getUserDetail() {
+        Integer userId = UserContext.getUser();
+        System.out.printf("userId = %d", userId);
+        User user = userMapper.selectById(UserContext.getUser());
         UserVO userVO = new UserVO();
         BeanUtils.copyProperties(user, userVO);
 

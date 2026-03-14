@@ -53,14 +53,14 @@ public class HomeworkController {
     @PostMapping("/page/{id}")
     @ApiOperation("获取作业分页")
     public Result<IPage<HomeworkVO>> getHomeworkPages(@PathVariable Integer id, @RequestBody HomeworkQueryDTO homeworkQueryDTO) {
-        log.info("教师获取课程{}的作业分页：{}", id, homeworkQueryDTO);
+        log.info("获取课程{}的作业分页：{}", id, homeworkQueryDTO);
         return Result.success(homeworkService.getHomeworkPages(id, homeworkQueryDTO));
     }
 
     @PostMapping("/studentPage/{id}")
     @ApiOperation("获取学生作业分页")
     public Result<IPage<HomeworkVO>> getStudentHomeworkPages(@PathVariable Integer id, @RequestBody StudentHomeworkQueryDTO studentHomeworkQueryDTO) {
-        log.info("学生{}获取学生作业分页：{}", id, studentHomeworkQueryDTO);
+        log.info("获取学生{}作业分页：{}", id, studentHomeworkQueryDTO);
         return Result.success(homeworkService.getStudentHomeworkPages(id, studentHomeworkQueryDTO));
     }
 
@@ -81,7 +81,7 @@ public class HomeworkController {
     @PostMapping("/submit")
     @ApiOperation("提交作业")
     public Result<String> submitHomework(@RequestBody StudentHomeworkDTO studentHomeworkDTO) {
-        log.info("学生{}提交作业", studentHomeworkDTO.getStudentId());
+        log.info("提交作业{}", studentHomeworkDTO);
         homeworkService.submitHomework(studentHomeworkDTO);
         return Result.success();
     }
@@ -89,7 +89,7 @@ public class HomeworkController {
     @PatchMapping("/evaluate")
     @ApiOperation("评定作业")
     public Result<String> evaluateHomework(@RequestBody StudentHomeworkDTO studentHomeworkDTO) {
-        log.info("评定学生{}的作业{}", studentHomeworkDTO.getStudentId(), studentHomeworkDTO.getHomeworkId());
+        log.info("评定作业{}", studentHomeworkDTO);
         homeworkService.evaluateHomework(studentHomeworkDTO);
         return Result.success();
     }

@@ -24,6 +24,12 @@ spring:
         password: nacos
         server-config:
           nacos.core.auth.plugin.nacos.token.secret.key=VGhpc0lzTXlDdXN0b21TZWNyZXRLZXkwMTIzNDU2Nzg=
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: /therogram
+    username: therogram
+    password: 123456
 mybatis-plus:
   configuration:
     default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler

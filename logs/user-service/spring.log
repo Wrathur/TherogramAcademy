@@ -1,50 +1,524 @@
-14:21:00:744  INFO 20760 --- [user-service] [main] com.wrathur.user.UserApplication         : Starting UserApplication using Java 21.0.10 with PID 20760 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
-14:21:00:746  INFO 20760 --- [user-service] [main] com.wrathur.user.UserApplication         : The following 1 profile is active: "dev"
-14:21:00:779  WARN 20760 --- [user-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=user-service.yaml, group=DEFAULT_GROUP] is empty
-14:21:01:408  INFO 20760 --- [user-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=dca8c838-5c52-3d2d-abb0-b633609b5930
-14:21:01:660  INFO 20760 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
-14:21:01:669  INFO 20760 --- [user-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-14:21:01:669  INFO 20760 --- [user-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-14:21:01:704  INFO 20760 --- [user-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-14:21:01:705  INFO 20760 --- [user-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 925 ms
-14:21:02:419  INFO 20760 --- [user-service] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-14:21:02:477  INFO 20760 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
-14:21:02:486  INFO 20760 --- [user-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
-14:21:02:486  INFO 20760 --- [user-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
-14:21:02:735  INFO 20760 --- [user-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP user-service 172.22.148.153:8081 register finished
-14:21:02:747  INFO 20760 --- [user-service] [main] com.wrathur.user.UserApplication         : Started UserApplication in 2.889 seconds (process running for 3.222)
-14:21:02:758  INFO 20760 --- [user-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=user-service.yaml, group=DEFAULT_GROUP
-14:21:03:313  INFO 20760 --- [user-service] [RMI TCP Connection(3)-172.22.148.153] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-14:21:03:314  INFO 20760 --- [user-service] [RMI TCP Connection(3)-172.22.148.153] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-14:21:03:315  INFO 20760 --- [user-service] [RMI TCP Connection(3)-172.22.148.153] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-14:21:03:321  INFO 20760 --- [user-service] [RMI TCP Connection(2)-172.22.148.153] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-14:21:03:499  INFO 20760 --- [user-service] [RMI TCP Connection(2)-172.22.148.153] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7dbe169f
-14:21:03:505  INFO 20760 --- [user-service] [RMI TCP Connection(2)-172.22.148.153] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-14:21:24:256  INFO 20760 --- [user-service] [http-nio-8081-exec-2] c.w.user.controller.UserController       : 用户5获取用户分页：UserQueryDTO(account=, username=, roleType=null, isDeleted=false, startCreateTime=2025-01-01T00:00, endCreateTime=2027-01-01T12:00, sortType=2, isAsc=false, pageNum=1, pageSize=5)
-14:21:32:544  INFO 20760 --- [user-service] [http-nio-8081-exec-3] c.w.user.controller.UserController       : 获取用户详情：5
-14:21:56:605  INFO 20760 --- [user-service] [http-nio-8081-exec-4] c.w.user.controller.UserController       : 获取用户详情：5
-14:22:00:670  INFO 20760 --- [user-service] [http-nio-8081-exec-6] c.w.user.controller.UserController       : 获取用户详情：5
-14:22:04:916  INFO 20760 --- [user-service] [http-nio-8081-exec-5] c.w.user.controller.UserController       : 用户5获取用户分页：UserQueryDTO(account=, username=, roleType=null, isDeleted=false, startCreateTime=2025-01-01T00:00, endCreateTime=2027-01-01T12:00, sortType=2, isAsc=false, pageNum=1, pageSize=5)
-14:22:17:079  INFO 20760 --- [user-service] [http-nio-8081-exec-8] c.w.user.controller.UserController       : 通过ID2获取用户名
-14:22:17:090  INFO 20760 --- [user-service] [http-nio-8081-exec-7] c.w.user.controller.UserController       : 通过ID2获取用户名
-14:22:17:095  INFO 20760 --- [user-service] [http-nio-8081-exec-9] c.w.user.controller.UserController       : 通过ID3获取用户名
-14:22:17:097  INFO 20760 --- [user-service] [http-nio-8081-exec-10] c.w.user.controller.UserController       : 通过ID3获取用户名
-14:22:17:098  INFO 20760 --- [user-service] [http-nio-8081-exec-1] c.w.user.controller.UserController       : 通过ID4获取用户名
-14:22:17:104  INFO 20760 --- [user-service] [http-nio-8081-exec-2] c.w.user.controller.UserController       : 通过ID2获取用户名
-14:22:21:743  INFO 20760 --- [user-service] [http-nio-8081-exec-3] c.w.user.controller.UserController       : 通过ID2获取用户名
-14:22:21:743  INFO 20760 --- [user-service] [http-nio-8081-exec-4] c.w.user.controller.UserController       : 通过ID2获取用户名
-14:22:21:752  INFO 20760 --- [user-service] [http-nio-8081-exec-6] c.w.user.controller.UserController       : 通过ID3获取用户名
-14:22:21:753  INFO 20760 --- [user-service] [http-nio-8081-exec-5] c.w.user.controller.UserController       : 通过ID3获取用户名
-14:22:21:753  INFO 20760 --- [user-service] [http-nio-8081-exec-8] c.w.user.controller.UserController       : 通过ID4获取用户名
-14:22:21:753  INFO 20760 --- [user-service] [http-nio-8081-exec-7] c.w.user.controller.UserController       : 通过ID2获取用户名
-14:40:16:790  WARN 20760 --- [user-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
-14:40:16:790  WARN 20760 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
-14:40:16:790  WARN 20760 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
-14:40:16:790  WARN 20760 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
-14:40:16:791  WARN 20760 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
-14:40:16:791  WARN 20760 --- [user-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
-14:40:16:792  INFO 20760 --- [user-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
-14:40:16:798  INFO 20760 --- [user-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
-14:40:26:811  INFO 20760 --- [user-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
-14:40:26:827  INFO 20760 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-14:40:26:832  INFO 20760 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+17:23:00:714  INFO 14832 --- [user-service] [main] com.wrathur.user.UserApplication         : Starting UserApplication using Java 21.0.10 with PID 14832 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+17:23:00:717  INFO 14832 --- [user-service] [main] com.wrathur.user.UserApplication         : The following 1 profile is active: "dev"
+17:23:00:743  WARN 14832 --- [user-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=user-service.yaml, group=DEFAULT_GROUP] is empty
+17:23:01:364  INFO 14832 --- [user-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=dca8c838-5c52-3d2d-abb0-b633609b5930
+17:23:01:598  INFO 14832 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+17:23:01:606  INFO 14832 --- [user-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+17:23:01:606  INFO 14832 --- [user-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+17:23:01:644  INFO 14832 --- [user-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+17:23:01:645  INFO 14832 --- [user-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 901 ms
+17:23:02:383  INFO 14832 --- [user-service] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+17:23:02:429  INFO 14832 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+17:23:02:437  INFO 14832 --- [user-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+17:23:02:437  INFO 14832 --- [user-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+17:23:02:535  INFO 14832 --- [user-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP user-service 172.22.148.153:8081 register finished
+17:23:02:545  INFO 14832 --- [user-service] [main] com.wrathur.user.UserApplication         : Started UserApplication in 2.757 seconds (process running for 3.126)
+17:23:02:557  INFO 14832 --- [user-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=user-service.yaml, group=DEFAULT_GROUP
+17:23:02:748  INFO 14832 --- [user-service] [RMI TCP Connection(2)-172.22.148.153] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:23:02:748  INFO 14832 --- [user-service] [RMI TCP Connection(2)-172.22.148.153] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+17:23:02:749  INFO 14832 --- [user-service] [RMI TCP Connection(2)-172.22.148.153] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+17:23:02:758  INFO 14832 --- [user-service] [RMI TCP Connection(3)-172.22.148.153] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+17:23:02:946  INFO 14832 --- [user-service] [RMI TCP Connection(3)-172.22.148.153] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7d22aca4
+17:23:02:948  INFO 14832 --- [user-service] [RMI TCP Connection(3)-172.22.148.153] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+17:24:55:375  INFO 14832 --- [user-service] [http-nio-8081-exec-4] c.w.user.controller.UserController       : 获取用户详情
+17:24:55:423 ERROR 14832 --- [user-service] [http-nio-8081-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalArgumentException: Source must not be null] with root cause
+
+java.lang.IllegalArgumentException: Source must not be null
+	at org.springframework.util.Assert.notNull(Assert.java:172) ~[spring-core-6.1.16.jar:6.1.16]
+	at org.springframework.beans.BeanUtils.copyProperties(BeanUtils.java:792) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.BeanUtils.copyProperties(BeanUtils.java:729) ~[spring-beans-6.1.16.jar:6.1.16]
+	at com.wrathur.user.service.impl.UserServiceImpl.getUserDetail(UserServiceImpl.java:200) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) ~[spring-aop-6.1.16.jar:6.1.16]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716) ~[spring-aop-6.1.16.jar:6.1.16]
+	at com.wrathur.user.service.impl.UserServiceImpl$$SpringCGLIB$$0.getUserDetail(<generated>) ~[classes/:na]
+	at com.wrathur.user.controller.UserController.getUserDetail(UserController.java:66) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+17:30:30:450  INFO 14832 --- [user-service] [http-nio-8081-exec-5] c.w.user.controller.UserController       : 登录用户：UserDTO(id=null, account=KingdomWrathur1, username=null, password=123456, roleType=null, profile=null, isDeleted=null, createTime=null, updateTime=null, deleteTime=null)
+17:30:30:517 ERROR 14832 --- [user-service] [http-nio-8081-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "org.springframework.security.crypto.password.PasswordEncoder.matches(java.lang.CharSequence, String)" because "this.passwordEncoder" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.crypto.password.PasswordEncoder.matches(java.lang.CharSequence, String)" because "this.passwordEncoder" is null
+	at com.wrathur.user.service.impl.UserServiceImpl.loginUser(UserServiceImpl.java:67) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) ~[spring-aop-6.1.16.jar:6.1.16]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716) ~[spring-aop-6.1.16.jar:6.1.16]
+	at com.wrathur.user.service.impl.UserServiceImpl$$SpringCGLIB$$0.loginUser(<generated>) ~[classes/:na]
+	at com.wrathur.user.controller.UserController.loginUser(UserController.java:36) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+17:34:53:964  WARN 14832 --- [user-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+17:34:53:964  WARN 14832 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+17:34:53:964  WARN 14832 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+17:34:53:964  WARN 14832 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+17:34:53:965  WARN 14832 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+17:34:53:965  WARN 14832 --- [user-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+17:34:53:965  INFO 14832 --- [user-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+17:34:53:969  INFO 14832 --- [user-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+17:35:03:976  INFO 14832 --- [user-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+17:35:03:987  INFO 14832 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+17:35:03:994  INFO 14832 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+17:40:53:995  INFO 25808 --- [user-service] [main] com.wrathur.user.UserApplication         : Starting UserApplication using Java 21.0.10 with PID 25808 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+17:40:53:996  INFO 25808 --- [user-service] [main] com.wrathur.user.UserApplication         : The following 1 profile is active: "dev"
+17:40:54:019  WARN 25808 --- [user-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=user-service.yaml, group=DEFAULT_GROUP] is empty
+17:40:54:555  INFO 25808 --- [user-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=dca8c838-5c52-3d2d-abb0-b633609b5930
+17:40:54:767  INFO 25808 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+17:40:54:774  INFO 25808 --- [user-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+17:40:54:776  INFO 25808 --- [user-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+17:40:54:809  INFO 25808 --- [user-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+17:40:54:810  INFO 25808 --- [user-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 790 ms
+17:40:54:890  WARN 25808 --- [user-service] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\controller\UserController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'org.springframework.security.crypto.password.PasswordEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+17:40:54:891  INFO 25808 --- [user-service] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+17:40:54:903  INFO 25808 --- [user-service] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+17:40:54:917 ERROR 25808 --- [user-service] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.wrathur.user.service.impl.UserServiceImpl required a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' in your configuration.
+
+17:40:54:918  WARN 25808 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+17:40:54:918  WARN 25808 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+17:40:54:918  WARN 25808 --- [user-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+17:40:54:918  WARN 25808 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+17:40:54:918  WARN 25808 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+18:48:02:442  INFO 24292 --- [user-service] [main] com.wrathur.user.UserApplication         : Starting UserApplication using Java 21.0.10 with PID 24292 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+18:48:02:442  INFO 24292 --- [user-service] [main] com.wrathur.user.UserApplication         : The following 1 profile is active: "dev"
+18:48:02:465  WARN 24292 --- [user-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=user-service.yaml, group=DEFAULT_GROUP] is empty
+18:48:03:030  INFO 24292 --- [user-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d862133b-29e0-31ad-b0ee-86cf7fb89fba
+18:48:03:242  INFO 24292 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+18:48:03:250  INFO 24292 --- [user-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+18:48:03:250  INFO 24292 --- [user-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+18:48:03:283  INFO 24292 --- [user-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+18:48:03:284  INFO 24292 --- [user-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 817 ms
+18:48:03:370  WARN 24292 --- [user-service] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\controller\UserController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+18:48:03:371  INFO 24292 --- [user-service] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+18:48:03:386  INFO 24292 --- [user-service] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+18:48:03:394 ERROR 24292 --- [user-service] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\controller\UserController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.8.jar:3.3.8]
+	at com.wrathur.user.UserApplication.main(UserApplication.java:15) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1448) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1358) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1448) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1358) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 33 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1448) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1358) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 61 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at com.wrathur.user.config.SecurityConfig.keyPair(SecurityConfig.java:27) ~[classes/:na]
+	at com.wrathur.user.config.SecurityConfig$$SpringCGLIB$$0.CGLIB$keyPair$0(<generated>) ~[classes/:na]
+	at com.wrathur.user.config.SecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.16.jar:6.1.16]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348) ~[spring-context-6.1.16.jar:6.1.16]
+	at com.wrathur.user.config.SecurityConfig$$SpringCGLIB$$0.keyPair(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 62 common frames omitted
+
+18:48:03:397  WARN 24292 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+18:48:03:397  WARN 24292 --- [user-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+18:48:03:398  WARN 24292 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+18:48:03:398  WARN 24292 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+18:49:17:563  INFO 25440 --- [user-service] [main] com.wrathur.user.UserApplication         : Starting UserApplication using Java 21.0.10 with PID 25440 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+18:49:17:564  INFO 25440 --- [user-service] [main] com.wrathur.user.UserApplication         : The following 1 profile is active: "dev"
+18:49:17:588  WARN 25440 --- [user-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=user-service.yaml, group=DEFAULT_GROUP] is empty
+18:49:18:154  INFO 25440 --- [user-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d862133b-29e0-31ad-b0ee-86cf7fb89fba
+18:49:18:370  INFO 25440 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+18:49:18:377  INFO 25440 --- [user-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+18:49:18:378  INFO 25440 --- [user-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+18:49:18:413  INFO 25440 --- [user-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+18:49:18:413  INFO 25440 --- [user-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 823 ms
+18:49:18:499  WARN 25440 --- [user-service] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\controller\UserController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+18:49:18:500  INFO 25440 --- [user-service] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+18:49:18:511  INFO 25440 --- [user-service] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+18:49:18:520 ERROR 25440 --- [user-service] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\controller\UserController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.8.jar:3.3.8]
+	at com.wrathur.user.UserApplication.main(UserApplication.java:15) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1448) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1358) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1448) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1358) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 33 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1448) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1358) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 61 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at com.wrathur.user.config.SecurityConfig.keyPair(SecurityConfig.java:27) ~[classes/:na]
+	at com.wrathur.user.config.SecurityConfig$$SpringCGLIB$$0.CGLIB$keyPair$0(<generated>) ~[classes/:na]
+	at com.wrathur.user.config.SecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.16.jar:6.1.16]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348) ~[spring-context-6.1.16.jar:6.1.16]
+	at com.wrathur.user.config.SecurityConfig$$SpringCGLIB$$0.keyPair(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 62 common frames omitted
+
+18:49:18:523  WARN 25440 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+18:49:18:523  WARN 25440 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+18:49:18:523  WARN 25440 --- [user-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+18:49:18:523  WARN 25440 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+18:49:18:523  WARN 25440 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+19:55:52:486  INFO 28024 --- [user-service] [main] com.wrathur.user.UserApplication         : Starting UserApplication using Java 21.0.10 with PID 28024 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+19:55:52:486  INFO 28024 --- [user-service] [main] com.wrathur.user.UserApplication         : The following 1 profile is active: "dev"
+19:55:52:517  WARN 28024 --- [user-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=user-service.yaml, group=DEFAULT_GROUP] is empty
+19:55:53:218  INFO 28024 --- [user-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=723f3de4-6764-3dc8-a49f-18ff4bec90ad
+19:55:53:477  INFO 28024 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+19:55:53:485  INFO 28024 --- [user-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+19:55:53:486  INFO 28024 --- [user-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+19:55:53:521  INFO 28024 --- [user-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+19:55:53:522  INFO 28024 --- [user-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1003 ms
+19:55:53:615  WARN 28024 --- [user-service] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\controller\UserController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+19:55:53:616  INFO 28024 --- [user-service] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+19:55:53:627  INFO 28024 --- [user-service] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+19:55:53:637 ERROR 28024 --- [user-service] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\controller\UserController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.8.jar:3.3.8]
+	at com.wrathur.user.UserApplication.main(UserApplication.java:15) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userServiceImpl' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1448) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1358) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtTool' defined in file [D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\user-service\target\classes\com\wrathur\user\utils\JwtTool.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1448) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1358) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 33 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'keyPair' defined in class path resource [com/wrathur/user/config/SecurityConfig.class]: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1448) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1358) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [java.security.KeyPair]: Factory method 'keyPair' threw exception with message: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 61 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "String.toCharArray()" because the return value of "com.wrathur.user.config.JwtProperties.getPassword()" is null
+	at com.wrathur.user.config.SecurityConfig.keyPair(SecurityConfig.java:27) ~[classes/:na]
+	at com.wrathur.user.config.SecurityConfig$$SpringCGLIB$$0.CGLIB$keyPair$0(<generated>) ~[classes/:na]
+	at com.wrathur.user.config.SecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.16.jar:6.1.16]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348) ~[spring-context-6.1.16.jar:6.1.16]
+	at com.wrathur.user.config.SecurityConfig$$SpringCGLIB$$0.keyPair(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146) ~[spring-beans-6.1.16.jar:6.1.16]
+	... 62 common frames omitted
+
+19:55:53:640  WARN 28024 --- [user-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+19:55:53:640  WARN 28024 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+19:55:53:640  WARN 28024 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+19:55:53:640  WARN 28024 --- [user-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+19:55:53:641  WARN 28024 --- [user-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end

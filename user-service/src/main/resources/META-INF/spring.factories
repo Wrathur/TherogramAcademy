@@ -1,0 +1,2 @@
+org.springframework.boot,autoconfigure.EnableAutoConfiguration=\
+    com.therogram.gateway.config.SecurityConfig

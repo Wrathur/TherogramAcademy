@@ -30,7 +30,10 @@ public class CourseVO {
     private String progress;
     private String studyTime;
     private String score;
-    private String selectTime;
+    private String studentCourseCreateTime;
+    private String studentCourseUpdateTime;
+    private String studentCourseSelectTime;
+    private String studentCourseEvaluateTime;
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -80,9 +83,27 @@ public class CourseVO {
         this.score = score != null ? String.format("%.1f", score) : "PENDING";
     }
 
-    public void setSelectTime(LocalDateTime selectTime) {
-        if (selectTime != null) {
-            this.selectTime = selectTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    public void setStudentCourseCreateTime(LocalDateTime studentCourseCreateTime) {
+        if (studentCourseCreateTime != null) {
+            this.studentCourseCreateTime = studentCourseCreateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
+    }
+
+    public void setStudentCourseUpdateTime(LocalDateTime studentCourseUpdateTime) {
+        if (studentCourseUpdateTime != null) {
+            this.studentCourseUpdateTime = studentCourseUpdateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
+    }
+
+    public void setStudentCourseSelectTime(LocalDateTime studentCourseSelectTime) {
+        if (studentCourseSelectTime != null) {
+            this.studentCourseSelectTime = studentCourseSelectTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
+    }
+
+    public void setStudentCourseEvaluateTime(LocalDateTime studentCourseEvaluateTime) {
+        if (studentCourseEvaluateTime != null) {
+            this.studentCourseEvaluateTime = studentCourseEvaluateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         }
     }
 }

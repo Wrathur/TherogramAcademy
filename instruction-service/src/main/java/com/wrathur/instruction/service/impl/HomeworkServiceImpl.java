@@ -200,13 +200,18 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
 
         // 转换为VO
         studentHomeworkPage.getRecords().forEach(homeworkVO -> {
-            log.info(homeworkVO.toString());
-            StudentHomework studentCourse = studentHomeworkMapper.selectOne(
+            StudentHomework studentHomework = studentHomeworkMapper.selectOne(
                     new LambdaQueryWrapper<StudentHomework>()
                             .eq(StudentHomework::getStudentId, id)
                             .eq(StudentHomework::getHomeworkId, homeworkVO.getId()));
-            homeworkVO.setScore(studentCourse.getScore());
-            homeworkVO.setSubmitTime(studentCourse.getSubmitTime());
+            homeworkVO.setStudentHomeworkAttachment(studentHomework.getAttachment());
+            homeworkVO.setReviewStatus(studentHomework.getReviewStatus());
+            homeworkVO.setScore(studentHomework.getScore());
+            homeworkVO.setRejectedReason(studentHomework.getRejectedReason());
+            homeworkVO.setStudentHomeworkCreateTime(studentHomework.getCreateTime());
+            homeworkVO.setStudentHomeworkUpdateTime(studentHomework.getUpdateTime());
+            homeworkVO.setStudentHomeworkSubmitTime(studentHomework.getSubmitTime());
+            homeworkVO.setStudentHomeworkEvaluateTime(studentHomework.getEvaluateTime());
         });
 
         // 构建返回的分页VO

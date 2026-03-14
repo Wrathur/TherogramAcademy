@@ -17,6 +17,7 @@ public class UserVO {
     private String createTime;
     private String updateTime;
     private String deleteTime;
+    private String token;
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

@@ -50,25 +50,25 @@ public class CourseController {
         return Result.success();
     }
 
-    @PostMapping("/page/{id}")
+    @PostMapping("/page")
     @ApiOperation("获取课程分页")
-    public Result<IPage<CourseVO>> getCoursePages(@PathVariable Integer id, @RequestBody CourseQueryDTO courseQueryDTO) {
-        log.info("用户{}获取课程分页：{}", id, courseQueryDTO);
-        return Result.success(courseService.getCoursePages(id, courseQueryDTO));
+    public Result<IPage<CourseVO>> getCoursePages(@RequestBody CourseQueryDTO courseQueryDTO) {
+        log.info("获取课程分页：{}", courseQueryDTO);
+        return Result.success(courseService.getCoursePages(courseQueryDTO));
     }
 
-    @PostMapping("/createPage/{id}")
+    @PostMapping("/createPage")
     @ApiOperation("获取创建课程分页")
-    public Result<IPage<CourseVO>> getCreateCoursePages(@PathVariable Integer id, @RequestBody CourseQueryDTO courseQueryDTO) {
-        log.info("教师{}获取创建课程分页：{}", id, courseQueryDTO);
-        return Result.success(courseService.getCreateCoursePages(id, courseQueryDTO));
+    public Result<IPage<CourseVO>> getCreateCoursePages(@RequestBody CourseQueryDTO courseQueryDTO) {
+        log.info("获取创建课程分页：{}", courseQueryDTO);
+        return Result.success(courseService.getCreateCoursePages(courseQueryDTO));
     }
 
-    @PostMapping("/selectPage/{id}")
+    @PostMapping("/selectPage")
     @ApiOperation("获取选修课程分页")
-    public Result<IPage<CourseVO>> getSelectCoursePages(@PathVariable Integer id, @RequestBody StudentCourseQueryDTO studentCourseQueryDTO) {
-        log.info("学生{}获取选修课程分页：{}", id, studentCourseQueryDTO);
-        return Result.success(courseService.getSelectCoursePages(id, studentCourseQueryDTO));
+    public Result<IPage<CourseVO>> getSelectCoursePages(@RequestBody StudentCourseQueryDTO studentCourseQueryDTO) {
+        log.info("获取选修课程分页：{}", studentCourseQueryDTO);
+        return Result.success(courseService.getSelectCoursePages(studentCourseQueryDTO));
     }
 
     @GetMapping("/detail/{id}")
@@ -85,11 +85,11 @@ public class CourseController {
         return Result.success(courseService.getCreateCourseDetail(id));
     }
 
-    @GetMapping("/selectDetail/{studentId}/{courseId}")
+    @GetMapping("/selectDetail/{id}")
     @ApiOperation("获取选修课程详情")
-    public Result<StudentCourseVO> getSelectCourseDetail(@PathVariable Integer studentId, @PathVariable Integer courseId) {
-        log.info("{}获取选修课程详情：{}", studentId, courseId);
-        return Result.success(courseService.getSelectCourseDetail(studentId, courseId));
+    public Result<StudentCourseVO> getSelectCourseDetail(@PathVariable Integer id) {
+        log.info("获取选修课程详情：{}", id);
+        return Result.success(courseService.getSelectCourseDetail(id));
     }
 
     @PatchMapping("/review/{reviewStatus}")
@@ -100,19 +100,19 @@ public class CourseController {
         return Result.success();
     }
 
-    @PostMapping("/select/{studentId}/{courseId}")
+    @PostMapping("/select/{id}")
     @ApiOperation("选修课程")
-    public Result<String> selectCourse(@PathVariable Integer studentId, @PathVariable Integer courseId) {
-        log.info("学生{}选修课程：{}", studentId, courseId);
-        courseService.selectCourse(studentId, courseId);
+    public Result<String> selectCourse(@PathVariable Integer id) {
+        log.info("选修课程：{}", id);
+        courseService.selectCourse(id);
         return Result.success();
     }
 
-    @DeleteMapping("/deselect/{studentId}/{courseId}")
+    @DeleteMapping("/deselect/{courseId}")
     @ApiOperation("退选课程")
-    public Result<String> deselectCourse(@PathVariable Integer studentId, @PathVariable Integer courseId) {
-        log.info("学生{}退选课程：{}", studentId, courseId);
-        courseService.deselectCourse(studentId, courseId);
+    public Result<String> deselectCourse(@PathVariable Integer courseId) {
+        log.info("退选课程：{}", courseId);
+        courseService.deselectCourse(courseId);
         return Result.success();
     }
 

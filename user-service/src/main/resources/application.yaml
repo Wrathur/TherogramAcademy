@@ -19,7 +19,6 @@ spring:
         group: DEFAULT_GROUP
         file-extension: yaml        # 配置文件格式，默认为 properties
       discovery:
-
         server-addr: 127.0.0.1:8848 # 服务发现地址
         username: nacos
         password: nacos
@@ -34,15 +33,13 @@ mybatis-plus:
     db-config:
       update-strategy: not_null
       id-type: auto
-logging:
-  level:
-    com.therogram: debug
-  pattern:
-    dateformat: HH:mm:ss:SSS
-  file:
-    path: "logs/${spring.application.name}"
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health
+therogram:
+  jwt:
+    location: classpath:therogram.jks
+    alias: hmall
+    password: hmall123
+    tokenTTL: 30m
+  auth:
+    excludePaths:
+      - /user/create
+      - /user/login

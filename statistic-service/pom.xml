@@ -12,8 +12,6 @@
 
     <artifactId>statistic-service</artifactId>
 
-    <!-- 删除重复的 properties，已继承父模块配置 -->
-
     <dependencies>
         <!-- 内部模块依赖（版本继承自父模块） -->
         <dependency>
@@ -61,17 +59,15 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
-
-        <!-- 测试依赖（可选） -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <!--amqp-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
     </dependencies>
 

@@ -23,13 +23,13 @@ public interface ICourseService extends IService<StudentCourse> {
     public void deleteCourse(Integer id);
 
     // 获取课程分页
-    public IPage<CourseVO> getCoursePages(Integer id, CourseQueryDTO courseQueryDTO);
+    public IPage<CourseVO> getCoursePages(CourseQueryDTO courseQueryDTO);
 
     // 获取创建课程分页
-    public IPage<CourseVO> getCreateCoursePages(Integer id, CourseQueryDTO courseQueryDTO);
+    public IPage<CourseVO> getCreateCoursePages(CourseQueryDTO courseQueryDTO);
 
     // 获取选修课程分页
-    public IPage<CourseVO> getSelectCoursePages(Integer id, StudentCourseQueryDTO studentCourseQueryDTO);
+    public IPage<CourseVO> getSelectCoursePages(StudentCourseQueryDTO studentCourseQueryDTO);
 
     // 获取课程详情
     public CourseVO getCourseDetail(Integer id);
@@ -38,16 +38,16 @@ public interface ICourseService extends IService<StudentCourse> {
     public CourseVO getCreateCourseDetail(Integer id);
 
     // 获取选修课程详情
-    public StudentCourseVO getSelectCourseDetail(Integer studentId, Integer courseId);
+    public StudentCourseVO getSelectCourseDetail(Integer id);
 
     // 审核课程
     public void reviewCourse(String reviewStatus, CourseDTO courseDTO);
 
     // 选修课程
-    public void selectCourse(Integer studentId, Integer courseId);
+    public void selectCourse(Integer id);
 
     // 退选课程
-    void deselectCourse(Integer studentId, Integer courseId);
+    void deselectCourse(Integer id);
 
     // 评定课程
     public void evaluateCourse(BigDecimal score, Integer studentId, Integer courseId);

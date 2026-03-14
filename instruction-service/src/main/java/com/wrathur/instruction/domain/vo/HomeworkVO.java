@@ -21,9 +21,14 @@ public class HomeworkVO {
     private String deleteTime;
 
     // 关联表字段
+    private String studentHomeworkAttachment;
     private String reviewStatus;
     private String score;
-    private String submitTime;
+    private String rejectedReason;
+    private String studentHomeworkCreateTime;
+    private String studentHomeworkUpdateTime;
+    private String studentHomeworkSubmitTime;
+    private String studentHomeworkEvaluateTime;
 
     public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -47,9 +52,27 @@ public class HomeworkVO {
         this.score = score != null ? String.format("%.1f", score) : "PENDING";
     }
 
-    public void setSubmitTime(LocalDateTime submitTime) {
-        if (submitTime != null) {
-            this.submitTime = submitTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    public void setStudentHomeworkCreateTime(LocalDateTime studentHomeworkCreateTime) {
+        if (studentHomeworkCreateTime != null) {
+            this.studentHomeworkCreateTime = studentHomeworkCreateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
+    }
+
+    public void setStudentHomeworkUpdateTime(LocalDateTime studentHomeworkUpdateTime) {
+        if (studentHomeworkUpdateTime != null) {
+            this.studentHomeworkUpdateTime = studentHomeworkUpdateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
+    }
+
+    public void setStudentHomeworkSubmitTime(LocalDateTime studentHomeworkSubmitTime) {
+        if (studentHomeworkSubmitTime != null) {
+            this.studentHomeworkSubmitTime = studentHomeworkSubmitTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
+    }
+
+    public void setStudentHomeworkEvaluateTime(LocalDateTime studentHomeworkEvaluateTime) {
+        if (studentHomeworkEvaluateTime != null) {
+            this.studentHomeworkEvaluateTime = studentHomeworkEvaluateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         }
     }
 }

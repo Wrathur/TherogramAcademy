@@ -1,14 +1,14 @@
 package com.wrathur.common.utils;
 
 public class UserContext {
-    private static final ThreadLocal<Long> tl = new ThreadLocal<>();
+    private static final ThreadLocal<Integer> tl = new ThreadLocal<>();
 
     /**
      * 保存当前登录用户信息到ThreadLocal
      *
      * @param userId 用户id
      */
-    public static void setUser(Long userId) {
+    public static void setUser(Integer userId) {
         tl.set(userId);
     }
 
@@ -17,7 +17,7 @@ public class UserContext {
      *
      * @return 用户id
      */
-    public static Long getUser() {
+    public static Integer getUser() {
         return tl.get();
     }
 

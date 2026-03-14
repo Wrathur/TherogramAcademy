@@ -4,7 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- 继承父模块，版本由父模块统一管理 -->
     <parent>
         <groupId>com.wrathur</groupId>
         <artifactId>TherogramAcademy</artifactId>
@@ -12,8 +11,6 @@
     </parent>
 
     <artifactId>course-service</artifactId>
-
-    <!-- 删除重复的 properties，直接继承父模块的 java.version 等配置 -->
 
     <dependencies>
         <!-- 内部模块依赖（版本与父模块一致，可省略版本号） -->
@@ -75,16 +72,14 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
-
-        <!-- 测试依赖（如需） -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
     </dependencies>
 

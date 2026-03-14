@@ -29,34 +29,41 @@ public class UserController {
         return Result.success();
     }
 
-    @PatchMapping("/modify/{id}")
+    @PostMapping("/login")
+    @ApiOperation("登录用户")
+    public Result<UserVO> loginUser(@RequestBody UserDTO userDTO) {
+        log.info("登录用户：{}", userDTO);
+        return Result.success(userService.loginUser(userDTO));
+    }
+
+    @PatchMapping("/modify")
     @ApiOperation("修改用户")
-    public Result<String> modifyUser(@PathVariable Integer id, @RequestBody UserDTO userDTO) {
-        log.info("修改用户{}：{}", id, userDTO);
-        userService.modifyUser(id, userDTO);
+    public Result<String> modifyUser(@RequestBody UserDTO userDTO) {
+        log.info("修改用户：{}", userDTO);
+        userService.modifyUser( userDTO);
         return Result.success();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping
     @ApiOperation("删除用户")
-    public Result<String> deleteUser(@PathVariable Integer id) {
-        log.info("删除用户：{}", id);
-        userService.deleteUser(id);
+    public Result<String> deleteUser() {
+        log.info("删除用户");
+        userService.deleteUser();
         return Result.success();
     }
 
-    @PostMapping("/page/{id}")
+    @PostMapping("/page")
     @ApiOperation("获取用户分页")
-    public Result<IPage<UserVO>> getUserPages(@PathVariable Integer id, @RequestBody UserQueryDTO courseResourceQueryDTO) {
-        log.info("用户{}获取用户分页：{}", id, courseResourceQueryDTO);
-        return Result.success(userService.getUserPages(id, courseResourceQueryDTO));
+    public Result<IPage<UserVO>> getUserPages(@RequestBody UserQueryDTO courseResourceQueryDTO) {
+        log.info("获取用户分页：{}", courseResourceQueryDTO);
+        return Result.success(userService.getUserPages(courseResourceQueryDTO));
     }
 
-    @GetMapping("/detail/{id}")
+    @GetMapping("/detail")
     @ApiOperation("获取用户详情")
-    public Result<UserVO> getUserDetail(@PathVariable Integer id) {
-        log.info("获取用户详情：{}", id);
-        return Result.success(userService.getUserDetail(id));
+    public Result<UserVO> getUserDetail() {
+        log.info("获取用户详情");
+        return Result.success(userService.getUserDetail());
     }
 
     @GetMapping("/username/{id}")

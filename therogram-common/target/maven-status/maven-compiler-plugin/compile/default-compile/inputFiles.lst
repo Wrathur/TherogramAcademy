@@ -3,6 +3,7 @@ D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\utils\WebUtils.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\result\Result.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\exception\CommonException.java
+D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\interceptors\UserInfoInterceptor.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\utils\CookieBuilder.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\exception\BizIllegalException.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\utils\Convert.java
@@ -12,8 +13,8 @@ D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\exception\ForbiddenException.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\utils\BeanUtils.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\utils\UserContext.java
-D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\domain\PageDTO.java
+D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\config\MqConfig.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\advice\CommonExceptionAdvice.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\exception\DbException.java
+D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\config\MvcConfig.java
 D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\utils\CollUtils.java
-D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\therogram-common\src\main\java\com\wrathur\common\domain\PageQuery.java

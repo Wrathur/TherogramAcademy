@@ -19,7 +19,6 @@
         <module>user-service</module>
     </modules>
 
-    <!-- 继承 Spring Boot 官方 Parent，获得默认的依赖版本管理 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -28,12 +27,10 @@
     </parent>
 
     <properties>
-        <!-- JDK 版本升级至 21 -->
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-
-        <therogram.version>1.0.0</therogram.version>               <!-- 与 parent 一致，用于子模块显式引用（可选） -->
+        <therogram.version>1.0.0</therogram.version>
 
         <!-- 核心框架版本升级 -->
         <spring-boot.version>3.3.8</spring-boot.version>        <!-- 最新 3.3.x -->

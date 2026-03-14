@@ -46,15 +46,10 @@ spring:
 therogram:
   jwt:
     location: classpath:therogram.jks
-    alias: therogram
-    password: 123456
+    alias: hmall
+    password: hmall123
     tokenTTL: 30m
   auth:
     excludePaths:
       - /user/create
-#logging:
-#  level:
-#    org.springframework.cloud.loadbalancer: DEBUG
-#    org.springframework.cloud.gateway: DEBUG
-#    com.alibaba.cloud.nacos: DEBUG
-#    org.springframework.cloud.client.discovery: DEBUG
+      - /user/login
