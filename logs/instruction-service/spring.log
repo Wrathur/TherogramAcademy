@@ -54,3 +54,508 @@
 14:18:29:454  INFO 1604 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
 14:18:29:461  INFO 1604 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
 14:18:39:479  INFO 1604 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+14:26:44:847  INFO 24464 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 24464 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+14:26:44:848  INFO 24464 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+14:26:44:884  WARN 24464 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+14:26:45:803  INFO 24464 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8862bc84-c89b-31a1-bafb-dfa71450ba09
+14:26:46:200  INFO 24464 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+14:26:46:220  INFO 24464 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+14:26:46:220  INFO 24464 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+14:26:46:280  INFO 24464 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+14:26:46:280  INFO 24464 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1394 ms
+14:26:46:400  INFO 24464 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+14:26:46:473  INFO 24464 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+14:26:46:622  WARN 24464 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+14:26:46:625  WARN 24464 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+14:26:47:702  INFO 24464 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+14:26:47:720  INFO 24464 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+14:26:47:720  INFO 24464 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+14:26:47:821  INFO 24464 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+14:26:47:828  INFO 24464 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 4.151 seconds (process running for 4.63)
+14:26:47:836  INFO 24464 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+15:51:42:151  WARN 24464 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+15:51:42:151  WARN 24464 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+15:51:42:151  WARN 24464 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+15:51:42:151  WARN 24464 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+15:51:42:151  WARN 24464 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+15:51:42:151  WARN 24464 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+15:51:42:153  INFO 24464 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+15:51:42:158  INFO 24464 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+15:51:52:168  INFO 24464 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+17:32:44:276  INFO 28340 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 28340 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+17:32:44:277  INFO 28340 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+17:32:44:322  WARN 28340 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+17:32:45:228  INFO 28340 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8862bc84-c89b-31a1-bafb-dfa71450ba09
+17:32:45:622  INFO 28340 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+17:32:45:636  INFO 28340 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+17:32:45:636  INFO 28340 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+17:32:45:696  INFO 28340 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+17:32:45:697  INFO 28340 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1373 ms
+17:32:45:809  INFO 28340 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+17:32:45:878  INFO 28340 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+17:32:45:965  WARN 28340 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+17:32:45:968  WARN 28340 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+17:32:47:232  INFO 28340 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+17:32:47:245  INFO 28340 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+17:32:47:245  INFO 28340 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+17:32:47:347  INFO 28340 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+17:32:47:351  INFO 28340 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 4.695 seconds (process running for 5.286)
+17:32:47:370  INFO 28340 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+17:53:29:069  WARN 28340 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+17:53:29:069  WARN 28340 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+17:53:29:069  WARN 28340 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+17:53:29:072  WARN 28340 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+17:53:29:072  WARN 28340 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+17:53:29:072  WARN 28340 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+17:53:29:072  INFO 28340 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+17:53:29:077  INFO 28340 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+17:53:39:086  INFO 28340 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+17:53:59:204  INFO 26112 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 26112 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+17:53:59:205  INFO 26112 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+17:53:59:228  WARN 26112 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+17:53:59:676  INFO 26112 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8862bc84-c89b-31a1-bafb-dfa71450ba09
+17:53:59:879  INFO 26112 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+17:53:59:886  INFO 26112 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+17:53:59:887  INFO 26112 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+17:53:59:919  INFO 26112 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+17:53:59:919  INFO 26112 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 690 ms
+17:53:59:979  INFO 26112 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+17:54:00:018  INFO 26112 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+17:54:00:060  WARN 26112 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+17:54:00:061  WARN 26112 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+17:54:00:589  INFO 26112 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+17:54:00:597  INFO 26112 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+17:54:00:597  INFO 26112 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+17:54:00:682  INFO 26112 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+17:54:00:689  INFO 26112 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.252 seconds (process running for 2.565)
+17:54:00:698  INFO 26112 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+17:59:25:378  WARN 26112 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+17:59:25:378  WARN 26112 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+17:59:25:378  WARN 26112 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+17:59:25:378  WARN 26112 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+17:59:25:379  WARN 26112 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+17:59:25:379  WARN 26112 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+17:59:25:380  INFO 26112 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+17:59:25:383  INFO 26112 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+17:59:35:395  INFO 26112 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+17:59:40:965  INFO 14084 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 14084 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+17:59:40:965  INFO 14084 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+17:59:41:008  WARN 14084 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+17:59:41:703  INFO 14084 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe8d3e4c-1d80-3ce8-8263-aa8e61489065
+17:59:41:987  INFO 14084 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+17:59:41:995  INFO 14084 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+17:59:41:995  INFO 14084 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+17:59:42:029  INFO 14084 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+17:59:42:030  INFO 14084 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1021 ms
+17:59:42:093  INFO 14084 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+17:59:42:134  INFO 14084 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+17:59:42:184  WARN 14084 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+17:59:42:186  WARN 14084 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+17:59:42:756  INFO 14084 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+17:59:42:764  INFO 14084 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+17:59:42:764  INFO 14084 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+17:59:42:850  INFO 14084 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+17:59:42:857  INFO 14084 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 3.054 seconds (process running for 3.478)
+17:59:42:865  INFO 14084 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+18:02:17:356  WARN 14084 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+18:02:17:356  WARN 14084 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+18:02:17:357  WARN 14084 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+18:02:17:357  WARN 14084 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+18:02:17:357  WARN 14084 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+18:02:17:357  WARN 14084 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+18:02:17:357  INFO 14084 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+18:02:17:361  INFO 14084 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+18:02:27:374  INFO 14084 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+19:26:00:294  INFO 2020 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 2020 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+19:26:00:294  INFO 2020 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+19:26:00:334  WARN 2020 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+19:26:00:930  INFO 2020 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe8d3e4c-1d80-3ce8-8263-aa8e61489065
+19:26:01:166  INFO 2020 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+19:26:01:177  INFO 2020 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+19:26:01:177  INFO 2020 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+19:26:01:211  INFO 2020 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+19:26:01:211  INFO 2020 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 876 ms
+19:26:01:289  INFO 2020 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+19:26:01:336  INFO 2020 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+19:26:01:387  WARN 2020 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+19:26:01:389  WARN 2020 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+19:26:02:041  INFO 2020 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+19:26:02:052  INFO 2020 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+19:26:02:052  INFO 2020 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+19:26:02:144  INFO 2020 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+19:26:02:152  INFO 2020 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.735 seconds (process running for 3.109)
+19:26:02:163  INFO 2020 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+19:30:48:004  INFO 2020 --- [instruction-service] [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+19:30:48:009  INFO 2020 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+19:30:48:009  INFO 2020 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+19:30:48:019  INFO 2020 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+19:30:48:039  INFO 2020 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 通过课程11获取所有未删除的作业
+19:30:48:121  INFO 2020 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+19:30:48:389  INFO 2020 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1576f0de
+19:30:48:389  INFO 2020 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+19:30:57:381  INFO 2020 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+19:30:57:381  INFO 2020 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 通过课程11获取所有未删除的作业
+19:33:16:073  INFO 2020 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+19:33:16:079  INFO 2020 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.c.CourseResourceController         : 通过课程4获取所有未删除的教学资源
+19:33:16:096  INFO 2020 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+19:33:16:096  INFO 2020 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 通过课程4获取所有未删除的作业
+19:34:10:480  INFO 2020 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+19:34:10:480  INFO 2020 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.c.CourseResourceController         : 通过课程2获取所有未删除的教学资源
+19:34:10:491  INFO 2020 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+19:34:10:491  INFO 2020 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 通过课程2获取所有未删除的作业
+19:34:45:382  INFO 2020 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+19:34:45:382  INFO 2020 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.c.CourseResourceController         : 通过课程1获取所有未删除的教学资源
+19:34:45:392  INFO 2020 --- [instruction-service] [http-nio-8083-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+19:34:45:392  INFO 2020 --- [instruction-service] [http-nio-8083-exec-9] c.w.i.controller.HomeworkController      : 通过课程1获取所有未删除的作业
+19:44:06:383  WARN 2020 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+19:44:06:383  WARN 2020 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+19:44:06:383  WARN 2020 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+19:44:06:383  WARN 2020 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+19:44:06:383  WARN 2020 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+19:44:06:384  WARN 2020 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+19:44:06:384  INFO 2020 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+19:44:06:389  INFO 2020 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+19:44:16:393  INFO 2020 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+19:44:16:404  INFO 2020 --- [instruction-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+19:44:16:413  INFO 2020 --- [instruction-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+19:45:36:290  INFO 28144 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 28144 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+19:45:36:291  INFO 28144 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+19:45:36:325  WARN 28144 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+19:45:36:950  INFO 28144 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0e531022-e4c0-3d6d-a34d-90a941b27b85
+19:45:37:227  INFO 28144 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+19:45:37:237  INFO 28144 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+19:45:37:237  INFO 28144 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+19:45:37:274  INFO 28144 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+19:45:37:274  INFO 28144 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 946 ms
+19:45:37:351  INFO 28144 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+19:45:37:398  INFO 28144 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+19:45:37:452  WARN 28144 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+19:45:37:454  WARN 28144 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+19:45:38:137  INFO 28144 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+19:45:38:145  INFO 28144 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+19:45:38:145  INFO 28144 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+19:45:38:236  INFO 28144 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+19:45:38:243  INFO 28144 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.967 seconds (process running for 3.488)
+19:45:38:253  INFO 28144 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+19:47:32:128  WARN 28144 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+19:47:32:128  WARN 28144 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+19:47:32:128  WARN 28144 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+19:47:32:131  WARN 28144 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+19:47:32:131  WARN 28144 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+19:47:32:131  WARN 28144 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+19:47:32:131  INFO 28144 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+19:47:32:137  INFO 28144 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+19:47:42:148  INFO 28144 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+19:48:43:639  INFO 21560 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 21560 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+19:48:43:640  INFO 21560 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+19:48:43:674  WARN 21560 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+19:48:44:216  INFO 21560 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0e531022-e4c0-3d6d-a34d-90a941b27b85
+19:48:44:448  INFO 21560 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+19:48:44:455  INFO 21560 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+19:48:44:456  INFO 21560 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+19:48:44:488  INFO 21560 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+19:48:44:488  INFO 21560 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 813 ms
+19:48:44:555  INFO 21560 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+19:48:44:601  INFO 21560 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+19:48:44:651  WARN 21560 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+19:48:44:653  WARN 21560 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+19:48:45:345  INFO 21560 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+19:48:45:356  INFO 21560 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+19:48:45:356  INFO 21560 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+19:48:45:592  INFO 21560 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+19:48:45:600  INFO 21560 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.797 seconds (process running for 3.126)
+19:48:45:610  INFO 21560 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+19:50:46:216  WARN 21560 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+19:50:46:216  WARN 21560 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+19:50:46:216  WARN 21560 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+19:50:46:216  WARN 21560 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+19:50:46:216  WARN 21560 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+19:50:46:216  WARN 21560 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+19:50:46:216  INFO 21560 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+19:50:46:225  INFO 21560 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+19:50:56:244  INFO 21560 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+19:55:50:064  INFO 27604 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 27604 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+19:55:50:065  INFO 27604 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+19:55:50:103  WARN 27604 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+19:55:50:868  INFO 27604 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0e531022-e4c0-3d6d-a34d-90a941b27b85
+19:55:51:261  INFO 27604 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+19:55:51:281  INFO 27604 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+19:55:51:281  INFO 27604 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+19:55:51:351  INFO 27604 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+19:55:51:351  INFO 27604 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1247 ms
+19:55:51:529  INFO 27604 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+19:55:51:661  INFO 27604 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+19:55:51:751  WARN 27604 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+19:55:51:761  WARN 27604 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+19:55:52:905  INFO 27604 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+19:55:52:915  INFO 27604 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+19:55:52:915  INFO 27604 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+19:55:53:032  INFO 27604 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+19:55:53:048  INFO 27604 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 4.125 seconds (process running for 4.551)
+19:55:53:064  INFO 27604 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+20:00:56:222  INFO 27604 --- [instruction-service] [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+20:00:56:222  INFO 27604 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20:00:56:222  INFO 27604 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+20:00:56:240  INFO 27604 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+20:00:56:244 ERROR 27604 --- [instruction-service] [http-nio-8083-exec-1] c.w.common.advice.CommonExceptionAdvice  : 其他异常 uri : / -> 
+
+org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .
+	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:586) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+20:00:56:306  INFO 27604 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+20:00:56:308 ERROR 27604 --- [instruction-service] [http-nio-8083-exec-2] c.w.common.advice.CommonExceptionAdvice  : 其他异常 uri : /favicon.ico -> 
+
+org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.
+	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:586) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.16.jar:6.1.16]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+20:01:00:482  WARN 27604 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+20:01:00:482  WARN 27604 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+20:01:00:482  WARN 27604 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+20:01:00:482  WARN 27604 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+20:01:00:482  WARN 27604 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+20:01:00:483  WARN 27604 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+20:01:00:483  INFO 27604 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+20:01:00:486  INFO 27604 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+20:01:10:501  INFO 27604 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+20:01:46:307  INFO 17952 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 17952 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+20:01:46:308  INFO 17952 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+20:01:46:346  WARN 17952 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+20:01:46:972  INFO 17952 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8862bc84-c89b-31a1-bafb-dfa71450ba09
+20:01:47:265  INFO 17952 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+20:01:47:274  INFO 17952 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+20:01:47:274  INFO 17952 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+20:01:47:311  INFO 17952 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+20:01:47:311  INFO 17952 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 963 ms
+20:01:47:389  INFO 17952 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+20:01:47:439  INFO 17952 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+20:01:47:492  WARN 17952 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+20:01:47:494  WARN 17952 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+20:01:48:230  INFO 17952 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+20:01:48:240  INFO 17952 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+20:01:48:240  INFO 17952 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+20:01:48:416  INFO 17952 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+20:01:48:428  INFO 17952 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 3.055 seconds (process running for 3.402)
+20:01:48:441  INFO 17952 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+20:08:26:401  WARN 17952 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+20:08:26:401  WARN 17952 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+20:08:26:401  WARN 17952 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+20:08:26:403  WARN 17952 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+20:08:26:403  WARN 17952 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+20:08:26:403  WARN 17952 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+20:08:26:403  INFO 17952 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+20:08:26:406  INFO 17952 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+20:08:36:416  INFO 17952 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+20:09:04:710  INFO 26060 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 26060 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+20:09:04:711  INFO 26060 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+20:09:04:738  WARN 26060 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+20:09:05:289  INFO 26060 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d202f635-2743-3785-a481-408ed2f7b9a8
+20:09:05:525  INFO 26060 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+20:09:05:535  INFO 26060 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+20:09:05:535  INFO 26060 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+20:09:05:573  INFO 26060 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+20:09:05:573  INFO 26060 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 834 ms
+20:09:05:638  INFO 26060 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+20:09:05:687  INFO 26060 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+20:09:05:734  WARN 26060 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+20:09:05:737  WARN 26060 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+20:09:06:330  INFO 26060 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+20:09:06:343  INFO 26060 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+20:09:06:343  INFO 26060 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+20:09:06:437  INFO 26060 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+20:09:06:444  INFO 26060 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.761 seconds (process running for 3.133)
+20:09:06:451  INFO 26060 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+20:12:08:230  WARN 26060 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+20:12:08:231  WARN 26060 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+20:12:08:231  WARN 26060 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+20:12:08:231  WARN 26060 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+20:12:08:231  WARN 26060 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+20:12:08:231  WARN 26060 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+20:12:08:232  INFO 26060 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+20:12:08:235  INFO 26060 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+20:12:18:250  INFO 26060 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+20:12:30:356  INFO 11472 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 11472 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+20:12:30:356  INFO 11472 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+20:12:30:385  WARN 11472 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+20:12:31:006  INFO 11472 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8862bc84-c89b-31a1-bafb-dfa71450ba09
+20:12:31:248  INFO 11472 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+20:12:31:257  INFO 11472 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+20:12:31:257  INFO 11472 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+20:12:31:294  INFO 11472 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+20:12:31:294  INFO 11472 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 908 ms
+20:12:31:368  INFO 11472 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+20:12:31:415  INFO 11472 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+20:12:31:509  WARN 11472 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+20:12:31:511  WARN 11472 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+20:12:32:230  INFO 11472 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+20:12:32:239  INFO 11472 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+20:12:32:239  INFO 11472 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+20:12:32:329  INFO 11472 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+20:12:32:336  INFO 11472 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.907 seconds (process running for 3.278)
+20:12:32:345  INFO 11472 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+20:14:28:162  WARN 11472 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+20:14:28:162  WARN 11472 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+20:14:28:162  WARN 11472 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+20:14:28:162  WARN 11472 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+20:14:28:162  WARN 11472 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+20:14:28:162  WARN 11472 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+20:14:28:163  INFO 11472 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+20:14:28:169  INFO 11472 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+20:14:38:187  INFO 11472 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+20:16:06:451  INFO 14496 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 14496 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+20:16:06:451  INFO 14496 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+20:16:06:478  WARN 14496 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+20:16:07:020  INFO 14496 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d202f635-2743-3785-a481-408ed2f7b9a8
+20:16:07:238  INFO 14496 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+20:16:07:247  INFO 14496 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+20:16:07:247  INFO 14496 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+20:16:07:278  INFO 14496 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+20:16:07:278  INFO 14496 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 798 ms
+20:16:07:350  INFO 14496 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+20:16:07:390  INFO 14496 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+20:16:07:452  WARN 14496 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+20:16:07:454  WARN 14496 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+20:16:08:128  INFO 14496 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+20:16:08:138  INFO 14496 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+20:16:08:139  INFO 14496 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+20:16:08:233  INFO 14496 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+20:16:08:241  INFO 14496 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.739 seconds (process running for 3.114)
+20:16:08:250  INFO 14496 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+20:20:10:830  WARN 14496 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+20:20:10:830  WARN 14496 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+20:20:10:830  WARN 14496 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+20:20:10:830  WARN 14496 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+20:20:10:830  WARN 14496 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+20:20:10:830  WARN 14496 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+20:20:10:830  INFO 14496 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+20:20:10:836  INFO 14496 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+20:20:20:845  INFO 14496 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+20:21:33:569  INFO 23368 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 23368 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+20:21:33:569  INFO 23368 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+20:21:33:620  WARN 23368 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+20:21:34:480  INFO 23368 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8862bc84-c89b-31a1-bafb-dfa71450ba09
+20:21:35:114  INFO 23368 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+20:21:35:131  INFO 23368 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+20:21:35:131  INFO 23368 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+20:21:35:195  INFO 23368 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+20:21:35:195  INFO 23368 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1573 ms
+20:21:35:308  INFO 23368 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+20:21:35:377  INFO 23368 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+20:21:35:462  WARN 23368 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+20:21:35:465  WARN 23368 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+20:21:36:759  INFO 23368 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+20:21:36:773  INFO 23368 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+20:21:36:773  INFO 23368 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+20:21:36:892  INFO 23368 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+20:21:36:903  INFO 23368 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 4.762 seconds (process running for 5.605)
+20:21:36:917  INFO 23368 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+20:23:00:648  INFO 23368 --- [instruction-service] [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+20:23:00:648  INFO 23368 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20:23:00:648  INFO 23368 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+20:23:00:665  INFO 23368 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+20:23:00:693  INFO 23368 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 通过课程11获取所有未删除的作业
+20:23:00:765  INFO 23368 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+20:23:00:998  INFO 23368 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2b588b3e
+20:23:00:998  INFO 23368 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+20:27:04:073  INFO 23368 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+20:27:04:073  INFO 23368 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 通过课程11获取所有未删除的作业
+20:27:20:980  INFO 23368 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+20:27:20:980  INFO 23368 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 通过课程11获取所有未删除的作业
+20:27:25:309  INFO 23368 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+20:27:25:309  INFO 23368 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 通过课程11获取所有未删除的作业
+20:27:42:688  INFO 23368 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+20:27:42:692  INFO 23368 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.c.CourseResourceController         : 通过课程11获取所有未删除的教学资源
+20:27:42:697  INFO 23368 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+20:27:42:703  INFO 23368 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 通过课程11获取所有未删除的作业
+20:29:16:685  WARN 23368 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+20:29:16:688  WARN 23368 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+20:29:16:685  WARN 23368 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+20:29:16:688  WARN 23368 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+20:29:16:688  WARN 23368 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+20:29:16:688  WARN 23368 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+20:29:16:689  INFO 23368 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+20:29:16:692  INFO 23368 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+20:29:26:709  INFO 23368 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+20:29:26:720  INFO 23368 --- [instruction-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+20:29:26:725  INFO 23368 --- [instruction-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

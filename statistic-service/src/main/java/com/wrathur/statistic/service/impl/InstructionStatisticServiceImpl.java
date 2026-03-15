@@ -119,11 +119,15 @@ public class InstructionStatisticServiceImpl implements IInstructionStatisticSer
     public List<Integer> overallScoreSectionalStatistic() {
         Map<String, Object> map = userMapper.selectOverallScoreSectional();
         List<Integer> result = new ArrayList<>();
-        result.add(((Number) map.get("section1")).intValue());
-        result.add(((Number) map.get("section2")).intValue());
-        result.add(((Number) map.get("section3")).intValue());
-        result.add(((Number) map.get("section4")).intValue());
-        result.add(((Number) map.get("section5")).intValue());
+        if (map == null) {
+            for (int i = 0; i < 5; i++) result.add(0);
+        } else {
+            result.add(((Number) map.get("section1")).intValue());
+            result.add(((Number) map.get("section2")).intValue());
+            result.add(((Number) map.get("section3")).intValue());
+            result.add(((Number) map.get("section4")).intValue());
+            result.add(((Number) map.get("section5")).intValue());
+        }
         return result;
     }
 
@@ -131,11 +135,15 @@ public class InstructionStatisticServiceImpl implements IInstructionStatisticSer
     public List<Integer> personalScoreSectionalStatistic(Integer userId) {
         Map<String, Object> map = studentCourseMapper.selectPersonalScoreSectional(userId);
         List<Integer> result = new ArrayList<>();
-        result.add(((Number) map.get("section1")).intValue());
-        result.add(((Number) map.get("section2")).intValue());
-        result.add(((Number) map.get("section3")).intValue());
-        result.add(((Number) map.get("section4")).intValue());
-        result.add(((Number) map.get("section5")).intValue());
+        if (map == null) {
+            for (int i = 0; i < 5; i++) result.add(0);
+        } else {
+            result.add(((Number) map.get("section1")).intValue());
+            result.add(((Number) map.get("section2")).intValue());
+            result.add(((Number) map.get("section3")).intValue());
+            result.add(((Number) map.get("section4")).intValue());
+            result.add(((Number) map.get("section5")).intValue());
+        }
         return result;
     }
 }

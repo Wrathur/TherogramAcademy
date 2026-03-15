@@ -13,10 +13,10 @@ public interface ICourseStatisticService {
     public Integer personalCourseCountStatistic(Integer id);
 
     // 全站选课人数统计
-    public Integer overallTotalSelectCountStatistic();
+    public Integer overallSelectCountStatistic();
 
     // 个人选课人数统计
-    public Integer personalTotalSelectCountStatistic(Integer id);
+    public Integer personalSelectCountStatistic(Integer id);
 
     // 全站课程完成率平均统计
     public BigDecimal overallCourseCompletionRateAverageStatistic();
@@ -35,7 +35,4 @@ public interface ICourseStatisticService {
 
     // 个人课程完成率分段统计
     public List<Integer> personalCourseCompletionRateSectionalStatistic(Integer id);
-
-    // 通过用户查询该课程的完成率
-    BigDecimal getCourseCompletionRateForUser(Integer courseId, Integer userId);
 }

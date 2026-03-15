@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.wrathur.api.client.InstructionServiceClient;
 import com.wrathur.api.client.UserServiceClient;
+import com.wrathur.common.config.RabbitConfig;
+import com.wrathur.common.event.StatisticEvent;
 import com.wrathur.common.utils.UserContext;
 import com.wrathur.course.domain.dto.CourseDTO;
 import com.wrathur.course.domain.dto.CourseQueryDTO;
@@ -20,12 +22,14 @@ import com.wrathur.course.mapper.*;
 import com.wrathur.course.service.ICourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -42,6 +46,7 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
     private final StudentHomeworkMapper studentHomeworkMapper;
     private final InstructionServiceClient instructionServiceClient;
     private final UserServiceClient userServiceClient;
+    private final RabbitTemplate rabbitTemplate;
 
     // 创建课程
     @Override
@@ -83,11 +88,19 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
                         .set(Course::getDeleteTime, LocalDateTime.now()));
 
         // 查询选修了该课程的所有学生，将其从学生课程表逻辑删除
-        studentCourseMapper.update(null,
-                new LambdaUpdateWrapper<StudentCourse>()
+        List<Integer> studentIds = studentCourseMapper.selectList(
+                new LambdaQueryWrapper<StudentCourse>()
                         .eq(StudentCourse::getCourseId, id)
-                        .set(StudentCourse::getIsDeleted, true)
-                        .set(StudentCourse::getDeleteTime, LocalDateTime.now()));
+                        .eq(StudentCourse::getIsDeleted, false)
+                        .select(StudentCourse::getStudentId)
+        ).stream().map(StudentCourse::getStudentId).toList();
+        if (!studentIds.isEmpty()) {
+            studentCourseMapper.update(null,
+                    new LambdaUpdateWrapper<StudentCourse>()
+                            .eq(StudentCourse::getCourseId, id)
+                            .set(StudentCourse::getIsDeleted, true)
+                            .set(StudentCourse::getDeleteTime, LocalDateTime.now()));
+        }
 
         // 远程调用教学服务获取该课程所有未删除的教学资源
         List<Integer> courseResourceIds = instructionServiceClient.getCourseResourceIdsByCourseId(id);
@@ -121,6 +134,10 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
                             .set(StudentHomework::getIsDeleted, true)
                             .set(StudentHomework::getDeleteTime, LocalDateTime.now()));
         }
+
+        StatisticEvent event = new StatisticEvent("COURSE_DELETED", studentIds);
+        rabbitTemplate.convertAndSend(RabbitConfig.COURSE_EXCHANGE, RabbitConfig.COURSE_ROUTING_KEY, event);
+        rabbitTemplate.convertAndSend(RabbitConfig.INSTRUCTION_EXCHANGE, RabbitConfig.INSTRUCTION_ROUTING_KEY, event);
     }
 
     // 获取课程分页
@@ -464,10 +481,11 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void selectCourse(Integer id) {
+        Integer studentId = UserContext.getUser();
         // 处理学生课程关联表
         StudentCourse existingCourse = studentCourseMapper.selectOne(
                 new LambdaQueryWrapper<StudentCourse>()
-                        .eq(StudentCourse::getStudentId, UserContext.getUser())
+                        .eq(StudentCourse::getStudentId, studentId)
                         .eq(StudentCourse::getCourseId, id)
                         .eq(StudentCourse::getIsDeleted, false)
         );
@@ -480,7 +498,7 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
         // 检查是否存在已删除的记录
         StudentCourse deletedCourse = studentCourseMapper.selectOne(
                 new LambdaQueryWrapper<StudentCourse>()
-                        .eq(StudentCourse::getStudentId, UserContext.getUser())
+                        .eq(StudentCourse::getStudentId, studentId)
                         .eq(StudentCourse::getCourseId, id)
                         .eq(StudentCourse::getIsDeleted, true)
         );
@@ -493,12 +511,12 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
             // 由于是复合主键，不能用updateById，应使用 update
             studentCourseMapper.update(deletedCourse,
                     new LambdaUpdateWrapper<StudentCourse>()
-                            .eq(StudentCourse::getStudentId, UserContext.getUser())
+                            .eq(StudentCourse::getStudentId, studentId)
                             .eq(StudentCourse::getCourseId, id));
         } else {
             // 新增课程记录
             StudentCourse studentCourse = new StudentCourse();
-            studentCourse.setStudentId(UserContext.getUser());
+            studentCourse.setStudentId(studentId);
             studentCourse.setCourseId(id);
             studentCourse.setProgress(0);
             studentCourse.setStudyTime(0);
@@ -522,7 +540,7 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
                         // 检查该作业是否存在
                         StudentHomework existingHomework = studentHomeworkMapper.selectOne(
                                 new LambdaQueryWrapper<StudentHomework>()
-                                        .eq(StudentHomework::getStudentId, UserContext.getUser())
+                                        .eq(StudentHomework::getStudentId, studentId)
                                         .eq(StudentHomework::getHomeworkId, homeworkId)
                                         .eq(StudentHomework::getIsDeleted, false)
                         );
@@ -535,7 +553,7 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
                         // 检查是否存在已删除的记录
                         StudentHomework deletedHomework = studentHomeworkMapper.selectOne(
                                 new LambdaQueryWrapper<StudentHomework>()
-                                        .eq(StudentHomework::getStudentId, UserContext.getUser())
+                                        .eq(StudentHomework::getStudentId, studentId)
                                         .eq(StudentHomework::getHomeworkId, homeworkId)
                                         .eq(StudentHomework::getIsDeleted, true)
                         );
@@ -546,14 +564,14 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
                             deletedHomework.setUpdateTime(LocalDateTime.now());
                             studentHomeworkMapper.update(deletedHomework,
                                     new LambdaUpdateWrapper<StudentHomework>()
-                                            .eq(StudentHomework::getStudentId, UserContext.getUser())
+                                            .eq(StudentHomework::getStudentId, studentId)
                                             .eq(StudentHomework::getHomeworkId, homeworkId)
                                             .eq(StudentHomework::getIsDeleted, true));
                             return null;
                         } else {
                             // 新增作业记录
                             StudentHomework studentHomework = new StudentHomework();
-                            studentHomework.setStudentId(UserContext.getUser());
+                            studentHomework.setStudentId(studentId);
                             studentHomework.setHomeworkId(homeworkId);
                             studentHomework.setReviewStatus("UNSUBMITTED");
                             studentHomework.setIsDeleted(false);
@@ -570,16 +588,21 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
                 studentHomeworkMapper.insertBatch(homeworkList);
             }
         }
+
+        StatisticEvent event = new StatisticEvent("COURSE_SELECTED", Collections.singletonList(studentId));
+        rabbitTemplate.convertAndSend(RabbitConfig.COURSE_EXCHANGE, RabbitConfig.COURSE_ROUTING_KEY, event);
+        rabbitTemplate.convertAndSend(RabbitConfig.INSTRUCTION_EXCHANGE, RabbitConfig.INSTRUCTION_ROUTING_KEY, event);
     }
 
     // 退选课程
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deselectCourse(Integer id) {
+        Integer studentId = UserContext.getUser();
         // 查询该学生，将其从学生课程表逻辑删除
         studentCourseMapper.update(null,
                 new LambdaUpdateWrapper<StudentCourse>()
-                        .eq(StudentCourse::getStudentId, UserContext.getUser())
+                        .eq(StudentCourse::getStudentId, studentId)
                         .eq(StudentCourse::getCourseId, id)
                         .set(StudentCourse::getIsDeleted, true)
                         .set(StudentCourse::getDeleteTime, LocalDateTime.now()));
@@ -599,11 +622,37 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
             // 删除学生作业关联表项
             studentHomeworkMapper.update(null,
                     new LambdaUpdateWrapper<StudentHomework>()
-                            .eq(StudentHomework::getStudentId, UserContext.getUser())
+                            .eq(StudentHomework::getStudentId, studentId)
                             .in(StudentHomework::getHomeworkId, homeworkIds)
                             .set(StudentHomework::getIsDeleted, true)
                             .set(StudentHomework::getDeleteTime, LocalDateTime.now()));
         }
+
+        StatisticEvent event = new StatisticEvent("COURSE_DESELECTED", Collections.singletonList(studentId));
+        rabbitTemplate.convertAndSend(RabbitConfig.COURSE_EXCHANGE, RabbitConfig.COURSE_ROUTING_KEY, event);
+        rabbitTemplate.convertAndSend(RabbitConfig.INSTRUCTION_EXCHANGE, RabbitConfig.INSTRUCTION_ROUTING_KEY, event);
+    }
+
+    // 更新课程进度
+    @Override
+    public void updateCourseProgress(Integer progress, Integer studyTime, Integer studentId, Integer courseId) {
+        StudentCourse studentCourse = studentCourseMapper.selectOne(
+                new LambdaQueryWrapper<StudentCourse>()
+                        .eq(StudentCourse::getStudentId, studentId)
+                        .eq(StudentCourse::getCourseId, courseId)
+                        .eq(StudentCourse::getIsDeleted, false));
+        studentCourse.setProgress(progress);
+        studentCourse.setStudyTime(studyTime);
+        studentCourse.setUpdateTime(LocalDateTime.now());
+
+        studentCourseMapper.update(studentCourse,
+                new MPJLambdaWrapper<StudentCourse>()
+                        .eq(StudentCourse::getStudentId, studentId)
+                        .eq(StudentCourse::getCourseId, courseId));
+
+        StatisticEvent event = new StatisticEvent("COURSE_PROGRESS_UPDATED", Collections.singletonList(studentId));
+        rabbitTemplate.convertAndSend(RabbitConfig.COURSE_EXCHANGE, RabbitConfig.COURSE_ROUTING_KEY, event);
+        rabbitTemplate.convertAndSend(RabbitConfig.INSTRUCTION_EXCHANGE, RabbitConfig.INSTRUCTION_ROUTING_KEY, event);
     }
 
     // 评定课程
@@ -622,6 +671,9 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
                 new MPJLambdaWrapper<StudentCourse>()
                         .eq(StudentCourse::getStudentId, studentId)
                         .eq(StudentCourse::getCourseId, courseId));
+
+        StatisticEvent event = new StatisticEvent("COURSE_EVALUATED", Collections.singletonList(studentId));
+        rabbitTemplate.convertAndSend(RabbitConfig.INSTRUCTION_EXCHANGE, RabbitConfig.INSTRUCTION_ROUTING_KEY, event);
     }
 
     // 通过课程获取所有未退选的学生

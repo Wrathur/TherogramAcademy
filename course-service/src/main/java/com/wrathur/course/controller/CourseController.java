@@ -116,6 +116,14 @@ public class CourseController {
         return Result.success();
     }
 
+    @PatchMapping("/updateProgress/{progress}/{studyTime}/{studentId}/{courseId}")
+    @ApiOperation("更新课程进度")
+    public Result<String> updateCourseProgress(@PathVariable Integer progress, @PathVariable Integer studyTime, @PathVariable Integer studentId, @PathVariable Integer courseId) {
+        log.info("更新学生{}的课程{}进度：{},{}", studentId, courseId, progress, studyTime);
+        courseService.updateCourseProgress(progress, studyTime, studentId, courseId);
+        return Result.success();
+    }
+
     @PatchMapping("/evaluate/{score}/{studentId}/{courseId}")
     @ApiOperation("评定课程")
     public Result<String> evaluateCourse(@PathVariable BigDecimal score, @PathVariable Integer studentId, @PathVariable Integer courseId) {

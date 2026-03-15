@@ -47,7 +47,10 @@ public interface ICourseService extends IService<StudentCourse> {
     public void selectCourse(Integer id);
 
     // 退选课程
-    void deselectCourse(Integer id);
+    public void deselectCourse(Integer id);
+
+    // 更新课程进度
+    public void updateCourseProgress(Integer progress, Integer studyTime, Integer studentId, Integer courseId);
 
     // 评定课程
     public void evaluateCourse(BigDecimal score, Integer studentId, Integer courseId);

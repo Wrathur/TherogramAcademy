@@ -55,6 +55,8 @@ logging:
     org.springframework.cloud.loadbalancer: DEBUG
     com.alibaba.cloud.nacos: DEBUG
     org.springframework.cloud.gateway: DEBUG
+    org.springframework.amqp: DEBUG
+    com.rabbitmq.client: DEBUG
   pattern:
     dateformat: HH:mm:ss:SSS
   file:

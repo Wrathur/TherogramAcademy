@@ -40,14 +40,14 @@ public class CourseStatisticServiceImpl implements ICourseStatisticService {
     }
 
     @Override
-    public Integer overallTotalSelectCountStatistic() {
+    public Integer overallSelectCountStatistic() {
         return Math.toIntExact(studentCourseMapper.selectCount(
                 new LambdaQueryWrapper<StudentCourse>().eq(StudentCourse::getIsDeleted, false)
         ));
     }
 
     @Override
-    public Integer personalTotalSelectCountStatistic(Integer userId) {
+    public Integer personalSelectCountStatistic(Integer userId) {
         return Math.toIntExact(studentCourseMapper.selectCount(
                 new LambdaQueryWrapper<StudentCourse>()
                         .eq(StudentCourse::getStudentId, userId)
@@ -104,11 +104,15 @@ public class CourseStatisticServiceImpl implements ICourseStatisticService {
     public List<Integer> overallCourseCompletionRateSectionalStatistic() {
         Map<String, Object> map = courseMapper.selectOverallCompletionSectional();
         List<Integer> result = new ArrayList<>();
-        result.add(((Number) map.get("section1")).intValue());
-        result.add(((Number) map.get("section2")).intValue());
-        result.add(((Number) map.get("section3")).intValue());
-        result.add(((Number) map.get("section4")).intValue());
-        result.add(((Number) map.get("section5")).intValue());
+        if (map == null) {
+            for (int i = 0; i < 5; i++) result.add(0);
+        } else {
+            result.add(((Number) map.get("section1")).intValue());
+            result.add(((Number) map.get("section2")).intValue());
+            result.add(((Number) map.get("section3")).intValue());
+            result.add(((Number) map.get("section4")).intValue());
+            result.add(((Number) map.get("section5")).intValue());
+        }
         return result;
     }
 
@@ -116,24 +120,15 @@ public class CourseStatisticServiceImpl implements ICourseStatisticService {
     public List<Integer> personalCourseCompletionRateSectionalStatistic(Integer userId) {
         Map<String, Object> map = studentCourseMapper.selectPersonalCompletionSectional(userId);
         List<Integer> result = new ArrayList<>();
-        result.add(((Number) map.get("section1")).intValue());
-        result.add(((Number) map.get("section2")).intValue());
-        result.add(((Number) map.get("section3")).intValue());
-        result.add(((Number) map.get("section4")).intValue());
-        result.add(((Number) map.get("section5")).intValue());
+        if (map == null) {
+            for (int i = 0; i < 5; i++) result.add(0);
+        } else {
+            result.add(((Number) map.get("section1")).intValue());
+            result.add(((Number) map.get("section2")).intValue());
+            result.add(((Number) map.get("section3")).intValue());
+            result.add(((Number) map.get("section4")).intValue());
+            result.add(((Number) map.get("section5")).intValue());
+        }
         return result;
-    }
-
-    @Override
-    public BigDecimal getCourseCompletionRateForUser(Integer courseId, Integer userId) {
-        StudentCourse sc = studentCourseMapper.selectOne(
-                new LambdaQueryWrapper<StudentCourse>()
-                        .eq(StudentCourse::getCourseId, courseId)
-                        .eq(StudentCourse::getStudentId, userId)
-                        .eq(StudentCourse::getIsDeleted, false)
-        );
-        return sc != null && sc.getProgress() != null
-                ? BigDecimal.valueOf(sc.getProgress())
-                : BigDecimal.ZERO;
     }
 }

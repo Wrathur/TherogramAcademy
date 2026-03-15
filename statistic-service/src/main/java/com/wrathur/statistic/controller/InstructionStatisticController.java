@@ -28,8 +28,6 @@ public class InstructionStatisticController {
     private final IInstructionStatisticService instructionStatisticService;
     private final RedisTemplate<String, Object> redisTemplate;
 
-    private static final String KEY_TEACHER_COUNT = "stat:instruction:teacherCount";
-    private static final String KEY_STUDENT_COUNT = "stat:instruction:studentCount";
     private static final String KEY_OVERALL_STUDY_TIME = "stat:instruction:overall:studyTime";
     private static final String KEY_PERSONAL_STUDY_TIME_PREFIX = "stat:instruction:personal:studyTime:";
     private static final String KEY_OVERALL_SCORE_AVG = "stat:instruction:overall:scoreAvg";
@@ -43,28 +41,17 @@ public class InstructionStatisticController {
     @ApiOperation("教师用户数量统计")
     public Result<Integer> teacherUserCountStatistic() {
         log.info("教师用户数量统计");
-        Integer count = (Integer) redisTemplate.opsForValue().get(KEY_TEACHER_COUNT);
-        if (count == null) {
-            log.info("/从数据库获取");
-            count = instructionStatisticService.teacherUserCountStatistic();
-            redisTemplate.opsForValue().set(KEY_TEACHER_COUNT, count, 1, TimeUnit.HOURS);
-        }
-        return Result.success(count);
+        return Result.success(instructionStatisticService.teacherUserCountStatistic());
     }
 
     @GetMapping("/studentUserCount")
     @ApiOperation("学生用户数量统计")
     public Result<Integer> studentUserCountStatistic() {
         log.info("学生用户数量统计");
-        Integer count = (Integer) redisTemplate.opsForValue().get(KEY_STUDENT_COUNT);
-        if (count == null) {
-            log.info("/从数据库获取");
-            count = instructionStatisticService.studentUserCountStatistic();
-            redisTemplate.opsForValue().set(KEY_STUDENT_COUNT, count, 1, TimeUnit.HOURS);
-        }
-        return Result.success(count);
+        return Result.success(instructionStatisticService.studentUserCountStatistic());
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     @GetMapping("/overallStudyTime")
     @ApiOperation("全站学习时长统计")
     public Result<Integer> overallStudyTimeStatistic() {
@@ -78,6 +65,7 @@ public class InstructionStatisticController {
         return Result.success(total);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     @GetMapping("/personalStudyTime")
     @ApiOperation("个人学习时长统计")
     public Result<Integer> personalStudyTimeStatistic() {
@@ -94,6 +82,7 @@ public class InstructionStatisticController {
         return Result.success(time);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     @GetMapping("/overallScoreAverage")
     @ApiOperation("全站成绩平均统计")
     public Result<BigDecimal> overallScoreAverageStatistic() {
@@ -107,6 +96,7 @@ public class InstructionStatisticController {
         return Result.success(avg);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     @GetMapping("/personalScoreAverage")
     @ApiOperation("个人成绩平均统计")
     public Result<BigDecimal> personalScoreAverageStatistic() {
@@ -123,6 +113,7 @@ public class InstructionStatisticController {
         return Result.success(avg);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     @GetMapping("/overallScoreRank")
     @ApiOperation("全站成绩排行统计")
     public Result<Map<String, BigDecimal>> overallScoreRankStatistic() {
@@ -149,6 +140,7 @@ public class InstructionStatisticController {
         return Result.success(rank);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     @GetMapping("/personalScoreRank")
     @ApiOperation("个人成绩排行统计")
     public Result<Map<String, BigDecimal>> personalScoreRankStatistic() {
@@ -178,6 +170,7 @@ public class InstructionStatisticController {
         return Result.success(rank);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     @GetMapping("/overallScoreSectional")
     @ApiOperation("全站成绩分段统计")
     public Result<List<Integer>> overallScoreSectionalStatistic() {
@@ -191,6 +184,7 @@ public class InstructionStatisticController {
         return Result.success(sectional);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     @GetMapping("/personalScoreSectional")
     @ApiOperation("个人成绩分段统计")
     public Result<List<Integer>> personalScoreSectionalStatistic() {

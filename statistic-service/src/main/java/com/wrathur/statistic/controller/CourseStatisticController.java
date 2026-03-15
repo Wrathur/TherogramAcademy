@@ -28,7 +28,6 @@ public class CourseStatisticController {
     private final ICourseStatisticService courseStatisticService;
     private final RedisTemplate<String, Object> redisTemplate;
 
-    private static final String KEY_OVERALL_COURSE_COUNT = "stat:course:overall:count";
     private static final String KEY_OVERALL_SELECT_COUNT = "stat:course:overall:selectCount";
     private static final String KEY_PERSONAL_SELECT_COUNT_PREFIX = "stat:course:personal:selectCount:";
     private static final String KEY_OVERALL_COMPLETION_AVG = "stat:course:overall:completionAvg";
@@ -42,13 +41,7 @@ public class CourseStatisticController {
     @ApiOperation("全站课程数量统计")
     public Result<Integer> overallCourseCountStatistic() {
         log.info("全站课程数量统计");
-        Integer count = (Integer) redisTemplate.opsForValue().get(KEY_OVERALL_COURSE_COUNT);
-        if (count == null) {
-            log.info("/从数据库获取");
-            count = courseStatisticService.overallCourseCountStatistic();
-            redisTemplate.opsForValue().set(KEY_OVERALL_COURSE_COUNT, count, 1, TimeUnit.HOURS);
-        }
-        return Result.success(count);
+        return Result.success(courseStatisticService.overallCourseCountStatistic());
     }
 
     @GetMapping("/personalCourseCount")
@@ -59,26 +52,27 @@ public class CourseStatisticController {
         if (userId == null) {
             return Result.error("未登录");
         }
-        Integer count = courseStatisticService.personalCourseCountStatistic(userId);
-        return Result.success(count);
+        return Result.success(courseStatisticService.personalCourseCountStatistic(userId));
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED
     @GetMapping("/overallSelectCount")
     @ApiOperation("全站选课人数统计")
-    public Result<Integer> overallTotalSelectCountStatistic() {
+    public Result<Integer> overallSelectCountStatistic() {
         log.info("全站选课人数统计");
         Integer count = (Integer) redisTemplate.opsForValue().get(KEY_OVERALL_SELECT_COUNT);
         if (count == null) {
             log.info("/从数据库获取");
-            count = courseStatisticService.overallTotalSelectCountStatistic();
+            count = courseStatisticService.overallSelectCountStatistic();
             redisTemplate.opsForValue().set(KEY_OVERALL_SELECT_COUNT, count, 1, TimeUnit.HOURS);
         }
         return Result.success(count);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED
     @GetMapping("/personalSelectCount")
     @ApiOperation("个人选课人数统计")
-    public Result<Integer> personalTotalSelectCountStatistic() {
+    public Result<Integer> personalSelectCountStatistic() {
         log.info("个人选课人数统计");
         Integer userId = UserContext.getUser();
         if (userId == null) return Result.error("未登录");
@@ -86,12 +80,13 @@ public class CourseStatisticController {
         Integer count = (Integer) redisTemplate.opsForValue().get(key);
         if (count == null) {
             log.info("/从数据库获取");
-            count = courseStatisticService.personalTotalSelectCountStatistic(userId);
+            count = courseStatisticService.personalSelectCountStatistic(userId);
             redisTemplate.opsForValue().set(key, count, 1, TimeUnit.HOURS);
         }
         return Result.success(count);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     @GetMapping("/overallCourseCompletionRateAverage")
     @ApiOperation("全站课程完成率平均统计")
     public Result<BigDecimal> overallCourseCompletionRateAverageStatistic() {
@@ -105,6 +100,7 @@ public class CourseStatisticController {
         return Result.success(avg);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     @GetMapping("/personalCourseCompletionRateAverage")
     @ApiOperation("个人课程完成率平均统计")
     public Result<BigDecimal> personalCourseCompletionRateAverageStatistic() {
@@ -121,6 +117,7 @@ public class CourseStatisticController {
         return Result.success(avg);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     @GetMapping("/overallCourseCompletionRateRank")
     @ApiOperation("全站课程完成率排行统计")
     public Result<Map<String, BigDecimal>> overallCourseCompletionRateRankStatistic() {
@@ -147,6 +144,7 @@ public class CourseStatisticController {
         return Result.success(rank);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     @GetMapping("/personalCourseCompletionRateRank")
     @ApiOperation("个人课程完成率排行统计")
     public Result<Map<String, BigDecimal>> personalCourseCompletionRateRankStatistic() {
@@ -176,6 +174,7 @@ public class CourseStatisticController {
         return Result.success(rank);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     @GetMapping("/overallCourseCompletionRateSectional")
     @ApiOperation("全站课程完成率分段统计")
     public Result<List<Integer>> overallCourseCompletionRateSectionalStatistic() {
@@ -189,6 +188,7 @@ public class CourseStatisticController {
         return Result.success(sectional);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     @GetMapping("/personalCourseCompletionRateSectional")
     @ApiOperation("个人课程完成率分段统计")
     public Result<List<Integer>> personalCourseCompletionRateSectionalStatistic() {

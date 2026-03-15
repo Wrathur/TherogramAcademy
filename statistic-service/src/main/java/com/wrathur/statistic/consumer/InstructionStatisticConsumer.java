@@ -1,6 +1,6 @@
 package com.wrathur.statistic.consumer;
 
-import com.wrathur.statistic.event.StatisticEvent;
+import com.wrathur.common.event.StatisticEvent;
 import com.wrathur.statistic.service.IInstructionStatisticService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -20,10 +21,6 @@ public class InstructionStatisticConsumer {
     private final IInstructionStatisticService statisticService;
     private final RedisTemplate<String, Object> redisTemplate;
 
-    // 教师用户数量
-    private static final String KEY_TEACHER_COUNT = "stat:instruction:teacherCount";
-    // 学生用户数量
-    private static final String KEY_STUDENT_COUNT = "stat:instruction:studentCount";
     // 全站学习时长
     private static final String KEY_OVERALL_STUDY_TIME = "stat:instruction:overall:studyTime";
     // 个人学习时长前缀
@@ -43,82 +40,105 @@ public class InstructionStatisticConsumer {
 
     @RabbitListener(queues = "statistic.instruction.queue")
     public void handleInstructionEvent(StatisticEvent event) {
-        log.info("Received instruction event: {}", event);
-        switch (event.getType()) {
-            case "USER_REGISTERED":
-                updateUserCount(event);
-                break;
-            case "STUDY_TIME_UPDATED":
-                updateOverallStudyTime();
-                if (event.getUserId() != null) {
-                    updatePersonalStudyTime(event.getUserId());
-                }
-                break;
-            case "SCORE_UPDATED":
-                // 平均值统计更新
-                updateOverallScoreAvg();
-                if (event.getUserId() != null) {
-                    updatePersonalScoreAvg(event.getUserId());
-                }
-                // 排行榜统计更新
-                updateOverallScoreRank(event.getUserId(), event.getScore());
-                if (event.getUserId() != null) {
-                    updatePersonalScoreRank(event.getUserId(), event.getScore());
-                }
-                // 分段统计更新
-                updateOverallScoreSectional();
-                if (event.getUserId() != null) {
-                    updatePersonalScoreSectional(event.getUserId());
-                }
-                break;
-            default:
-                log.warn("Unknown instruction event type: {}", event.getType());
+        try {
+            log.info("Received instruction event: {}", event);
+            List<Integer> userIds = event.getUserIds();
+            switch (event.getType()) {
+                case "COURSE_DELETED", "COURSE_SELECTED", "COURSE_DESELECTED":
+                    updateOverallStudyTime();
+                    updateOverallScoreAvg();
+                    updateOverallScoreRank();
+                    updateOverallScoreSectional();
+                    if (userIds != null && !userIds.isEmpty()) {
+                        userIds.forEach(userId -> {
+                            updatePersonalStudyTime(userId);
+                            updatePersonalScoreAvg(userId);
+                            updatePersonalScoreRank(userId);
+                            updatePersonalScoreSectional(userId);
+                        });
+                    }
+                    break;
+                case "COURSE_PROGRESS_UPDATED":
+                    updateOverallStudyTime();
+                    if (userIds != null && !userIds.isEmpty()) {
+                        userIds.forEach(this::updatePersonalStudyTime);
+                    }
+                case "COURSE_EVALUATED":
+                    updateOverallScoreAvg();
+                    updateOverallScoreRank();
+                    updateOverallScoreSectional();
+                    if (userIds != null && !userIds.isEmpty()) {
+                        userIds.forEach(userId -> {
+                            updatePersonalScoreAvg(userId);
+                            updatePersonalScoreRank(userId);
+                            updatePersonalScoreSectional(userId);
+                        });
+                    }
+                    break;
+                default:
+                    log.warn("Unknown instruction event type: {}", event.getType());
+            }
+        } catch (Exception e) {
+            log.error("Error processing course event: {}", event, e);
         }
     }
 
-    private void updateUserCount(StatisticEvent event) {
-        if (event.getUserRole().equals("TEACHER")) {
-            Integer teacherCount = statisticService.teacherUserCountStatistic();
-            redisTemplate.opsForValue().set(KEY_TEACHER_COUNT, teacherCount, 1, TimeUnit.HOURS);
-        } else {
-            Integer studentCount = statisticService.studentUserCountStatistic();
-            redisTemplate.opsForValue().set(KEY_STUDENT_COUNT, studentCount, 1, TimeUnit.HOURS);
-        }
-    }
-
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     private void updateOverallStudyTime() {
         Integer total = statisticService.overallStudyTimeStatistic();
         redisTemplate.opsForValue().set(KEY_OVERALL_STUDY_TIME, total, 1, TimeUnit.HOURS);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_PROGRESS_UPDATED
     private void updatePersonalStudyTime(Integer id) {
         Integer time = statisticService.personalStudyTimeStatistic(id);
         redisTemplate.opsForValue().set(KEY_PERSONAL_STUDY_TIME_PREFIX + id, time, 1, TimeUnit.HOURS);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     private void updateOverallScoreAvg() {
         BigDecimal avg = statisticService.overallScoreAverageStatistic();
         redisTemplate.opsForValue().set(KEY_OVERALL_SCORE_AVG, avg, 1, TimeUnit.HOURS);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     private void updatePersonalScoreAvg(Integer id) {
         BigDecimal avg = statisticService.personalScoreAverageStatistic(id);
         redisTemplate.opsForValue().set(KEY_PERSONAL_SCORE_AVG_PREFIX + id, avg, 1, TimeUnit.HOURS);
     }
 
-    private void updateOverallScoreRank(Integer id, Integer score) {
-        redisTemplate.opsForZSet().add(KEY_OVERALL_SCORE_RANK, "user:" + id, score);
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
+    private void updateOverallScoreRank() {
+        Map<String, BigDecimal> rank = statisticService.overallScoreRankStatistic();
+        if (rank != null && !rank.isEmpty()) {
+            // 清除旧数据避免累加
+            redisTemplate.delete(KEY_OVERALL_SCORE_RANK);
+            rank.forEach((username, avgScore) ->
+                    redisTemplate.opsForZSet().add(KEY_OVERALL_SCORE_RANK, username, avgScore.doubleValue()));
+            redisTemplate.expire(KEY_OVERALL_SCORE_RANK, 1, TimeUnit.HOURS);
+        }
     }
 
-    private void updatePersonalScoreRank(Integer id, Integer score) {
-        redisTemplate.opsForZSet().add(KEY_PERSONAL_SCORE_RANK_PREFIX + id, "user:" + id, score);
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
+    private void updatePersonalScoreRank(Integer id) {
+        Map<String, BigDecimal> rank = statisticService.personalScoreRankStatistic(id);
+        if (rank != null && !rank.isEmpty()) {
+            // 清除旧数据避免累加
+            String key = KEY_PERSONAL_SCORE_RANK_PREFIX + id;
+            redisTemplate.delete(key);
+            rank.forEach((courseName, avgScore) ->
+                    redisTemplate.opsForZSet().add(key, courseName, avgScore.doubleValue()));
+            redisTemplate.expire(key, 1, TimeUnit.HOURS);
+        }
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     private void updateOverallScoreSectional() {
         List<Integer> sectional = statisticService.overallScoreSectionalStatistic();
         redisTemplate.opsForValue().set(KEY_OVERALL_SCORE_SECTIONAL, sectional, 1, TimeUnit.HOURS);
     }
 
+    // 事件类型：COURSE_DELETED COURSE_SELECTED COURSE_DESELECTED COURSE_EVALUATED
     private void updatePersonalScoreSectional(Integer id) {
         List<Integer> sectional = statisticService.personalScoreSectionalStatistic(id);
         redisTemplate.opsForValue().set(KEY_PERSONAL_SCORE_SECTIONAL_PREFIX + id, sectional, 1, TimeUnit.HOURS);
