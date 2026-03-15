@@ -30,7 +30,7 @@ spring:
         - id: statistic-service
           uri: lb://statistic-service
           predicates:
-            - Path=/statistic/**
+            - Path=/courseStatistic/**,/instructionStatistic/**
       filter:
         forwarded-headers:
           enabled: false   # 禁用 ForwardedHeadersFilter

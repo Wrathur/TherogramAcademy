@@ -8,6 +8,7 @@
       <w>mybatisplus</w>
       <w>nacos</w>
       <w>therogram</w>
+      <w>zset</w>
     </words>
   </dictionary>
 </component>

@@ -35,4 +35,7 @@ public interface ICourseStatisticService {
 
     // 个人课程完成率分段统计
     public List<Integer> personalCourseCompletionRateSectionalStatistic(Integer id);
+
+    // 通过用户查询该课程的完成率
+    BigDecimal getCourseCompletionRateForUser(Integer courseId, Integer userId);
 }

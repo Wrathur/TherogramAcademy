@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrathur.statistic.mapper.UserMapper">
+    <resultMap id="overallScoreRankMap" type="java.util.HashMap">
+        <result property="username" column="username" javaType="string"/>
+        <result property="avgScore" column="avgScore" javaType="java.math.BigDecimal"/>
+    </resultMap>
+
+    <select id="selectOverallScoreRank" resultMap="overallScoreRankMap">
+        SELECT u.username, ROUND(AVG(sc.score), 2) AS avgScore
+        FROM user u
+                 JOIN student_course sc ON u.id = sc.student_id AND sc.is_deleted = 0
+        WHERE u.role_type = 'STUDENT'
+          AND u.is_deleted = 0
+          AND sc.score IS NOT NULL
+        GROUP BY u.id, u.username
+        HAVING avgScore IS NOT NULL
+        ORDER BY avgScore DESC LIMIT 10
+    </select>
+
+    <select id="selectOverallScoreSectional" resultType="java.util.Map">
+        SELECT SUM(CASE WHEN avgScore BETWEEN 0 AND 20 THEN 1 ELSE 0 END)   AS section1,
+               SUM(CASE WHEN avgScore BETWEEN 21 AND 40 THEN 1 ELSE 0 END)  AS section2,
+               SUM(CASE WHEN avgScore BETWEEN 41 AND 60 THEN 1 ELSE 0 END)  AS section3,
+               SUM(CASE WHEN avgScore BETWEEN 61 AND 80 THEN 1 ELSE 0 END)  AS section4,
+               SUM(CASE WHEN avgScore BETWEEN 81 AND 100 THEN 1 ELSE 0 END) AS section5
+        FROM (SELECT u.id, AVG(sc.score) AS avgScore
+              FROM user u
+                       JOIN student_course sc ON u.id = sc.student_id AND sc.is_deleted = 0
+              WHERE u.role_type = 'STUDENT'
+                AND u.is_deleted = 0
+                AND sc.score IS NOT NULL
+              GROUP BY u.id) AS user_avg
+    </select>
+</mapper>
