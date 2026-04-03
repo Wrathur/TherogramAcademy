@@ -38,7 +38,7 @@ therogram:
     location: classpath:therogram.jks
     alias: hmall
     password: hmall123
-    tokenTTL: 30m
+    tokenTTL: 30d
   auth:
     excludePaths:
       - /user/create

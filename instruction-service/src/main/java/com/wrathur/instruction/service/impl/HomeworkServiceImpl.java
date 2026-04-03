@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wrathur.api.client.CourseServiceClient;
+import com.wrathur.common.config.StorageProperties;
+import com.wrathur.common.utils.FileStorageUtils;
 import com.wrathur.instruction.domain.dto.HomeworkDTO;
 import com.wrathur.instruction.domain.dto.HomeworkQueryDTO;
 import com.wrathur.instruction.domain.dto.StudentHomeworkDTO;
@@ -22,8 +24,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,6 +40,7 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
     private final HomeworkMapper homeworkMapper;
     private final StudentHomeworkMapper studentHomeworkMapper;
     private final CourseServiceClient courseServiceClient;
+    private final StorageProperties storageProperties;
 
     // 创建作业
     @Override
@@ -69,13 +75,13 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
     // 修改作业
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void modifyHomework(Integer id, HomeworkDTO homeworkDTO) {
-        Homework homework = homeworkMapper.selectById(id);
+    public void modifyHomework(HomeworkDTO homeworkDTO) {
+        Homework homework = homeworkMapper.selectById(homeworkDTO.getId());
         BeanUtils.copyProperties(homeworkDTO, homework);
         homework.setUpdateTime(LocalDateTime.now());
         homeworkMapper.update(homework,
                 new LambdaUpdateWrapper<Homework>()
-                        .eq(Homework::getId, id));
+                        .eq(Homework::getId, homeworkDTO.getId()));
     }
 
     // 删除作业
@@ -99,10 +105,10 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
 
     // 获取作业分页
     @Override
-    public IPage<HomeworkVO> getHomeworkPages(Integer id, HomeworkQueryDTO homeworkQueryDTO) {
+    public IPage<HomeworkVO> getHomeworkPages(HomeworkQueryDTO homeworkQueryDTO) {
         // 构建查询条件，从作业表获取该教师创建的作业ID列表
         LambdaQueryWrapper<Homework> pageWrapper = new LambdaQueryWrapper<>();
-        pageWrapper.eq(Homework::getCourseId, id);
+        pageWrapper.eq(Homework::getCourseId, homeworkQueryDTO.getCourseId());
 
         // 模糊查询名称
         if (homeworkQueryDTO.getName() != null && !homeworkQueryDTO.getName().isEmpty()) {
@@ -191,18 +197,18 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
 
     //获取学生作业分页
     @Override
-    public IPage<HomeworkVO> getStudentHomeworkPages(Integer id, StudentHomeworkQueryDTO studentHomeworkQueryDTO) {
+    public IPage<HomeworkVO> getStudentHomeworkPages(StudentHomeworkQueryDTO studentHomeworkQueryDTO) {
         // 构建分页对象
         Page<HomeworkVO> page = new Page<>(studentHomeworkQueryDTO.getPageNum(), studentHomeworkQueryDTO.getPageSize());
 
         // 执行分页查询
-        IPage<HomeworkVO> studentHomeworkPage = homeworkMapper.selectStudentHomeworkPage(page, id, studentHomeworkQueryDTO);
+        IPage<HomeworkVO> studentHomeworkPage = homeworkMapper.selectStudentHomeworkPage(page, studentHomeworkQueryDTO.getStudentId(), studentHomeworkQueryDTO);
 
         // 转换为VO
         studentHomeworkPage.getRecords().forEach(homeworkVO -> {
             StudentHomework studentHomework = studentHomeworkMapper.selectOne(
                     new LambdaQueryWrapper<StudentHomework>()
-                            .eq(StudentHomework::getStudentId, id)
+                            .eq(StudentHomework::getStudentId, studentHomeworkQueryDTO.getStudentId())
                             .eq(StudentHomework::getHomeworkId, homeworkVO.getId()));
             homeworkVO.setStudentHomeworkAttachment(studentHomework.getAttachment());
             homeworkVO.setReviewStatus(studentHomework.getReviewStatus());
@@ -321,6 +327,63 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
 
         // 执行更新
         studentHomeworkMapper.update(null, evaluateWrapper);
+    }
+
+    // 提醒作业
+    @Override
+    public List<HomeworkVO> remindHomework() {
+        LambdaQueryWrapper<StudentHomework> queryWrapper = new LambdaQueryWrapper<StudentHomework>()
+                .eq(StudentHomework::getIsDeleted, false);
+
+        queryWrapper.eq(StudentHomework::getReviewStatus, "UNSUBMITTED");
+
+//        queryWrapper.orderByDesc(StudentHomework::);
+
+        List<StudentHomework> studentHomeworks = studentHomeworkMapper.selectList(queryWrapper);
+
+        // 特殊属性需要额外赋值
+        List<HomeworkVO> studentHomeworkVOS = new ArrayList<>();
+        studentHomeworks.forEach(studentHomework -> {
+            HomeworkVO homeworkVO = new HomeworkVO();
+            homeworkVO.setId(studentHomework.getHomeworkId());
+            homeworkVO.setName(homeworkMapper.selectById(studentHomework.getHomeworkId()).getName());
+            studentHomeworkVOS.add(homeworkVO);
+        });
+        return studentHomeworkVOS;
+    }
+
+    // 上传作业附件
+    @Override
+    public void uploadHomeworkAttachment(Integer id, MultipartFile file) throws IOException {
+        Homework homework = homeworkMapper.selectById(id);
+        if (homework.getAttachment() != null && !homework.getAttachment().isEmpty()) {
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getHomeworkPath(), homework.getAttachment());
+        }
+        FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getHomeworkPath() + "/" + id, file);
+        homeworkMapper.update(null,
+                new LambdaUpdateWrapper<Homework>()
+                        .eq(Homework::getId, id)
+                        .set(Homework::getAttachment, "/" + id + "/" + file.getOriginalFilename()));
+    }
+
+    // 上传学生作业附件
+    @Override
+    public void uploadStudentHomeworkAttachment(Integer studentId, Integer homeworkId, MultipartFile file) throws IOException {
+        StudentHomework studentHomework = studentHomeworkMapper.selectOne(
+                new LambdaQueryWrapper<StudentHomework>()
+                        .eq(StudentHomework::getStudentId, studentId)
+                        .eq(StudentHomework::getHomeworkId, homeworkId)
+                        .eq(StudentHomework::getIsDeleted, false));
+        if (studentHomework.getAttachment() != null && !studentHomework.getAttachment().isEmpty()) {
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getStudentHomeworkPath(), studentHomework.getAttachment());
+        }
+        FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getStudentHomeworkPath() + "/" + studentId + "/" + homeworkId, file);
+        studentHomeworkMapper.update(null,
+                new LambdaUpdateWrapper<StudentHomework>()
+                        .eq(StudentHomework::getStudentId, studentId)
+                        .eq(StudentHomework::getHomeworkId, homeworkId)
+                        .set(StudentHomework::getAttachment, "/" + studentId + "/" + homeworkId + "/" + file.getOriginalFilename()));
+
     }
 
     // 通过课程获取所有未删除的作业

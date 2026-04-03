@@ -15,6 +15,7 @@ public class Course {
     private String target;
     private String content;
     private String outline;
+    private String cover;
     private String reviewStatus; //ENUM: PENDING/APPROVED/REJECTED
     private String rejectedReason;
     private Integer selectCount;

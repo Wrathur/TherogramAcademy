@@ -10,10 +10,13 @@ import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.wrathur.api.client.InstructionServiceClient;
 import com.wrathur.api.client.UserServiceClient;
 import com.wrathur.common.config.RabbitConfig;
+import com.wrathur.common.config.StorageProperties;
 import com.wrathur.common.event.StatisticEvent;
+import com.wrathur.common.utils.FileStorageUtils;
 import com.wrathur.common.utils.UserContext;
 import com.wrathur.course.domain.dto.CourseDTO;
 import com.wrathur.course.domain.dto.CourseQueryDTO;
+import com.wrathur.course.domain.dto.StudentCourseDTO;
 import com.wrathur.course.domain.dto.StudentCourseQueryDTO;
 import com.wrathur.course.domain.po.*;
 import com.wrathur.course.domain.vo.CourseVO;
@@ -26,9 +29,11 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.math.BigDecimal;
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +52,7 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
     private final InstructionServiceClient instructionServiceClient;
     private final UserServiceClient userServiceClient;
     private final RabbitTemplate rabbitTemplate;
+    private final StorageProperties storageProperties;
 
     // 创建课程
     @Override
@@ -57,7 +63,6 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
         course.setReviewStatus("PENDING");
         course.setSelectCount(0);
         course.setIsDeleted(false);
-        System.out.println(UserContext.getUser());
         course.setTeacherId(UserContext.getUser());
         course.setCreateTime(LocalDateTime.now());
         course.setUpdateTime(LocalDateTime.now());
@@ -67,13 +72,13 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
     // 修改课程
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void modifyCourse(Integer id, CourseDTO courseDTO) {
-        Course course = courseMapper.selectById(id);
+    public void modifyCourse(CourseDTO courseDTO) {
+        Course course = courseMapper.selectById(courseDTO.getId());
         BeanUtils.copyProperties(courseDTO, course);
         course.setUpdateTime(LocalDateTime.now());
         courseMapper.update(course,
                 new LambdaUpdateWrapper<Course>()
-                        .eq(Course::getId, id));
+                        .eq(Course::getId, courseDTO.getId()));
     }
 
     // 删除课程
@@ -375,6 +380,61 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
         return selectCoursePage;
     }
 
+    // 通过关键字获取搜索课程分页
+    @Override
+    public IPage<CourseVO> getSearchCoursePagesByKeyword(CourseQueryDTO courseQueryDTO) {
+        // 构建查询条件
+        LambdaQueryWrapper<Course> pageWrapper = new LambdaQueryWrapper<>();
+
+        // 模糊查询课程名称
+        if (courseQueryDTO.getName() != null && !courseQueryDTO.getName().isEmpty()) {
+            pageWrapper.like(Course::getName, courseQueryDTO.getName());
+        }
+
+        // 排序
+        if (courseQueryDTO.getSortType() != null && courseQueryDTO.getIsAsc() != null) {
+            if (courseQueryDTO.getIsAsc()) {
+                switch (courseQueryDTO.getSortType()) {
+                    case 0:
+                        pageWrapper.orderByAsc(Course::getSelectCount);
+                        break;
+                    case 1:
+                        pageWrapper.orderByAsc(Course::getCreateTime);
+                        break;
+                    default:
+                        pageWrapper.orderByAsc(Course::getId);
+                        break;
+                }
+            } else {
+                switch (courseQueryDTO.getSortType()) {
+                    case 0:
+                        pageWrapper.orderByDesc(Course::getSelectCount);
+                        break;
+                    case 1:
+                        pageWrapper.orderByDesc(Course::getCreateTime);
+                        break;
+                    default:
+                        pageWrapper.orderByDesc(Course::getId);
+                        break;
+                }
+            }
+        }
+
+        // 构建分页对象
+        Page<Course> page = new Page<>(courseQueryDTO.getPageNum(), courseQueryDTO.getPageSize());
+
+        // 执行分页查询
+        IPage<Course> searchCoursePage = courseMapper.selectPage(page, pageWrapper);
+
+        // 转换为VO
+        List<CourseVO> courseVOS = searchCoursePage.getRecords().stream()
+                .map(this::convertCourseToVO)
+                .collect(Collectors.toList());
+
+        // 构建返回的分页VO
+        return convertPageResult(searchCoursePage, courseVOS);
+    }
+
     //转化VO
     private CourseVO convertCourseToVO(Course course) {
         CourseVO courseVO = new CourseVO();
@@ -457,17 +517,17 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
     // 审核课程
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void reviewCourse(String reviewStatus, CourseDTO courseDTO) {
+    public void reviewCourse(CourseDTO courseDTO) {
         // 构建更新条件
         LambdaUpdateWrapper<Course> reviewWrapper = new LambdaUpdateWrapper<>();
         reviewWrapper.eq(Course::getId, courseDTO.getId());
 
         // 设置审核状态和时间
-        reviewWrapper.set(Course::getReviewStatus, reviewStatus);
+        reviewWrapper.set(Course::getReviewStatus, courseDTO.getReviewStatus());
         reviewWrapper.set(Course::getReviewTime, LocalDateTime.now());
 
         // 设置拒绝原因（审核通过时为 null）
-        if ("REJECTED".equals(reviewStatus)) {
+        if ("REJECTED".equals(courseDTO.getReviewStatus())) {
             reviewWrapper.set(Course::getRejectedReason, courseDTO.getRejectedReason());
         } else {
             reviewWrapper.set(Course::getRejectedReason, null);
@@ -608,11 +668,10 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
                         .set(StudentCourse::getDeleteTime, LocalDateTime.now()));
 
         // 选课人数减少
-        Course course = courseMapper.selectById(id);
-        course.setSelectCount(course.getSelectCount() - 1);
-        courseMapper.update(course,
+        courseMapper.update(null,
                 new LambdaUpdateWrapper<Course>()
-                        .eq(Course::getId, id));
+                        .eq(Course::getId, id)
+                        .set(Course::getSelectCount, courseMapper.selectById(id).getSelectCount() + 1));
 
         // 远程调用教学服务获取该课程所有未删除的作业
         List<Integer> homeworkIds = instructionServiceClient.getHomeworkIdsByCourseId(id);
@@ -633,24 +692,24 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
         rabbitTemplate.convertAndSend(RabbitConfig.INSTRUCTION_EXCHANGE, RabbitConfig.INSTRUCTION_ROUTING_KEY, event);
     }
 
-    // 更新课程进度
+    // 更新课程进度和学习时间
     @Override
-    public void updateCourseProgress(Integer progress, Integer studyTime, Integer studentId, Integer courseId) {
+    public void updateCourseProgressAndStudyTime(StudentCourseDTO studentCourseDTO) {
         StudentCourse studentCourse = studentCourseMapper.selectOne(
                 new LambdaQueryWrapper<StudentCourse>()
-                        .eq(StudentCourse::getStudentId, studentId)
-                        .eq(StudentCourse::getCourseId, courseId)
+                        .eq(StudentCourse::getStudentId, studentCourseDTO.getStudentId())
+                        .eq(StudentCourse::getCourseId, studentCourseDTO.getCourseId())
                         .eq(StudentCourse::getIsDeleted, false));
-        studentCourse.setProgress(progress);
-        studentCourse.setStudyTime(studyTime);
+        studentCourse.setProgress(studentCourseDTO.getProgress());
+        studentCourse.setStudyTime(studentCourseDTO.getStudyTime());
         studentCourse.setUpdateTime(LocalDateTime.now());
 
         studentCourseMapper.update(studentCourse,
                 new MPJLambdaWrapper<StudentCourse>()
-                        .eq(StudentCourse::getStudentId, studentId)
-                        .eq(StudentCourse::getCourseId, courseId));
+                        .eq(StudentCourse::getStudentId, studentCourseDTO.getStudentId())
+                        .eq(StudentCourse::getCourseId, studentCourseDTO.getCourseId()));
 
-        StatisticEvent event = new StatisticEvent("COURSE_PROGRESS_UPDATED", Collections.singletonList(studentId));
+        StatisticEvent event = new StatisticEvent("COURSE_PROGRESS_UPDATED", Collections.singletonList(studentCourseDTO.getStudentId()));
         rabbitTemplate.convertAndSend(RabbitConfig.COURSE_EXCHANGE, RabbitConfig.COURSE_ROUTING_KEY, event);
         rabbitTemplate.convertAndSend(RabbitConfig.INSTRUCTION_EXCHANGE, RabbitConfig.INSTRUCTION_ROUTING_KEY, event);
     }
@@ -658,22 +717,65 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
     // 评定课程
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void evaluateCourse(BigDecimal score, Integer studentId, Integer courseId) {
+    public void evaluateCourse(StudentCourseDTO studentCourseDTO) {
         StudentCourse studentCourse = studentCourseMapper.selectOne(
                 new LambdaQueryWrapper<StudentCourse>()
-                        .eq(StudentCourse::getStudentId, studentId)
-                        .eq(StudentCourse::getCourseId, courseId)
+                        .eq(StudentCourse::getStudentId, studentCourseDTO.getStudentId())
+                        .eq(StudentCourse::getCourseId, studentCourseDTO.getCourseId())
                         .eq(StudentCourse::getIsDeleted, false));
-        studentCourse.setScore(score);
+        studentCourse.setScore(studentCourseDTO.getScore());
         studentCourse.setEvaluateTime(LocalDateTime.now());
 
         studentCourseMapper.update(studentCourse,
                 new MPJLambdaWrapper<StudentCourse>()
-                        .eq(StudentCourse::getStudentId, studentId)
-                        .eq(StudentCourse::getCourseId, courseId));
+                        .eq(StudentCourse::getStudentId, studentCourseDTO.getStudentId())
+                        .eq(StudentCourse::getCourseId, studentCourseDTO.getCourseId()));
 
-        StatisticEvent event = new StatisticEvent("COURSE_EVALUATED", Collections.singletonList(studentId));
+        StatisticEvent event = new StatisticEvent("COURSE_EVALUATED", Collections.singletonList(studentCourseDTO.getStudentId()));
         rabbitTemplate.convertAndSend(RabbitConfig.INSTRUCTION_EXCHANGE, RabbitConfig.INSTRUCTION_ROUTING_KEY, event);
+    }
+
+    // 推荐课程
+    @Override
+    public List<CourseVO> recommendCourse(Integer courseSubject, Integer courseType) {
+        LambdaQueryWrapper<Course> queryWrapper = new LambdaQueryWrapper<Course>()
+                .eq(Course::getIsDeleted, false);
+
+        if (courseSubject != null && courseSubject >= 1 && courseSubject <= 24) {
+            queryWrapper.eq(Course::getSubjectId, courseSubject);
+        }
+
+        if (courseType != null && courseType >= 1 && courseType <= 7) {
+            queryWrapper.eq(Course::getTypeId, courseType);
+        }
+
+        queryWrapper.orderByDesc(Course::getSelectCount);
+
+        List<Course> courses = courseMapper.selectList(queryWrapper);
+
+        // 特殊属性需要额外赋值
+        List<CourseVO> courseVOS = new ArrayList<>();
+        courses.forEach(course -> {
+            CourseVO courseVO = new CourseVO();
+            courseVO.setId(course.getId());
+            courseVO.setName(course.getName());
+            courseVOS.add(courseVO);
+        });
+        return courseVOS;
+    }
+
+    // 上传课程封面
+    @Override
+    public void uploadCourseCover(Integer id, MultipartFile file) throws IOException {
+        Course course = courseMapper.selectById(id);
+        if (course.getCover() != null && !course.getCover().isEmpty()) {
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getCoursePath(), course.getCover());
+        }
+        FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getCoursePath() + "/" + id, file);
+        courseMapper.update(null,
+                new LambdaUpdateWrapper<Course>()
+                        .eq(Course::getId, id)
+                        .set(Course::getCover, "/" + id + "/" + file.getOriginalFilename()));
     }
 
     // 通过课程获取所有未退选的学生
@@ -685,5 +787,42 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
                         .select(StudentCourse::getStudentId)).stream()
                 .map(obj -> (Integer) obj)
                 .collect(Collectors.toList());
+    }
+
+    // 通过用户id获取该用户创建的课程
+    @Override
+    public List<CourseVO> getCreateCourseIdsByUserId(Integer id) {
+        List<Course> courses = courseMapper.selectList(new LambdaQueryWrapper<Course>()
+                .eq(Course::getIsDeleted, false)
+                .eq(Course::getTeacherId, id));
+
+        // 特殊属性需要额外赋值
+        List<CourseVO> courseVOS = new ArrayList<>();
+        courses.forEach(course -> {
+            CourseVO courseVO = new CourseVO();
+            courseVO.setId(course.getId());
+            courseVO.setName(course.getName());
+            courseVOS.add(courseVO);
+        });
+        return courseVOS;
+    }
+
+    // 通过用户id获取该用户选修的课程
+    @Override
+    public List<CourseVO> getSelectCourseIdsByUserId(Integer id) {
+        List<StudentCourse> studentCourses = studentCourseMapper.selectList(
+                new LambdaQueryWrapper<StudentCourse>()
+                        .eq(StudentCourse::getIsDeleted, false)
+                        .eq(StudentCourse::getIsDeleted, false));
+
+        // 特殊属性需要额外赋值
+        List<CourseVO> courseVOS = new ArrayList<>();
+        studentCourses.forEach(studentCourse -> {
+            CourseVO courseVO = new CourseVO();
+            courseVO.setId(studentCourse.getCourseId());
+            courseVO.setName(courseMapper.selectById(studentCourse.getCourseId()).getName());
+            courseVOS.add(courseVO);
+        });
+        return courseVOS;
     }
 }

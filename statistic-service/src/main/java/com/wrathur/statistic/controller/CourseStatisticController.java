@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/courseStatistic")
+@RequestMapping("/api/courseStatistic")
 @Api(tags = "课程统计服务")
 public class CourseStatisticController {
 

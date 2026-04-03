@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @Data
 @ApiModel(description = "作业分页查询条件")
 public class StudentHomeworkQueryDTO {
+    @ApiModelProperty("学生id")
+    private Integer studentId;
     @ApiModelProperty("名称（作业表字段）")
     private String name;
     @ApiModelProperty("类型（作业表字段）")

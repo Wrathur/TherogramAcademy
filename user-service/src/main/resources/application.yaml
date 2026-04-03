@@ -43,3 +43,7 @@ therogram:
     excludePaths:
       - /user/create
       - /user/login
+file:
+  storage:
+    root-path: D:/Development/Java/Storage
+    user-path: /User

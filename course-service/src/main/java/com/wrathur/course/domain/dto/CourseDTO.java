@@ -12,6 +12,7 @@ public class CourseDTO {
     private String target;
     private String content;
     private String outline;
+    private String cover;
     private String reviewStatus;
     private String rejectedReason;
     private Integer selectCount;

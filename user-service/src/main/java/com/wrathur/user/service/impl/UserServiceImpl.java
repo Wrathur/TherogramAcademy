@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wrathur.common.config.StorageProperties;
 import com.wrathur.common.exception.BadRequestException;
+import com.wrathur.common.utils.FileStorageUtils;
 import com.wrathur.common.utils.UserContext;
 import com.wrathur.user.config.JwtProperties;
 import com.wrathur.user.domain.dto.UserDTO;
@@ -21,7 +23,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,13 +35,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
-    private final PasswordEncoder passwordEncoder;
-
-    private final JwtTool jwtTool;
-
-    private final JwtProperties jwtProperties;
-
     private final UserMapper userMapper;
+    private final JwtTool jwtTool;
+    private final JwtProperties jwtProperties;
+    private final PasswordEncoder passwordEncoder;
+    private final StorageProperties storageProperties;
 
     // 创建用户
     @Override
@@ -78,6 +80,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
     }
 
+    // 退出登录用户
+    @Override
+    public void logoutUser() {
+        UserContext.removeUser();
+    }
+
     // 修改用户
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -85,10 +93,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         User user = userMapper.selectById(UserContext.getUser());
         BeanUtils.copyProperties(userDTO, user);
         user.setUpdateTime(LocalDateTime.now());
-
-        LambdaUpdateWrapper<User> modifyWrapper = new LambdaUpdateWrapper<>();
-        modifyWrapper.eq(User::getId, UserContext.getUser());
-        userMapper.update(user, modifyWrapper);
+        userMapper.update(user, new LambdaUpdateWrapper<User>()
+                .eq(User::getId, UserContext.getUser()));
     }
 
     // 删除用户
@@ -169,6 +175,58 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return convertPageResult(userPage, courseVOS);
     }
 
+    // 通过关键字获取搜索用户分页
+    @Override
+    public IPage<UserVO> getSearchUserPagesByKeyword(UserQueryDTO userQueryDTO) {
+        // 构建分页对象
+        Page<User> page = new Page<>(userQueryDTO.getPageNum(), userQueryDTO.getPageSize());
+
+        // 构建查询条件
+        LambdaQueryWrapper<User> pageWrapper = new LambdaQueryWrapper<>();
+
+        // 过滤用户自身
+        pageWrapper.ne(User::getId, UserContext.getUser());
+        // 过滤已删除用户
+        pageWrapper.eq(User::getIsDeleted, false);
+
+        // 模糊查询账号
+        if (userQueryDTO.getAccount() != null && !userQueryDTO.getAccount().isEmpty()) {
+            pageWrapper.like(User::getAccount, userQueryDTO.getAccount());
+        }
+        // 模糊查询用户名
+        if (userQueryDTO.getUsername() != null && !userQueryDTO.getUsername().isEmpty()) {
+            pageWrapper.like(User::getUsername, userQueryDTO.getUsername());
+        }
+
+        // 排序
+        if (userQueryDTO.getSortType() != null && userQueryDTO.getIsAsc() != null) {
+            if (userQueryDTO.getIsAsc()) {
+                if (userQueryDTO.getSortType() == 0) {
+                    pageWrapper.orderByAsc(User::getCreateTime);
+                } else {
+                    pageWrapper.orderByAsc(User::getId);
+                }
+            } else {
+                if (userQueryDTO.getSortType() == 0) {
+                    pageWrapper.orderByDesc(User::getCreateTime);
+                } else {
+                    pageWrapper.orderByDesc(User::getId);
+                }
+            }
+        }
+
+        // 执行分页查询
+        IPage<User> userPage = userMapper.selectPage(page, pageWrapper);
+
+        // 转换为VO
+        List<UserVO> courseVOS = userPage.getRecords().stream()
+                .map(this::convertUserToVO)
+                .collect(Collectors.toList());
+
+        // 构建返回的分页VO
+        return convertPageResult(userPage, courseVOS);
+    }
+
     //转化VO
     private UserVO convertUserToVO(User user) {
         UserVO userVO = new UserVO();
@@ -193,8 +251,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     // 获取用户详情
     @Override
     public UserVO getUserDetail() {
-        Integer userId = UserContext.getUser();
-        System.out.printf("userId = %d", userId);
         User user = userMapper.selectById(UserContext.getUser());
         UserVO userVO = new UserVO();
         BeanUtils.copyProperties(user, userVO);
@@ -204,6 +260,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         userVO.setUpdateTime(user.getUpdateTime());
         userVO.setDeleteTime(user.getDeleteTime());
         return userVO;
+    }
+
+    // 上传用户头像
+    @Override
+    public void uploadUserPortrait(Integer id, MultipartFile file) throws IOException {
+        User user = userMapper.selectById(id);
+        if (user.getPortrait() != null && !user.getPortrait().isEmpty()) {
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getUserPath(), user.getPortrait());
+        }
+        FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getUserPath() + "/" + id, file);
+        userMapper.update(null,
+                new LambdaUpdateWrapper<User>()
+                        .eq(User::getId, id)
+                        .set(User::getPortrait, "/" + id + "/" + file.getOriginalFilename()));
     }
 
     // 通过ID获取用户名

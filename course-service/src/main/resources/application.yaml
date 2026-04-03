@@ -46,3 +46,7 @@ logging:
     dateformat: HH:mm:ss:SSS
   file:
     path: "logs/${spring.application.name}"
+file:
+  storage:
+    root-path: D:/Development/Java/Storage
+    course-path: /Course

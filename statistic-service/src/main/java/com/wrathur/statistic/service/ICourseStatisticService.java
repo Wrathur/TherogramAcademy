@@ -7,32 +7,32 @@ import java.util.Map;
 
 public interface ICourseStatisticService {
     // 全站课程数量统计
-    public Integer overallCourseCountStatistic();
+    Integer overallCourseCountStatistic();
 
     // 个人课程数量统计
-    public Integer personalCourseCountStatistic(Integer id);
+    Integer personalCourseCountStatistic(Integer id);
 
     // 全站选课人数统计
-    public Integer overallSelectCountStatistic();
+    Integer overallSelectCountStatistic();
 
     // 个人选课人数统计
-    public Integer personalSelectCountStatistic(Integer id);
+    Integer personalSelectCountStatistic(Integer id);
 
     // 全站课程完成率平均统计
-    public BigDecimal overallCourseCompletionRateAverageStatistic();
+    BigDecimal overallCourseCompletionRateAverageStatistic();
 
     // 个人课程完成率平均统计
-    public BigDecimal personalCourseCompletionRateAverageStatistic(Integer id);
+    BigDecimal personalCourseCompletionRateAverageStatistic(Integer id);
 
     // 全站课程完成率排行统计
-    public Map<String, BigDecimal> overallCourseCompletionRateRankStatistic();
+    Map<String, BigDecimal> overallCourseCompletionRateRankStatistic();
 
     // 个人课程完成率排行统计
-    public Map<String, BigDecimal> personalCourseCompletionRateRankStatistic(Integer id);
+    Map<String, BigDecimal> personalCourseCompletionRateRankStatistic(Integer id);
 
     // 全站课程完成率分段统计
-    public List<Integer> overallCourseCompletionRateSectionalStatistic();
+    List<Integer> overallCourseCompletionRateSectionalStatistic();
 
     // 个人课程完成率分段统计
-    public List<Integer> personalCourseCompletionRateSectionalStatistic(Integer id);
+    List<Integer> personalCourseCompletionRateSectionalStatistic(Integer id);
 }

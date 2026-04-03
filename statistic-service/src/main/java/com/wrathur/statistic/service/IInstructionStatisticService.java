@@ -6,32 +6,32 @@ import java.util.Map;
 
 public interface IInstructionStatisticService {
     // 教师用户数量统计
-    public Integer teacherUserCountStatistic();
+    Integer teacherUserCountStatistic();
 
     // 学生用户数量统计
-    public Integer studentUserCountStatistic();
+    Integer studentUserCountStatistic();
 
     // 全站学习时长统计
-    public Integer overallStudyTimeStatistic();
+    Integer overallStudyTimeStatistic();
 
     // 个人学习时长统计
-    public Integer personalStudyTimeStatistic(Integer id);
+    Integer personalStudyTimeStatistic(Integer id);
 
     // 全站成绩平均统计
-    public BigDecimal overallScoreAverageStatistic();
+    BigDecimal overallScoreAverageStatistic();
 
     // 个人成绩平均统计
-    public BigDecimal personalScoreAverageStatistic(Integer id);
+    BigDecimal personalScoreAverageStatistic(Integer id);
 
     // 全站成绩排行统计
-    public Map<String, BigDecimal> overallScoreRankStatistic();
+    Map<String, BigDecimal> overallScoreRankStatistic();
 
     // 个人成绩排行统计
-    public Map<String, BigDecimal> personalScoreRankStatistic(Integer id);
+    Map<String, BigDecimal> personalScoreRankStatistic(Integer id);
 
     // 全站成绩分段统计
-    public List<Integer> overallScoreSectionalStatistic();
+    List<Integer> overallScoreSectionalStatistic();
 
     // 个人成绩分段统计
-    public List<Integer> personalScoreSectionalStatistic(Integer id);
+    List<Integer> personalScoreSectionalStatistic(Integer id);
 }

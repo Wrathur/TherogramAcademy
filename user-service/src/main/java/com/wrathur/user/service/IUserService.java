@@ -6,26 +6,38 @@ import com.wrathur.user.domain.dto.UserDTO;
 import com.wrathur.user.domain.dto.UserQueryDTO;
 import com.wrathur.user.domain.po.User;
 import com.wrathur.user.domain.vo.UserVO;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface IUserService extends IService<User> {
     // 创建用户
-    public void createUser(UserDTO userDTO);
+    void createUser(UserDTO userDTO);
 
     // 登录用户
-    public UserVO loginUser(UserDTO userDTO);
+    UserVO loginUser(UserDTO userDTO);
+
+    // 退出登录用户
+    void logoutUser();
 
     // 修改用户
-    public void modifyUser(UserDTO userDTO);
+    void modifyUser(UserDTO userDTO);
 
     // 删除用户
-    public void deleteUser();
+    void deleteUser();
 
     // 获取用户分页
-    public IPage<UserVO> getUserPages(UserQueryDTO userQueryDTO);
+    IPage<UserVO> getUserPages(UserQueryDTO userQueryDTO);
+
+    // 通过关键字获取搜索用户分页
+    IPage<UserVO> getSearchUserPagesByKeyword(UserQueryDTO userQueryDTO);
 
     // 获取用户详情
-    public UserVO getUserDetail();
+    UserVO getUserDetail();
+
+    // 上传用户头像
+    void uploadUserPortrait(Integer id, MultipartFile file) throws IOException;
 
     // 通过ID获取用户名
-    public String getUsernameById(Integer id);
+    String getUsernameById(Integer id);
 }

@@ -14,6 +14,7 @@ public class CourseVO {
     private String target;
     private String content;
     private String outline;
+    private String cover;
     private String reviewStatus;
     private Boolean isDeleted;
     private Integer subjectId;

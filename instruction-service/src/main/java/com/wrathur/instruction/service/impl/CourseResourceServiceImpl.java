@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wrathur.common.config.StorageProperties;
+import com.wrathur.common.utils.FileStorageUtils;
 import com.wrathur.instruction.domain.dto.CourseResourceDTO;
 import com.wrathur.instruction.domain.dto.CourseResourceQueryDTO;
 import com.wrathur.instruction.domain.po.CourseResource;
@@ -16,7 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +31,7 @@ import java.util.stream.Collectors;
 public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper, CourseResource> implements ICourseResourceService {
 
     private final CourseResourceMapper courseResourceMapper;
+    private final StorageProperties storageProperties;
 
     // 创建教学资源
     @Override
@@ -44,13 +49,13 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
     // 修改教学资源
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void modifyCourseResource(Integer id, CourseResourceDTO courseResourceDTO) {
-        CourseResource courseResource = courseResourceMapper.selectById(id);
+    public void modifyCourseResource(CourseResourceDTO courseResourceDTO) {
+        CourseResource courseResource = courseResourceMapper.selectById(courseResourceDTO.getCourseId());
         BeanUtils.copyProperties(courseResourceDTO, courseResource);
         courseResource.setUpdateTime(LocalDateTime.now());
         courseResourceMapper.update(courseResource,
                 new LambdaUpdateWrapper<CourseResource>()
-                        .eq(CourseResource::getId, id));
+                        .eq(CourseResource::getId, courseResourceDTO.getCourseId()));
     }
 
     // 删除教学资源
@@ -66,12 +71,12 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
 
     // 获取教学资源分页
     @Override
-    public IPage<CourseResourceVO> getCourseResourcePages(Integer id, CourseResourceQueryDTO courseResourceQueryDTO) {
+    public IPage<CourseResourceVO> getCourseResourcePages(CourseResourceQueryDTO courseResourceQueryDTO) {
         // 构建查询条件
         LambdaQueryWrapper<CourseResource> pageWrapper = new LambdaQueryWrapper<>();
 
         // 过滤非本课程资源
-        pageWrapper.eq(CourseResource::getCourseId, id);
+        pageWrapper.eq(CourseResource::getCourseId, courseResourceQueryDTO.getCourseId());
         // 过滤已删除课程资源
         pageWrapper.eq(CourseResource::getIsDeleted, false);
 
@@ -174,10 +179,10 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
     @Override
     public CourseResourceVO getCourseResourceDetail(Integer id) {
         CourseResource courseResource = courseResourceMapper.selectById(id);
-        courseResource.setViewCount(courseResource.getViewCount() + 1);
-        courseResourceMapper.update(courseResource,
+        courseResourceMapper.update(null,
                 new LambdaUpdateWrapper<CourseResource>()
-                        .eq(CourseResource::getId, id));
+                        .eq(CourseResource::getId, id)
+                        .set(CourseResource::getViewCount, courseResource.getViewCount() + 1));
 
         CourseResourceVO courseResourceVO = new CourseResourceVO();
         BeanUtils.copyProperties(courseResource, courseResourceVO);
@@ -187,6 +192,20 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
         courseResourceVO.setUpdateTime(courseResource.getUpdateTime());
         courseResourceVO.setDeleteTime(courseResource.getDeleteTime());
         return courseResourceVO;
+    }
+
+    // 上传教学资源
+    @Override
+    public void uploadCourseResource(Integer id, MultipartFile file) throws IOException {
+        CourseResource courseResource = courseResourceMapper.selectById(id);
+        if (courseResource.getUri() != null && !courseResource.getUri().isEmpty()) {
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getCourseResourcePath(), courseResource.getUri());
+        }
+        FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getCourseResourcePath() + "/" + id, file);
+        courseResourceMapper.update(null,
+                new LambdaUpdateWrapper<CourseResource>()
+                        .eq(CourseResource::getId, id)
+                        .set(CourseResource::getUri, "/" + id + "/" + file.getOriginalFilename()));
     }
 
     // 通过课程获取所有未删除的教学资源

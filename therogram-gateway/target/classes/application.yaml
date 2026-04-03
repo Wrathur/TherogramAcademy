@@ -18,24 +18,24 @@ spring:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/user/**
+            - Path=/api/user/**
         - id: course-service
           uri: lb://course-service
           predicates:
-            - Path=/course/**
+            - Path=/api/course/**
         - id: instruction-service
           uri: lb://instruction-service
           predicates:
-            - Path=/courseResource/**,/homework/**
+            - Path=/api/courseResource/**,/api/homework/**
         - id: statistic-service
           uri: lb://statistic-service
           predicates:
-            - Path=/courseStatistic/**,/instructionStatistic/**
-      filter:
-        forwarded-headers:
-          enabled: false   # 禁用 ForwardedHeadersFilter
-          remove-non-proxy-headers:
-            enabled: false    # 一并禁用其他头过滤器（可选）
+            - Path=/api/courseStatistic/**,/api/instructionStatistic/**
+#      filter:
+#        forwarded-headers:
+#          enabled: false   # 禁用 ForwardedHeadersFilter
+#          remove-non-proxy-headers:
+#            enabled: false    # 一并禁用其他头过滤器（可选）
     loadbalancer:
       nacos:
         enabled: true
@@ -51,5 +51,5 @@ therogram:
     tokenTTL: 30m
   auth:
     excludePaths:
-      - /user/create
-      - /user/login
+      - /api/user/create
+      - /api/user/login

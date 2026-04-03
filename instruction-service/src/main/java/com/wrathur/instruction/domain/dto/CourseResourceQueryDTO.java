@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 @Data
 @ApiModel(description = "课程资源分页查询条件")
 public class CourseResourceQueryDTO {
+    @ApiModelProperty("课程id")
+    private Integer courseId;
     @ApiModelProperty("名称")
     private String name;
     @ApiModelProperty("类型")

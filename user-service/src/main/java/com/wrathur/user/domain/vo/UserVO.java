@@ -11,6 +11,7 @@ public class UserVO {
     private String account;
     private String username;
     private String password;
+    private String portrait;
     private String roleType;
     private String profile;
     private Boolean isDeleted;
