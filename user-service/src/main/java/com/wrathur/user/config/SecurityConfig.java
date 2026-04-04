@@ -3,6 +3,7 @@ package com.wrathur.user.config;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -38,11 +39,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.securityMatcher("/**") // 确保匹配所有请求
+        http
+                .securityMatcher("/**") // 确保匹配所有请求
                 .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/user/login", "/user/create").permitAll() // 允许匿名访问的路径
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()  // 关键：放行预检请求
+//                        .anyRequest().authenticated()
                         .anyRequest().permitAll() // 允许匿名访问的路径
-//                        .anyRequest().authenticated() // 其他请求需要认证
                 )
                 .csrf(AbstractHttpConfigurer::disable);
         return http.build();

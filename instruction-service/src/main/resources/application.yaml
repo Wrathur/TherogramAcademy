@@ -19,6 +19,7 @@ spring:
         group: DEFAULT_GROUP
         file-extension: yaml        # 配置文件格式，默认为 properties
       discovery:
+        port: 8083
         server-addr: 127.0.0.1:8848 # 服务发现地址
         username: nacos
         password: nacos

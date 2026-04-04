@@ -1,154 +1,480 @@
-14:26:05:163  INFO 14768 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 14768 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
-14:26:05:165  INFO 14768 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
-14:26:05:198  WARN 14768 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
-14:26:05:716  INFO 14768 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8862bc84-c89b-31a1-bafb-dfa71450ba09
-14:26:05:924  INFO 14768 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
-14:26:05:932  INFO 14768 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-14:26:05:932  INFO 14768 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-14:26:05:966  INFO 14768 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-14:26:05:967  INFO 14768 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 768 ms
-14:26:06:042  INFO 14768 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
-14:26:06:082  INFO 14768 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
-14:26:06:141  WARN 14768 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
-14:26:06:144  WARN 14768 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
-14:26:06:820  INFO 14768 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
-14:26:06:828  INFO 14768 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
-14:26:06:828  INFO 14768 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
-14:26:06:923  INFO 14768 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
-14:26:06:931  INFO 14768 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.629 seconds (process running for 2.943)
-14:26:06:940  INFO 14768 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
-14:26:12:392  INFO 14768 --- [instruction-service] [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-14:26:12:392  INFO 14768 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-14:26:12:392  INFO 14768 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-14:26:12:412  INFO 14768 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
-14:26:12:421 ERROR 14768 --- [instruction-service] [http-nio-8083-exec-1] c.w.common.advice.CommonExceptionAdvice  : 其他异常 uri : /courseResource/course/8 -> 
+10:38:00:692  INFO 25844 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 25844 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+10:38:00:694  INFO 25844 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+10:38:00:739  WARN 25844 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+10:38:01:595  INFO 25844 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8a8968f3-2828-3fb8-8f7b-16f976eccfab
+10:38:01:862  INFO 25844 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+10:38:01:872  INFO 25844 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+10:38:01:873  INFO 25844 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+10:38:01:911  INFO 25844 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+10:38:01:911  INFO 25844 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1169 ms
+10:38:01:990  INFO 25844 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+10:38:02:037  INFO 25844 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+10:38:02:102  WARN 25844 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+10:38:02:104  WARN 25844 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+10:38:02:819  INFO 25844 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+10:38:02:828  INFO 25844 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+10:38:02:828  INFO 25844 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+10:38:02:933  INFO 25844 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+10:38:02:942  INFO 25844 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 3.622 seconds (process running for 4.222)
+10:38:02:953  INFO 25844 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+10:46:52:152  WARN 25844 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+10:46:52:152  WARN 25844 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+10:46:52:152  WARN 25844 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+10:46:52:153  WARN 25844 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+10:46:52:153  WARN 25844 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+10:46:52:153  WARN 25844 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+10:46:52:154  INFO 25844 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+10:46:52:576 ERROR 25844 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : ERR_NACOS_DEREGISTER, de-register failed...NacosRegistration{nacosDiscoveryProperties=NacosDiscoveryProperties{serverAddr='127.0.0.1:8848', username='******', password='******', endpoint='', namespace='', watchDelay=30000, logName='', service='instruction-service', weight=1.0, clusterName='', group='DEFAULT_GROUP', namingLoadCacheAtStart='false', metadata={IPv6=null, preserved.register.source=SPRING_CLOUD}, registerEnabled=true, ip='172.22.148.153', networkInterface='', port=8083, secure=false, accessKey='', secretKey='', heartBeatInterval=null, heartBeatTimeout=null, ipDeleteTimeout=null, instanceEnabled=true, ephemeral=true, failureToleranceEnabled=false}, ipDeleteTimeout=null, failFast=true}},
 
-org.springframework.web.servlet.resource.NoResourceFoundException: No static resource courseResource/course/8.
-	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:586) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+com.alibaba.nacos.api.exception.NacosException: Client not connected, current status:UNHEALTHY
+	at com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:645) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:624) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.requestToServer(NamingGrpcClientProxy.java:447) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.doDeregisterService(NamingGrpcClientProxy.java:308) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.deregisterServiceForEphemeral(NamingGrpcClientProxy.java:293) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.deregisterService(NamingGrpcClientProxy.java:275) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate.deregisterService(NamingClientProxyDelegate.java:122) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.NacosNamingService.deregisterInstance(NacosNamingService.java:211) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.NacosNamingService.deregisterInstance(NacosNamingService.java:199) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.cloud.nacos.registry.NacosServiceRegistry.deregister(NacosServiceRegistry.java:107) ~[spring-cloud-starter-alibaba-nacos-discovery-2023.0.3.4.jar:2023.0.3.4]
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.deregister(AbstractAutoServiceRegistration.java:281) ~[spring-cloud-commons-4.1.5.jar:4.1.5]
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.stop(AbstractAutoServiceRegistration.java:299) ~[spring-cloud-commons-4.1.5.jar:4.1.5]
+	at com.alibaba.cloud.nacos.registry.NacosGracefulShutdownDelegate.doGracefulShutdown(NacosGracefulShutdownDelegate.java:69) ~[spring-cloud-starter-alibaba-nacos-discovery-2023.0.3.4.jar:2023.0.3.4]
+	at com.alibaba.cloud.nacos.registry.NacosGracefulShutdownDelegate.onApplicationEvent(NacosGracefulShutdownDelegate.java:64) ~[spring-cloud-starter-alibaba-nacos-discovery-2023.0.3.4.jar:2023.0.3.4]
+	at com.alibaba.cloud.nacos.registry.NacosGracefulShutdownDelegate.onApplicationEvent(NacosGracefulShutdownDelegate.java:34) ~[spring-cloud-starter-alibaba-nacos-discovery-2023.0.3.4.jar:2023.0.3.4]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:452) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:385) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1139) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1102) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147) ~[spring-boot-3.3.8.jar:3.3.8]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116) ~[spring-boot-3.3.8.jar:3.3.8]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
-14:26:13:763  INFO 14768 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
-14:26:13:763 ERROR 14768 --- [instruction-service] [http-nio-8083-exec-4] c.w.common.advice.CommonExceptionAdvice  : 其他异常 uri : /courseResource/course/8 -> 
+10:46:52:577  INFO 25844 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+10:47:02:580  INFO 25844 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+11:37:38:567  INFO 4468 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 4468 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+11:37:38:568  INFO 4468 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+11:37:38:611  WARN 4468 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+11:37:39:557  INFO 4468 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c2dec9c0-1034-359c-88fd-3381f05bd68b
+11:37:39:968  INFO 4468 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+11:37:39:983  INFO 4468 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+11:37:39:984  INFO 4468 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+11:37:40:045  INFO 4468 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+11:37:40:045  INFO 4468 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1432 ms
+11:37:40:176  INFO 4468 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+11:37:40:258  INFO 4468 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+11:37:40:347  WARN 4468 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+11:37:40:350  WARN 4468 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+11:37:41:705  INFO 4468 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+11:37:41:721  INFO 4468 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+11:37:41:721  INFO 4468 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+11:37:41:839  INFO 4468 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+11:37:41:852  INFO 4468 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 4.652 seconds (process running for 5.189)
+11:37:41:869  INFO 4468 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+11:38:37:013  WARN 4468 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+11:38:37:013  WARN 4468 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+11:38:37:013  WARN 4468 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+11:38:37:013  WARN 4468 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+11:38:37:013  WARN 4468 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+11:38:37:013  WARN 4468 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+11:38:37:015  INFO 4468 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+11:38:37:020  INFO 4468 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+11:38:47:026  INFO 4468 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+11:39:06:971  INFO 13776 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 13776 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+11:39:06:972  INFO 13776 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+11:39:07:004  WARN 13776 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+11:39:07:659  INFO 13776 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c2dec9c0-1034-359c-88fd-3381f05bd68b
+11:39:07:967  INFO 13776 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+11:39:07:978  INFO 13776 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+11:39:07:978  INFO 13776 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+11:39:08:022  INFO 13776 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+11:39:08:022  INFO 13776 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1015 ms
+11:39:08:146  INFO 13776 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+11:39:08:219  INFO 13776 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+11:39:08:295  WARN 13776 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+11:39:08:297  WARN 13776 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+11:39:09:178  INFO 13776 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+11:39:09:191  INFO 13776 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+11:39:09:191  INFO 13776 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+11:39:09:302  INFO 13776 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+11:39:09:312  INFO 13776 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 3.444 seconds (process running for 3.829)
+11:39:09:325  INFO 13776 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+11:42:52:140  WARN 13776 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+11:42:52:140  WARN 13776 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+11:42:52:140  WARN 13776 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+11:42:52:140  WARN 13776 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+11:42:52:140  WARN 13776 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+11:42:52:140  WARN 13776 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+11:42:52:141  INFO 13776 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+11:42:52:145  INFO 13776 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+11:43:02:152  INFO 13776 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+12:49:14:247  INFO 38788 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 38788 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+12:49:14:249  INFO 38788 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+12:49:14:288  WARN 38788 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+12:49:15:323  INFO 38788 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c2dec9c0-1034-359c-88fd-3381f05bd68b
+12:49:15:756  INFO 38788 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+12:49:15:773  INFO 38788 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+12:49:15:773  INFO 38788 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+12:49:15:837  INFO 38788 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+12:49:15:837  INFO 38788 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1548 ms
+12:49:15:974  INFO 38788 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+12:49:16:046  INFO 38788 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+12:49:16:136  WARN 38788 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+12:49:16:141  WARN 38788 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+12:49:17:233  INFO 38788 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+12:49:17:248  INFO 38788 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+12:49:17:248  INFO 38788 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+12:49:17:360  INFO 38788 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+12:49:17:372  INFO 38788 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 4.43 seconds (process running for 4.952)
+12:49:17:388  INFO 38788 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+12:50:24:660  WARN 38788 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+12:50:24:660  WARN 38788 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+12:50:24:660  WARN 38788 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+12:50:24:660  WARN 38788 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+12:50:24:661  WARN 38788 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+12:50:24:661  WARN 38788 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+12:50:24:662  INFO 38788 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+12:50:24:667  INFO 38788 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+12:51:17:195  INFO 40428 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 40428 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+12:51:17:196  INFO 40428 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+12:51:17:228  WARN 40428 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+12:51:17:798  INFO 40428 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8a8968f3-2828-3fb8-8f7b-16f976eccfab
+12:51:18:049  INFO 40428 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+12:51:18:057  INFO 40428 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+12:51:18:057  INFO 40428 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+12:51:18:091  INFO 40428 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+12:51:18:091  INFO 40428 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 859 ms
+12:51:18:160  INFO 40428 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+12:51:18:202  INFO 40428 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+12:51:18:249  WARN 40428 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+12:51:18:251  WARN 40428 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+12:51:18:844  INFO 40428 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+12:51:18:855  INFO 40428 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+12:51:18:855  INFO 40428 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+12:51:18:944  INFO 40428 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+12:51:18:952  INFO 40428 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.878 seconds (process running for 3.354)
+12:51:18:962  INFO 40428 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+12:53:53:078  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+12:53:53:078  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+12:53:53:079  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+12:53:53:096  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:53:53:097  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:53:53:110  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 提醒作业
+12:53:53:131  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+12:53:53:191  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+12:53:53:423  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1d61375e
+12:53:53:424  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+12:53:53:494  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:53:53:496  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+12:54:13:701  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:54:13:701  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:54:13:701  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.i.controller.HomeworkController      : 提醒作业
+12:54:13:702  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+12:54:13:725  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:54:13:726  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+12:54:32:329  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:54:32:329  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:54:32:329  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 提醒作业
+12:54:32:330  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+12:54:32:350  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:54:32:351  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+12:57:47:967  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:57:47:967  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:57:47:968  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 提醒作业
+12:57:47:969  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+12:57:47:990  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+12:57:47:991  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:00:14:792  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:00:14:792  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 提醒作业
+13:00:14:793  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:00:14:793  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:00:14:816  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:00:14:818  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:03:32:916  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:03:32:917  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:03:32:918  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:03:32:918  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 提醒作业
+13:03:32:933  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:03:32:933  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:04:28:254  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:04:28:255  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.i.controller.HomeworkController      : 提醒作业
+13:04:28:254  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:04:28:258  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:04:28:289  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:04:28:289  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:06:00:824  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:06:00:824  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:06:00:824  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 提醒作业
+13:06:00:824  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:06:00:843  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:06:00:844  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:06:23:811  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:06:23:811  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:06:23:811  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 提醒作业
+13:06:23:812  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:06:23:826  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:06:23:826  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:06:48:735  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:06:48:735  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:06:48:736  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.i.controller.HomeworkController      : 提醒作业
+13:06:48:736  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:06:48:752  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:06:48:753  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:07:01:823  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:07:01:823  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:07:01:824  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 提醒作业
+13:07:01:824  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:07:01:839  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:07:01:840  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:19:22:836  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:19:22:836  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:19:22:836  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 提醒作业
+13:19:22:837  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:19:22:855  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:19:22:856  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:59:52:009  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:59:52:009  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:59:52:013  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 提醒作业
+13:59:52:016  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+13:59:55:574  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:59:55:574  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+13:59:55:574  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 提醒作业
+13:59:55:574  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:00:00:642  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:00:00:643  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:00:00:643  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 提醒作业
+14:00:00:643  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:00:17:889  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:00:17:889  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.i.controller.HomeworkController      : 提醒作业
+14:00:17:889  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:00:17:890  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:04:28:570  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:04:28:570  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:04:28:571  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 提醒作业
+14:04:28:571  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:07:08:619  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:07:08:619  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:07:08:619  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 提醒作业
+14:07:08:620  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:12:50:097  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:12:50:097  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:12:50:098  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.i.controller.HomeworkController      : 提醒作业
+14:12:50:098  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:12:53:942  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:12:53:942  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:12:53:942  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 提醒作业
+14:12:53:943  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:13:04:158  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:13:04:158  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:13:04:159  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 提醒作业
+14:13:04:159  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:13:11:148  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:13:11:148  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:13:11:148  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 提醒作业
+14:13:11:149  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:17:10:658  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:17:10:658  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:17:10:658  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.i.controller.HomeworkController      : 提醒作业
+14:17:10:659  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:17:16:555  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:17:16:555  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:17:16:555  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 提醒作业
+14:17:16:556  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:46:42:776  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:46:42:776  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:46:42:778  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 提醒作业
+14:46:42:778  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:54:11:507  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:54:11:507  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:54:11:507  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 提醒作业
+14:54:11:507  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:54:13:505  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:54:13:506  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+14:54:22:787  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+14:54:22:788  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+16:40:04:341  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:40:04:341  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:40:04:347  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 提醒作业
+16:40:04:351  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+16:41:18:870  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:41:18:870  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:41:18:870  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 提醒作业
+16:41:18:885  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+16:41:22:087  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:41:22:087  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:41:22:087  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 提醒作业
+16:41:22:087  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+16:41:38:761  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:41:38:761  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:41:38:761  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 提醒作业
+16:41:38:762  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+16:45:13:134  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:45:13:134  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:45:13:135  INFO 40428 --- [instruction-service] [http-nio-8083-exec-9] c.w.i.controller.HomeworkController      : 提醒作业
+16:45:13:135  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+16:45:15:151  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:45:15:151  INFO 40428 --- [instruction-service] [http-nio-8083-exec-10] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+16:46:37:813  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:46:37:813  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:46:37:813  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 提醒作业
+16:46:37:814  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+16:48:43:283  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:48:43:283  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:48:43:284  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 提醒作业
+16:48:43:285  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+16:50:34:369  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:50:34:369  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+16:50:34:369  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 提醒作业
+16:50:34:369  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+17:48:20:307  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:48:20:307  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:48:20:311  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 提醒作业
+17:48:20:313  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+17:48:32:890  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:48:32:889  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:48:32:890  INFO 40428 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 提醒作业
+17:48:32:890  INFO 40428 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=null, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, startSubmitTime=null, endSubmitTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+17:54:08:853  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:54:08:869  INFO 40428 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.c.CourseResourceController         : 获取教学资源分页：CourseResourceQueryDTO(courseId=8, name=null, resourceType=null, startViewCount=null, endViewCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+17:54:08:931  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:54:08:934  INFO 40428 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 获取作业分页：HomeworkQueryDTO(courseId=8, name=null, type=null, isDeleted=null, startSubmitCount=null, endSubmitCount=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+17:54:34:004  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:54:34:004  INFO 40428 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.c.CourseResourceController         : 获取教学资源分页：CourseResourceQueryDTO(courseId=22, name=null, resourceType=null, startViewCount=null, endViewCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+17:54:34:021  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:54:34:021  INFO 40428 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 获取作业分页：HomeworkQueryDTO(courseId=22, name=null, type=null, isDeleted=null, startSubmitCount=null, endSubmitCount=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+17:54:56:664  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:54:56:665  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+17:54:56:666  INFO 40428 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.controller.HomeworkController      : 提醒作业
+17:54:56:673  INFO 40428 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=2025-01-01T12:00, endDeadline=2027-12-01T12:00, startCreateTime=2025-01-01T12:00, endCreateTime=2027-01-01T12:00, startSubmitTime=2025-01-01T12:00, endSubmitTime=2027-01-01T12:00, sortType=0, isAsc=false, pageNum=1, pageSize=10)
+18:31:35:605  WARN 40428 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+18:31:35:605  WARN 40428 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+18:31:35:605  WARN 40428 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+18:31:35:605  WARN 40428 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+18:31:35:605  WARN 40428 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+18:31:35:606  WARN 40428 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+18:31:35:613  INFO 40428 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+18:31:35:621  INFO 40428 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+21:09:16:306  INFO 21288 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 21288 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+21:09:16:307  INFO 21288 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+21:09:16:340  WARN 21288 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+21:09:17:208  INFO 21288 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8a8968f3-2828-3fb8-8f7b-16f976eccfab
+21:09:17:663  INFO 21288 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+21:09:17:678  INFO 21288 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+21:09:17:679  INFO 21288 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+21:09:17:738  INFO 21288 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+21:09:17:739  INFO 21288 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1396 ms
+21:09:17:862  INFO 21288 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+21:09:17:938  INFO 21288 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+21:09:18:026  WARN 21288 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+21:09:18:030  WARN 21288 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+21:09:19:242  INFO 21288 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+21:09:19:259  INFO 21288 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+21:09:19:260  INFO 21288 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+21:09:19:391  INFO 21288 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+21:09:19:406  INFO 21288 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 4.206 seconds (process running for 4.61)
+21:09:19:427  INFO 21288 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+21:11:49:408  WARN 21288 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+21:11:49:408  WARN 21288 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+21:11:49:408  WARN 21288 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+21:11:49:408  WARN 21288 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+21:11:49:409  WARN 21288 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+21:11:49:409  WARN 21288 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+21:11:49:409  INFO 21288 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+21:11:49:415  INFO 21288 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+21:11:59:428  INFO 21288 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+21:12:06:397  INFO 41216 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 41216 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+21:12:06:397  INFO 41216 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
+21:12:06:424  WARN 41216 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
+21:12:06:927  INFO 41216 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8a8968f3-2828-3fb8-8f7b-16f976eccfab
+21:12:07:175  INFO 41216 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+21:12:07:184  INFO 41216 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+21:12:07:184  INFO 41216 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+21:12:07:218  INFO 41216 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+21:12:07:218  INFO 41216 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 793 ms
+21:12:07:292  INFO 41216 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+21:12:07:334  INFO 41216 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+21:12:07:385  WARN 41216 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
+21:12:07:388  WARN 41216 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+21:12:08:189  INFO 41216 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+21:12:08:202  INFO 41216 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+21:12:08:202  INFO 41216 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+21:12:08:302  INFO 41216 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
+21:12:08:312  INFO 41216 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.752 seconds (process running for 3.138)
+21:12:08:323  INFO 41216 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
+21:20:10:756  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:20:10:756  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+21:20:10:758  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+21:20:10:776  INFO 41216 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:10:777  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:10:789  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 提醒作业
+21:20:10:812  INFO 41216 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=2025-01-01T12:00, endDeadline=2027-12-01T12:00, startCreateTime=2025-01-01T12:00, endCreateTime=2027-01-01T12:00, startSubmitTime=2025-01-01T12:00, endSubmitTime=2027-01-01T12:00, sortType=0, isAsc=false, pageNum=1, pageSize=10)
+21:20:10:864  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+21:20:11:094  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24846558
+21:20:11:095  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+21:20:21:278  INFO 41216 --- [instruction-service] [http-nio-8083-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:21:284  INFO 41216 --- [instruction-service] [http-nio-8083-exec-3] c.w.i.c.CourseResourceController         : 获取教学资源分页：CourseResourceQueryDTO(courseId=22, name=null, resourceType=null, startViewCount=null, endViewCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+21:20:21:324  INFO 41216 --- [instruction-service] [http-nio-8083-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:21:326  INFO 41216 --- [instruction-service] [http-nio-8083-exec-4] c.w.i.controller.HomeworkController      : 获取作业分页：HomeworkQueryDTO(courseId=22, name=null, type=null, isDeleted=null, startSubmitCount=null, endSubmitCount=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+21:20:30:774  INFO 41216 --- [instruction-service] [http-nio-8083-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:30:775  INFO 41216 --- [instruction-service] [http-nio-8083-exec-5] c.w.i.c.CourseResourceController         : 获取教学资源分页：CourseResourceQueryDTO(courseId=22, name=null, resourceType=null, startViewCount=null, endViewCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+21:20:30:796  INFO 41216 --- [instruction-service] [http-nio-8083-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:30:797  INFO 41216 --- [instruction-service] [http-nio-8083-exec-6] c.w.i.controller.HomeworkController      : 获取作业分页：HomeworkQueryDTO(courseId=22, name=null, type=null, isDeleted=null, startSubmitCount=null, endSubmitCount=null, startDeadline=null, endDeadline=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=10)
+21:20:44:454  INFO 41216 --- [instruction-service] [http-nio-8083-exec-7] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:44:456  INFO 41216 --- [instruction-service] [http-nio-8083-exec-7] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=2025-01-01T12:00, endDeadline=2027-12-01T12:00, startCreateTime=2025-01-01T12:00, endCreateTime=2027-01-01T12:00, startSubmitTime=2025-01-01T12:00, endSubmitTime=2027-01-01T12:00, sortType=0, isAsc=false, pageNum=1, pageSize=10)
+21:20:44:457  INFO 41216 --- [instruction-service] [http-nio-8083-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:44:458  INFO 41216 --- [instruction-service] [http-nio-8083-exec-8] c.w.i.controller.HomeworkController      : 提醒作业
+21:20:47:681  INFO 41216 --- [instruction-service] [http-nio-8083-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:47:682  INFO 41216 --- [instruction-service] [http-nio-8083-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:20:47:682  INFO 41216 --- [instruction-service] [http-nio-8083-exec-10] c.w.i.controller.HomeworkController      : 提醒作业
+21:20:47:682  INFO 41216 --- [instruction-service] [http-nio-8083-exec-9] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=2025-01-01T12:00, endDeadline=2027-12-01T12:00, startCreateTime=2025-01-01T12:00, endCreateTime=2027-01-01T12:00, startSubmitTime=2025-01-01T12:00, endSubmitTime=2027-01-01T12:00, sortType=0, isAsc=false, pageNum=1, pageSize=10)
+21:21:10:732  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:21:10:732  INFO 41216 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+21:21:10:732  INFO 41216 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 提醒作业
+21:21:10:733  INFO 41216 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.controller.HomeworkController      : 获取学生作业分页：StudentHomeworkQueryDTO(studentId=null, name=, type=null, reviewStatus=null, startScore=null, endScore=null, startDeadline=2025-01-01T12:00, endDeadline=2027-12-01T12:00, startCreateTime=2025-01-01T12:00, endCreateTime=2027-01-01T12:00, startSubmitTime=2025-01-01T12:00, endSubmitTime=2027-01-01T12:00, sortType=0, isAsc=false, pageNum=1, pageSize=10)
+21:23:16:694  WARN 41216 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+21:23:16:694  WARN 41216 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+21:23:16:694  WARN 41216 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+21:23:16:694  WARN 41216 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+21:23:16:694  WARN 41216 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+21:23:16:694  WARN 41216 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+21:23:16:695  INFO 41216 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+21:23:17:149 ERROR 41216 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : ERR_NACOS_DEREGISTER, de-register failed...NacosRegistration{nacosDiscoveryProperties=NacosDiscoveryProperties{serverAddr='127.0.0.1:8848', username='******', password='******', endpoint='', namespace='', watchDelay=30000, logName='', service='instruction-service', weight=1.0, clusterName='', group='DEFAULT_GROUP', namingLoadCacheAtStart='false', metadata={IPv6=null, preserved.register.source=SPRING_CLOUD}, registerEnabled=true, ip='172.22.148.153', networkInterface='', port=8083, secure=false, accessKey='', secretKey='', heartBeatInterval=null, heartBeatTimeout=null, ipDeleteTimeout=null, instanceEnabled=true, ephemeral=true, failureToleranceEnabled=false}, ipDeleteTimeout=null, failFast=true}},
 
-org.springframework.web.servlet.resource.NoResourceFoundException: No static resource courseResource/course/8.
-	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:586) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.34.jar:6.0]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.16.jar:6.1.16]
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.34.jar:6.0]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.16.jar:6.1.16]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+com.alibaba.nacos.api.exception.NacosException: Client not connected, current status:UNHEALTHY
+	at com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:645) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.common.remote.client.RpcClient.request(RpcClient.java:624) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.requestToServer(NamingGrpcClientProxy.java:447) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.doDeregisterService(NamingGrpcClientProxy.java:308) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.deregisterServiceForEphemeral(NamingGrpcClientProxy.java:293) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.gprc.NamingGrpcClientProxy.deregisterService(NamingGrpcClientProxy.java:275) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.remote.NamingClientProxyDelegate.deregisterService(NamingClientProxyDelegate.java:122) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.NacosNamingService.deregisterInstance(NacosNamingService.java:211) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.nacos.client.naming.NacosNamingService.deregisterInstance(NacosNamingService.java:199) ~[nacos-client-2.4.3.jar:na]
+	at com.alibaba.cloud.nacos.registry.NacosServiceRegistry.deregister(NacosServiceRegistry.java:107) ~[spring-cloud-starter-alibaba-nacos-discovery-2023.0.3.4.jar:2023.0.3.4]
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.deregister(AbstractAutoServiceRegistration.java:281) ~[spring-cloud-commons-4.1.5.jar:4.1.5]
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.stop(AbstractAutoServiceRegistration.java:299) ~[spring-cloud-commons-4.1.5.jar:4.1.5]
+	at com.alibaba.cloud.nacos.registry.NacosGracefulShutdownDelegate.doGracefulShutdown(NacosGracefulShutdownDelegate.java:69) ~[spring-cloud-starter-alibaba-nacos-discovery-2023.0.3.4.jar:2023.0.3.4]
+	at com.alibaba.cloud.nacos.registry.NacosGracefulShutdownDelegate.onApplicationEvent(NacosGracefulShutdownDelegate.java:64) ~[spring-cloud-starter-alibaba-nacos-discovery-2023.0.3.4.jar:2023.0.3.4]
+	at com.alibaba.cloud.nacos.registry.NacosGracefulShutdownDelegate.onApplicationEvent(NacosGracefulShutdownDelegate.java:34) ~[spring-cloud-starter-alibaba-nacos-discovery-2023.0.3.4.jar:2023.0.3.4]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:452) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:385) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1139) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1102) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147) ~[spring-boot-3.3.8.jar:3.3.8]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116) ~[spring-boot-3.3.8.jar:3.3.8]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
-14:27:24:672  WARN 14768 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
-14:27:24:672  WARN 14768 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
-14:27:24:672  WARN 14768 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
-14:27:24:672  WARN 14768 --- [instruction-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
-14:27:24:672  WARN 14768 --- [instruction-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
-14:27:24:672  WARN 14768 --- [instruction-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
-14:27:24:672  INFO 14768 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
-14:27:24:684  INFO 14768 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
-14:27:34:689  INFO 14768 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
-14:27:36:682  INFO 26464 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Starting InstructionApplication using Java 21.0.10 with PID 26464 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\instruction-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
-14:27:36:683  INFO 26464 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : The following 1 profile is active: "dev"
-14:27:36:708  WARN 26464 --- [instruction-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=instruction-service.yaml, group=DEFAULT_GROUP] is empty
-14:27:37:222  INFO 26464 --- [instruction-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8862bc84-c89b-31a1-bafb-dfa71450ba09
-14:27:37:468  INFO 26464 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
-14:27:37:480  INFO 26464 --- [instruction-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-14:27:37:480  INFO 26464 --- [instruction-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-14:27:37:518  INFO 26464 --- [instruction-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-14:27:37:519  INFO 26464 --- [instruction-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 808 ms
-14:27:37:608  INFO 26464 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
-14:27:37:653  INFO 26464 --- [instruction-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
-14:27:37:704  WARN 26464 --- [instruction-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.instruction.domain.po.StudentHomework".
-14:27:37:706  WARN 26464 --- [instruction-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.instruction.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
-14:27:38:354  INFO 26464 --- [instruction-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
-14:27:38:365  INFO 26464 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
-14:27:38:365  INFO 26464 --- [instruction-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
-14:27:38:454  INFO 26464 --- [instruction-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP instruction-service 172.22.148.153:8083 register finished
-14:27:38:461  INFO 26464 --- [instruction-service] [main] c.w.instruction.InstructionApplication   : Started InstructionApplication in 2.634 seconds (process running for 2.975)
-14:27:38:469  INFO 26464 --- [instruction-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=instruction-service.yaml, group=DEFAULT_GROUP
-14:27:45:932  INFO 26464 --- [instruction-service] [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-14:27:45:932  INFO 26464 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-14:27:45:932  INFO 26464 --- [instruction-service] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-14:27:45:951  INFO 26464 --- [instruction-service] [http-nio-8083-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
-14:27:45:962  INFO 26464 --- [instruction-service] [http-nio-8083-exec-1] c.w.i.c.CourseResourceController         : 通过课程8获取所有未删除的教学资源
-14:27:46:052  INFO 26464 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-14:27:46:276  INFO 26464 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1031a1a9
-14:27:46:276  INFO 26464 --- [instruction-service] [http-nio-8083-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-14:27:46:352  INFO 26464 --- [instruction-service] [http-nio-8083-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
-14:27:46:352  INFO 26464 --- [instruction-service] [http-nio-8083-exec-2] c.w.i.controller.HomeworkController      : 通过课程8获取所有未删除的作业
+21:23:17:149  INFO 41216 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+21:23:27:163  INFO 41216 --- [instruction-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+21:23:27:173  INFO 41216 --- [instruction-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+21:23:27:176  INFO 41216 --- [instruction-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -19,6 +19,7 @@ spring:
         group: DEFAULT_GROUP
         file-extension: yaml        # 配置文件格式，默认为 properties
       discovery:
+        port: 8081
         server-addr: 127.0.0.1:8848 # 服务发现地址
         username: nacos
         password: nacos
@@ -43,3 +44,7 @@ therogram:
     excludePaths:
       - /user/create
       - /user/login
+file:
+  storage:
+    root-path: D:/Development/Java/Storage
+    user-path: /User
