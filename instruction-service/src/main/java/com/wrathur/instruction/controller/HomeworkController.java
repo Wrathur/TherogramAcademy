@@ -124,7 +124,7 @@ public class HomeworkController {
         }
     }
 
-    @GetMapping({"/downloadHomework/{relativePath}", "/downloadStudentHomework/{relativePath}"})
+    @GetMapping({"/downloadHomework/{relativePath:^(?!.*\\\\.js$).+}", "/downloadStudentHomework/{relativePath:^(?!.*\\\\.js$).+}"})
     @ApiOperation("下载作业/学生作业附件")
     public ResponseEntity<Resource> downloadHomeworkOrStudentHomeworkAttachment(@PathVariable String relativePath) {
         try {

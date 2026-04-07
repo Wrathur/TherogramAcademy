@@ -84,7 +84,7 @@ public class CourseResourceController {
         }
     }
 
-    @GetMapping("/downloadCourseResource/{relativePath}")
+    @GetMapping("/downloadCourseResource/{relativePath:^(?!.*\\\\.js$).+}")
     @ApiOperation("下载教学资源")
     public ResponseEntity<Resource> downloadCourseResource(@PathVariable String relativePath) {
         try {

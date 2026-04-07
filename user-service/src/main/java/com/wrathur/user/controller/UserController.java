@@ -105,7 +105,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/downloadUser/{relativePath}")
+    @GetMapping("/downloadUser/{relativePath:^(?!.*\\\\.js$).+}")
     @ApiOperation("下载用户头像")
     public ResponseEntity<Resource> downloadUserPortrait(@PathVariable String relativePath) {
         try {
