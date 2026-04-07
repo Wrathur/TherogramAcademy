@@ -84,12 +84,14 @@ public class CourseResourceController {
         }
     }
 
-    @GetMapping("/downloadCourseResource/{relativePath:^(?!.*\\\\.js$).+}")
+    @GetMapping("/downloadCourseResource")
     @ApiOperation("下载教学资源")
-    public ResponseEntity<Resource> downloadCourseResource(@PathVariable String relativePath) {
+    public ResponseEntity<Resource> downloadCourseResource(@RequestParam("path") String relativePath) {
         try {
             Path filePath = Paths.get(storageProperties.getRootPath(), relativePath);
+            System.out.println(filePath);
             Resource resource = new UrlResource(filePath.toUri());
+            System.out.println(resource);
             if (resource.exists()) {
                 return ResponseEntity.ok()
                         .contentType(MediaType.APPLICATION_OCTET_STREAM)

@@ -1,6 +1,9 @@
 server:
   port: 8082
 spring:
+  web:
+    resources:
+      add-mappings: false
   application:
     name: course-service
   profiles:
