@@ -12,6 +12,7 @@ import com.wrathur.instruction.domain.vo.StudentHomeworkVO;
 import com.wrathur.instruction.service.IHomeworkService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
@@ -124,11 +125,30 @@ public class HomeworkController {
         }
     }
 
-    @GetMapping({"/downloadHomework/{relativePath:^(?!.*\\\\.js$).+}", "/downloadStudentHomework/{relativePath:^(?!.*\\\\.js$).+}"})
-    @ApiOperation("下载作业/学生作业附件")
-    public ResponseEntity<Resource> downloadHomeworkOrStudentHomeworkAttachment(@PathVariable String relativePath) {
+    @GetMapping({"/downloadHomework"})
+    @ApiOperation("下载作业附件")
+    public ResponseEntity<Resource> downloadHomeworkAttachment(@RequestParam("id") Integer id, @RequestParam("file") String file, HttpServletRequest request) {
         try {
-            Path filePath = Paths.get(storageProperties.getRootPath(), relativePath);
+            Path filePath = Paths.get(storageProperties.getRootPath(), storageProperties.getHomeworkPath(), String.valueOf(id), file);
+            Resource resource = new UrlResource(filePath.toUri());
+            if (resource.exists()) {
+                return ResponseEntity.ok()
+                        .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                        .body(resource);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (MalformedURLException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping({"/downloadStudentHomework"})
+    @ApiOperation("下载学生作业附件")
+    public ResponseEntity<Resource> downloadStudentHomeworkAttachment(@RequestParam("studentId") Integer studentId, @RequestParam("homeworkId") Integer homeworkId, @RequestParam("file") String file, HttpServletRequest request) {
+        try {
+            Path filePath = Paths.get(storageProperties.getRootPath(), storageProperties.getStudentHomeworkPath(), String.valueOf(studentId), String.valueOf(homeworkId), file);
             Resource resource = new UrlResource(filePath.toUri());
             if (resource.exists()) {
                 return ResponseEntity.ok()

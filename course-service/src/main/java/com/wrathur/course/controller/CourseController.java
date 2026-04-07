@@ -169,11 +169,11 @@ public class CourseController {
         }
     }
 
-    @GetMapping("/downloadCourse/{relativePath:^(?!.*\\\\.js$).+}")
+    @GetMapping("/downloadCourse")
     @ApiOperation("下载课程封面")
-    public ResponseEntity<Resource> downloadCourseCover(@PathVariable String relativePath) {
+    public ResponseEntity<Resource> downloadCourseCover(@RequestParam("id") Integer id, @RequestParam("file") String file) {
         try {
-            Path filePath = Paths.get(storageProperties.getRootPath(), relativePath);
+            Path filePath = Paths.get(storageProperties.getRootPath(), storageProperties.getCoursePath(), String.valueOf(id), file);
             Resource resource = new UrlResource(filePath.toUri());
             if (resource.exists()) {
                 return ResponseEntity.ok()

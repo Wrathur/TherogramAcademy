@@ -105,11 +105,11 @@ public class UserController {
         }
     }
 
-    @GetMapping("/downloadUser/{relativePath:^(?!.*\\\\.js$).+}")
+    @GetMapping("/downloadUser")
     @ApiOperation("下载用户头像")
-    public ResponseEntity<Resource> downloadUserPortrait(@PathVariable String relativePath) {
+    public ResponseEntity<Resource> downloadUserPortrait(@RequestParam("id") Integer id, @RequestParam("file") String file) {
         try {
-            Path filePath = Paths.get(storageProperties.getRootPath(), relativePath);
+            Path filePath = Paths.get(storageProperties.getRootPath(), storageProperties.getUserPath(), String.valueOf(id), file);
             Resource resource = new UrlResource(filePath.toUri());
             if (resource.exists()) {
                 return ResponseEntity.ok()
