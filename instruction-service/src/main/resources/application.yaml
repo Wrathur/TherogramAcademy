@@ -1,6 +1,9 @@
 server:
   port: 8083
 spring:
+  web:
+    resources:
+      add-mappings: false
   application:
     name: instruction-service
   profiles:
