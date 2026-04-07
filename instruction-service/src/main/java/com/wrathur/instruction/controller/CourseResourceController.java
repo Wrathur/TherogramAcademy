@@ -86,9 +86,9 @@ public class CourseResourceController {
 
     @GetMapping("/downloadCourseResource")
     @ApiOperation("下载教学资源")
-    public ResponseEntity<Resource> downloadCourseResource(@RequestParam("courseId") Integer id, @RequestParam("fileName") String fileName) {
+    public ResponseEntity<Resource> downloadCourseResource(@RequestParam("id") Integer id, @RequestParam("file") String file) {
         try {
-            Path filePath = Paths.get(storageProperties.getRootPath(), String.valueOf(id), fileName);
+            Path filePath = Paths.get(storageProperties.getRootPath(), String.valueOf(id), file);
             System.out.println(filePath);
             Resource resource = new UrlResource(filePath.toUri());
             System.out.println(resource);
