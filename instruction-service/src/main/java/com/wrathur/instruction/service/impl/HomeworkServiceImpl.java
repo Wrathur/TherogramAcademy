@@ -357,13 +357,13 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
     public void uploadHomeworkAttachment(Integer id, MultipartFile file) throws IOException {
         Homework homework = homeworkMapper.selectById(id);
         if (homework.getAttachment() != null && !homework.getAttachment().isEmpty()) {
-            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getHomeworkPath(), homework.getAttachment());
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getHomeworkPath(), String.valueOf(id), homework.getAttachment());
         }
         FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getHomeworkPath() + "/" + id, file);
         homeworkMapper.update(null,
                 new LambdaUpdateWrapper<Homework>()
                         .eq(Homework::getId, id)
-                        .set(Homework::getAttachment, "/" + id + "/" + file.getOriginalFilename()));
+                        .set(Homework::getAttachment, file.getOriginalFilename()));
     }
 
     // 上传学生作业附件
@@ -375,14 +375,14 @@ public class HomeworkServiceImpl extends ServiceImpl<HomeworkMapper, Homework> i
                         .eq(StudentHomework::getHomeworkId, homeworkId)
                         .eq(StudentHomework::getIsDeleted, false));
         if (studentHomework.getAttachment() != null && !studentHomework.getAttachment().isEmpty()) {
-            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getStudentHomeworkPath(), studentHomework.getAttachment());
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getStudentHomeworkPath(), studentId + "/" + homeworkId, studentHomework.getAttachment());
         }
         FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getStudentHomeworkPath() + "/" + studentId + "/" + homeworkId, file);
         studentHomeworkMapper.update(null,
                 new LambdaUpdateWrapper<StudentHomework>()
                         .eq(StudentHomework::getStudentId, studentId)
                         .eq(StudentHomework::getHomeworkId, homeworkId)
-                        .set(StudentHomework::getAttachment, "/" + studentId + "/" + homeworkId + "/" + file.getOriginalFilename()));
+                        .set(StudentHomework::getAttachment, file.getOriginalFilename()));
 
     }
 

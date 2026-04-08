@@ -23,8 +23,8 @@ public class FileStorageUtils {
     /**
      * 删除文件
      */
-    public static void deleteFile(String baseDir, String relativePath) {
-        Path filePath = Paths.get(baseDir, relativePath);
+    public static void deleteFile(String baseDir, String id, String relativePath) {
+        Path filePath = Paths.get(baseDir, id, relativePath);
         File file = filePath.toFile();
         if (file.exists()) {
             if (file.delete()) {

@@ -769,13 +769,13 @@ public class CourseServiceImpl extends ServiceImpl<StudentCourseMapper, StudentC
     public void uploadCourseCover(Integer id, MultipartFile file) throws IOException {
         Course course = courseMapper.selectById(id);
         if (course.getCover() != null && !course.getCover().isEmpty()) {
-            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getCoursePath(), course.getCover());
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getCoursePath(), String.valueOf(id), course.getCover());
         }
         FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getCoursePath() + "/" + id, file);
         courseMapper.update(null,
                 new LambdaUpdateWrapper<Course>()
                         .eq(Course::getId, id)
-                        .set(Course::getCover, "/" + id + "/" + file.getOriginalFilename()));
+                        .set(Course::getCover, file.getOriginalFilename()));
     }
 
     // 通过课程获取所有未退选的学生
