@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ICourseResourceService {
     // 创建教学资源
-    void createCourseResource(CourseResourceDTO courseResourceDTO);
+    CourseResourceVO createCourseResource(CourseResourceDTO courseResourceDTO);
 
     // 修改教学资源
     void modifyCourseResource(CourseResourceDTO courseResourceDTO);

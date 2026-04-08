@@ -36,7 +36,7 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
     // 创建教学资源
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void createCourseResource(CourseResourceDTO courseResourceDTO) {
+    public CourseResourceVO createCourseResource(CourseResourceDTO courseResourceDTO) {
         CourseResource courseResource = new CourseResource();
         BeanUtils.copyProperties(courseResourceDTO, courseResource);
         courseResource.setViewCount(0);
@@ -44,6 +44,7 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
         courseResource.setCreateTime(LocalDateTime.now());
         courseResource.setUpdateTime(LocalDateTime.now());
         courseResourceMapper.insert(courseResource);
+        return convertCourseResourceToVO(courseResource);
     }
 
     // 修改教学资源

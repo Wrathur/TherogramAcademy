@@ -37,10 +37,9 @@ public class CourseResourceController {
 
     @PostMapping("/create")
     @ApiOperation("创建教学资源")
-    public Result<String> createCourseResource(@RequestBody CourseResourceDTO courseResourceDTO) {
+    public Result<CourseResourceVO> createCourseResource(@RequestBody CourseResourceDTO courseResourceDTO) {
         log.info("创建教学资源：{}", courseResourceDTO);
-        courseResourceService.createCourseResource(courseResourceDTO);
-        return Result.success();
+        return Result.success(courseResourceService.createCourseResource(courseResourceDTO));
     }
 
     @PostMapping("/modify")

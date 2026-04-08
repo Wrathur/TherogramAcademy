@@ -1,6 +1,8 @@
 package com.wrathur.instruction.domain.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -9,6 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @TableName("course_resource")
 public class CourseResource {
+    @TableId(type = IdType.AUTO)
     private Integer id;
     private Integer orderId;
     private String name;
