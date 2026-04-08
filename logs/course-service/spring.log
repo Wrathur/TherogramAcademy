@@ -1,114 +1,146 @@
-17:06:16:614  INFO 30148 --- [course-service] [main] com.wrathur.course.CourseApplication     : Starting CourseApplication using Java 21.0.10 with PID 30148 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\course-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
-17:06:16:616  INFO 30148 --- [course-service] [main] com.wrathur.course.CourseApplication     : The following 1 profile is active: "dev"
-17:06:16:652  WARN 30148 --- [course-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=course-service.yaml, group=DEFAULT_GROUP] is empty
-17:06:17:229  INFO 30148 --- [course-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8d9eef55-01dc-324e-9e5b-3e1b50f1c596
-17:06:17:476  INFO 30148 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
-17:06:17:485  INFO 30148 --- [course-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-17:06:17:486  INFO 30148 --- [course-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-17:06:17:519  INFO 30148 --- [course-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-17:06:17:519  INFO 30148 --- [course-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 865 ms
-17:06:17:585  INFO 30148 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
-17:06:17:622  INFO 30148 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
-17:06:17:663  WARN 30148 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentHomework".
-17:06:17:665  WARN 30148 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
-17:06:17:757  WARN 30148 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentCourse".
-17:06:17:757  WARN 30148 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentCourse ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
-17:06:18:315  INFO 30148 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
-17:06:18:323  INFO 30148 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
-17:06:18:323  INFO 30148 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
-17:06:18:414  INFO 30148 --- [course-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP course-service 172.22.148.153:8082 register finished
-17:06:18:421  INFO 30148 --- [course-service] [main] com.wrathur.course.CourseApplication     : Started CourseApplication in 2.873 seconds (process running for 3.31)
-17:06:18:432  INFO 30148 --- [course-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=course-service.yaml, group=DEFAULT_GROUP
-17:06:44:861  INFO 30148 --- [course-service] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-17:06:44:862  INFO 30148 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-17:06:44:863  INFO 30148 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-17:06:44:880  INFO 30148 --- [course-service] [http-nio-8082-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
-17:06:44:914  INFO 30148 --- [course-service] [http-nio-8082-exec-1] c.w.course.controller.CourseController   : 获取创建课程分页：CourseQueryDTO(name=, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=1, isAsc=true, pageNum=1, pageSize=100)
-17:06:45:045  INFO 30148 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-17:06:45:267  INFO 30148 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@416e3b80
-17:06:45:270  INFO 30148 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-17:06:50:915  INFO 30148 --- [course-service] [http-nio-8082-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
-17:06:50:916  INFO 30148 --- [course-service] [http-nio-8082-exec-2] c.w.course.controller.CourseController   : 获取创建课程分页：CourseQueryDTO(name=, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=1, isAsc=true, pageNum=1, pageSize=100)
-17:07:28:941  INFO 30148 --- [course-service] [http-nio-8082-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
-17:07:28:942  INFO 30148 --- [course-service] [http-nio-8082-exec-3] c.w.course.controller.CourseController   : 获取创建课程分页：CourseQueryDTO(name=, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=1, isAsc=true, pageNum=1, pageSize=100)
-17:08:46:460  WARN 30148 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
-17:08:46:460  WARN 30148 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
-17:08:46:460  WARN 30148 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
-17:08:46:460  WARN 30148 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
-17:08:46:460  WARN 30148 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
-17:08:46:461  WARN 30148 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
-17:08:46:462  INFO 30148 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
-17:08:46:467  INFO 30148 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
-17:08:56:485  INFO 30148 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
-17:08:56:497  INFO 30148 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-17:08:56:505  INFO 30148 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-17:09:52:363  INFO 16472 --- [course-service] [main] com.wrathur.course.CourseApplication     : Starting CourseApplication using Java 21.0.10 with PID 16472 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\course-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
-17:09:52:364  INFO 16472 --- [course-service] [main] com.wrathur.course.CourseApplication     : The following 1 profile is active: "dev"
-17:09:52:398  WARN 16472 --- [course-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=course-service.yaml, group=DEFAULT_GROUP] is empty
-17:09:52:973  INFO 16472 --- [course-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8d9eef55-01dc-324e-9e5b-3e1b50f1c596
-17:09:53:200  INFO 16472 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
-17:09:53:210  INFO 16472 --- [course-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-17:09:53:210  INFO 16472 --- [course-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-17:09:53:246  INFO 16472 --- [course-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-17:09:53:246  INFO 16472 --- [course-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 846 ms
-17:09:53:326  INFO 16472 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
-17:09:53:364  INFO 16472 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
-17:09:53:410  WARN 16472 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentHomework".
-17:09:53:413  WARN 16472 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
-17:09:53:516  WARN 16472 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentCourse".
-17:09:53:516  WARN 16472 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentCourse ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
-17:09:54:144  INFO 16472 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
-17:09:54:153  INFO 16472 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
-17:09:54:153  INFO 16472 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
-17:09:54:253  INFO 16472 --- [course-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP course-service 172.22.148.153:8082 register finished
-17:09:54:262  INFO 16472 --- [course-service] [main] com.wrathur.course.CourseApplication     : Started CourseApplication in 2.873 seconds (process running for 3.231)
-17:09:54:272  INFO 16472 --- [course-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=course-service.yaml, group=DEFAULT_GROUP
-17:10:03:360  INFO 16472 --- [course-service] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-17:10:03:360  INFO 16472 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-17:10:03:361  INFO 16472 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-17:10:03:380  INFO 16472 --- [course-service] [http-nio-8082-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
-17:10:03:414  INFO 16472 --- [course-service] [http-nio-8082-exec-1] c.w.course.controller.CourseController   : 获取创建课程分页：CourseQueryDTO(name=, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=1, isAsc=true, pageNum=1, pageSize=100)
-17:10:03:547  INFO 16472 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-17:10:03:768  INFO 16472 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a6691be
-17:10:03:769  INFO 16472 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-17:13:40:480  WARN 16472 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
-17:13:40:480  WARN 16472 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
-17:13:40:480  WARN 16472 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
-17:13:40:480  WARN 16472 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
-17:13:40:481  WARN 16472 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
-17:13:40:481  WARN 16472 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
-17:13:40:481  INFO 16472 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
-17:13:40:484  INFO 16472 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
-17:13:50:501  INFO 16472 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
-17:13:50:513  INFO 16472 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-17:13:50:517  INFO 16472 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-17:13:52:573  INFO 34788 --- [course-service] [main] com.wrathur.course.CourseApplication     : Starting CourseApplication using Java 21.0.10 with PID 34788 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\course-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
-17:13:52:574  INFO 34788 --- [course-service] [main] com.wrathur.course.CourseApplication     : The following 1 profile is active: "dev"
-17:13:52:599  WARN 34788 --- [course-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=course-service.yaml, group=DEFAULT_GROUP] is empty
-17:13:53:087  INFO 34788 --- [course-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8d9eef55-01dc-324e-9e5b-3e1b50f1c596
-17:13:53:306  INFO 34788 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
-17:13:53:314  INFO 34788 --- [course-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-17:13:53:314  INFO 34788 --- [course-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-17:13:53:349  INFO 34788 --- [course-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-17:13:53:350  INFO 34788 --- [course-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 750 ms
-17:13:53:417  INFO 34788 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
-17:13:53:452  INFO 34788 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
-17:13:53:491  WARN 34788 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentHomework".
-17:13:53:492  WARN 34788 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
-17:13:53:579  WARN 34788 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentCourse".
-17:13:53:579  WARN 34788 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentCourse ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
-17:13:54:121  INFO 34788 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
-17:13:54:130  INFO 34788 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
-17:13:54:130  INFO 34788 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
-17:13:54:221  INFO 34788 --- [course-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP course-service 172.22.148.153:8082 register finished
-17:13:54:229  INFO 34788 --- [course-service] [main] com.wrathur.course.CourseApplication     : Started CourseApplication in 2.479 seconds (process running for 2.91)
-17:13:54:239  INFO 34788 --- [course-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=course-service.yaml, group=DEFAULT_GROUP
-17:19:02:092  WARN 34788 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
-17:19:02:092  WARN 34788 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
-17:19:02:092  WARN 34788 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
-17:19:02:093  WARN 34788 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
-17:19:02:093  WARN 34788 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
-17:19:02:093  WARN 34788 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
-17:19:02:094  INFO 34788 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
-17:19:02:097  INFO 34788 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
-17:19:12:111  INFO 34788 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+00:09:06:420  WARN 24536 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+00:09:06:420  WARN 24536 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+00:09:06:420  WARN 24536 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+00:09:06:423  WARN 24536 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+00:09:06:421  INFO 24536 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+00:09:06:424  WARN 24536 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+00:09:06:424  WARN 24536 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+00:09:06:427  INFO 24536 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+00:09:16:431  INFO 24536 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+00:09:16:449  INFO 24536 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+00:09:16:453  INFO 24536 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+09:34:38:618  INFO 30364 --- [course-service] [main] com.wrathur.course.CourseApplication     : Starting CourseApplication using Java 21.0.10 with PID 30364 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\course-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+09:34:38:619  INFO 30364 --- [course-service] [main] com.wrathur.course.CourseApplication     : The following 1 profile is active: "dev"
+09:34:38:734  WARN 30364 --- [course-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=course-service.yaml, group=DEFAULT_GROUP] is empty
+09:34:39:977  INFO 30364 --- [course-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8d9eef55-01dc-324e-9e5b-3e1b50f1c596
+09:34:40:470  INFO 30364 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+09:34:40:487  INFO 30364 --- [course-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+09:34:40:487  INFO 30364 --- [course-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+09:34:40:559  INFO 30364 --- [course-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+09:34:40:560  INFO 30364 --- [course-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1822 ms
+09:34:40:733  INFO 30364 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+09:34:40:823  INFO 30364 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+09:34:40:985  WARN 30364 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentHomework".
+09:34:40:992  WARN 30364 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+09:34:41:367  WARN 30364 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentCourse".
+09:34:41:367  WARN 30364 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentCourse ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+09:34:42:655  INFO 30364 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
+09:34:42:674  INFO 30364 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+09:34:42:675  INFO 30364 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+09:34:42:839  INFO 30364 --- [course-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP course-service 172.22.148.153:8082 register finished
+09:34:42:859  INFO 30364 --- [course-service] [main] com.wrathur.course.CourseApplication     : Started CourseApplication in 6.554 seconds (process running for 8.028)
+09:34:42:877  INFO 30364 --- [course-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=course-service.yaml, group=DEFAULT_GROUP
+09:35:08:428  INFO 30364 --- [course-service] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+09:35:08:429  INFO 30364 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+09:35:08:431  INFO 30364 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+09:35:08:448  INFO 30364 --- [course-service] [http-nio-8082-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+09:35:08:482  INFO 30364 --- [course-service] [http-nio-8082-exec-1] c.w.course.controller.CourseController   : 获取课程分页：CourseQueryDTO(name=null, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=100)
+09:35:08:569  INFO 30364 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+09:35:08:800  INFO 30364 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@77a19576
+09:35:08:801  INFO 30364 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+09:43:05:582  WARN 30364 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+09:43:05:582  WARN 30364 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+09:43:05:582  WARN 30364 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+09:43:05:582  WARN 30364 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+09:43:05:583  WARN 30364 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+09:43:05:583  WARN 30364 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+09:43:05:585  INFO 30364 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+09:43:05:591  INFO 30364 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+09:43:15:599  INFO 30364 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+09:43:15:614  INFO 30364 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+09:43:15:621  INFO 30364 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+09:46:25:154  INFO 32208 --- [course-service] [main] com.wrathur.course.CourseApplication     : Starting CourseApplication using Java 21.0.10 with PID 32208 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\course-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+09:46:25:155  INFO 32208 --- [course-service] [main] com.wrathur.course.CourseApplication     : The following 1 profile is active: "dev"
+09:46:25:190  WARN 32208 --- [course-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=course-service.yaml, group=DEFAULT_GROUP] is empty
+09:46:25:833  INFO 32208 --- [course-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8d9eef55-01dc-324e-9e5b-3e1b50f1c596
+09:46:26:101  INFO 32208 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+09:46:26:109  INFO 32208 --- [course-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+09:46:26:110  INFO 32208 --- [course-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+09:46:26:143  INFO 32208 --- [course-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+09:46:26:144  INFO 32208 --- [course-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 952 ms
+09:46:26:233  INFO 32208 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+09:46:26:301  INFO 32208 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+09:46:26:370  WARN 32208 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentHomework".
+09:46:26:373  WARN 32208 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+09:46:26:502  WARN 32208 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentCourse".
+09:46:26:503  WARN 32208 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentCourse ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+09:46:27:328  INFO 32208 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
+09:46:27:343  INFO 32208 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+09:46:27:343  INFO 32208 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+09:46:27:466  INFO 32208 --- [course-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP course-service 172.22.148.153:8082 register finished
+09:46:27:475  INFO 32208 --- [course-service] [main] com.wrathur.course.CourseApplication     : Started CourseApplication in 3.357 seconds (process running for 3.761)
+09:46:27:490  INFO 32208 --- [course-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=course-service.yaml, group=DEFAULT_GROUP
+09:47:34:693  INFO 32208 --- [course-service] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+09:47:34:693  INFO 32208 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+09:47:34:694  INFO 32208 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+09:47:34:711  INFO 32208 --- [course-service] [http-nio-8082-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+09:47:34:745  INFO 32208 --- [course-service] [http-nio-8082-exec-1] c.w.course.controller.CourseController   : 创建课程：CourseDTO(id=null, name=11, profile=, target=, content=, outline=, cover=, reviewStatus=null, rejectedReason=null, selectCount=null, isDeleted=null, subjectId=1, typeId=1, teacherId=null, createTime=null, updateTime=null, reviewTime=null, deleteTime=null)
+09:47:34:757  INFO 32208 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+09:47:34:983  INFO 32208 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ad14143
+09:47:34:985  INFO 32208 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+09:47:35:141  INFO 32208 --- [course-service] [http-nio-8082-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+09:47:35:148  INFO 32208 --- [course-service] [http-nio-8082-exec-2] c.w.course.controller.CourseController   : 获取课程分页：CourseQueryDTO(name=null, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+09:47:54:420  INFO 32208 --- [course-service] [http-nio-8082-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+09:47:54:422  INFO 32208 --- [course-service] [http-nio-8082-exec-3] c.w.course.controller.CourseController   : 获取课程分页：CourseQueryDTO(name=null, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=100)
+09:51:45:330  WARN 32208 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+09:51:45:330  WARN 32208 --- [course-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+09:51:45:330  WARN 32208 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+09:51:45:330  WARN 32208 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+09:51:45:331  WARN 32208 --- [course-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+09:51:45:331  WARN 32208 --- [course-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+09:51:45:333  INFO 32208 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+09:51:45:337  INFO 32208 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+09:51:55:352  INFO 32208 --- [course-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+09:51:55:372  INFO 32208 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+09:51:55:377  INFO 32208 --- [course-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+09:52:09:881  INFO 28212 --- [course-service] [main] com.wrathur.course.CourseApplication     : Starting CourseApplication using Java 21.0.10 with PID 28212 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\course-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+09:52:09:882  INFO 28212 --- [course-service] [main] com.wrathur.course.CourseApplication     : The following 1 profile is active: "dev"
+09:52:09:933  WARN 28212 --- [course-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=course-service.yaml, group=DEFAULT_GROUP] is empty
+09:52:10:830  INFO 28212 --- [course-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8d9eef55-01dc-324e-9e5b-3e1b50f1c596
+09:52:11:245  INFO 28212 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+09:52:11:262  INFO 28212 --- [course-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+09:52:11:262  INFO 28212 --- [course-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+09:52:11:327  INFO 28212 --- [course-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+09:52:11:328  INFO 28212 --- [course-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1392 ms
+09:52:11:448  INFO 28212 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join properties config complete
+09:52:11:518  INFO 28212 --- [course-service] [main] c.g.y.a.MybatisPlusJoinAutoConfiguration : mybatis plus join SqlInjector init
+09:52:11:591  WARN 28212 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentHomework".
+09:52:11:594  WARN 28212 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentHomework ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+09:52:11:738  WARN 28212 --- [course-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.course.domain.po.StudentCourse".
+09:52:11:739  WARN 28212 --- [course-service] [main] c.g.yulichang.injector.MPJSqlInjector    : class com.wrathur.course.domain.po.StudentCourse ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+09:52:12:681  INFO 28212 --- [course-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
+09:52:12:695  INFO 28212 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+09:52:12:695  INFO 28212 --- [course-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+09:52:12:804  INFO 28212 --- [course-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP course-service 172.22.148.153:8082 register finished
+09:52:12:817  INFO 28212 --- [course-service] [main] com.wrathur.course.CourseApplication     : Started CourseApplication in 4.347 seconds (process running for 4.932)
+09:52:12:834  INFO 28212 --- [course-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=course-service.yaml, group=DEFAULT_GROUP
+10:05:33:652  INFO 28212 --- [course-service] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+10:05:33:652  INFO 28212 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+10:05:33:653  INFO 28212 --- [course-service] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+10:05:33:668  INFO 28212 --- [course-service] [http-nio-8082-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:05:33:703  INFO 28212 --- [course-service] [http-nio-8082-exec-1] c.w.course.controller.CourseController   : 获取课程分页：CourseQueryDTO(name=null, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=100)
+10:05:33:784  INFO 28212 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+10:05:34:011  INFO 28212 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@26bc8d90
+10:05:34:013  INFO 28212 --- [course-service] [http-nio-8082-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+10:05:52:562  INFO 28212 --- [course-service] [http-nio-8082-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:05:52:563  INFO 28212 --- [course-service] [http-nio-8082-exec-2] c.w.course.controller.CourseController   : 获取课程分页：CourseQueryDTO(name=null, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=100)
+10:06:06:706  INFO 28212 --- [course-service] [http-nio-8082-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:06:06:707  INFO 28212 --- [course-service] [http-nio-8082-exec-4] c.w.course.controller.CourseController   : 通过课程2获取所有未退选的学生
+10:16:49:276  INFO 28212 --- [course-service] [http-nio-8082-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:16:49:282  INFO 28212 --- [course-service] [http-nio-8082-exec-6] c.w.course.controller.CourseController   : 获取选修课程分页：StudentCourseQueryDTO(name=, subjectId=null, typeId=null, startSelectCount=null, endSelectCount=null, startProgress=null, endProgress=null, startStudyTime=null, endStudyTime=null, startScore=null, endScore=null, startCreateTime=null, endCreateTime=null, startSelectTime=null, endSelectTime=null, sortType=4, isAsc=true, pageNum=1, pageSize=10)
+10:19:42:945  INFO 28212 --- [course-service] [http-nio-8082-exec-8] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:19:42:946  INFO 28212 --- [course-service] [http-nio-8082-exec-8] c.w.course.controller.CourseController   : 获取创建课程分页：CourseQueryDTO(name=, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=1, isAsc=true, pageNum=1, pageSize=10)
+10:19:43:229  INFO 28212 --- [course-service] [http-nio-8082-exec-9] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:19:43:232  INFO 28212 --- [course-service] [http-nio-8082-exec-9] c.w.course.controller.CourseController   : 获取创建课程分页：CourseQueryDTO(name=, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=1, isAsc=true, pageNum=1, pageSize=100)
+10:19:51:096  INFO 28212 --- [course-service] [http-nio-8082-exec-10] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:19:51:098  INFO 28212 --- [course-service] [http-nio-8082-exec-10] c.w.course.controller.CourseController   : 获取创建课程分页：CourseQueryDTO(name=, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=1, isAsc=true, pageNum=1, pageSize=100)
+10:22:04:858  INFO 28212 --- [course-service] [http-nio-8082-exec-2] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:22:04:859  INFO 28212 --- [course-service] [http-nio-8082-exec-2] c.w.course.controller.CourseController   : 获取创建课程分页：CourseQueryDTO(name=, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=1, isAsc=true, pageNum=1, pageSize=100)
+10:22:35:408  INFO 28212 --- [course-service] [http-nio-8082-exec-4] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:22:35:409  INFO 28212 --- [course-service] [http-nio-8082-exec-4] c.w.course.controller.CourseController   : 获取课程分页：CourseQueryDTO(name=null, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=100)
+10:22:43:609  INFO 28212 --- [course-service] [http-nio-8082-exec-3] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:22:43:610  INFO 28212 --- [course-service] [http-nio-8082-exec-3] c.w.course.controller.CourseController   : 获取课程分页：CourseQueryDTO(name=null, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=100)
+10:22:46:150  INFO 28212 --- [course-service] [http-nio-8082-exec-5] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:22:46:151  INFO 28212 --- [course-service] [http-nio-8082-exec-5] c.w.course.controller.CourseController   : 获取课程分页：CourseQueryDTO(name=null, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=0, isAsc=null, pageNum=1, pageSize=10)
+10:22:46:541  INFO 28212 --- [course-service] [http-nio-8082-exec-6] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
+10:22:46:542  INFO 28212 --- [course-service] [http-nio-8082-exec-6] c.w.course.controller.CourseController   : 获取课程分页：CourseQueryDTO(name=null, reviewStatus=null, subjectId=null, typeId=null, isSelected=null, isDeleted=null, startSelectCount=null, endSelectCount=null, startCreateTime=null, endCreateTime=null, sortType=null, isAsc=null, pageNum=1, pageSize=100)

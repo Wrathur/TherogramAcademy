@@ -199,13 +199,13 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
     public void uploadCourseResource(Integer id, MultipartFile file) throws IOException {
         CourseResource courseResource = courseResourceMapper.selectById(id);
         if (courseResource.getUri() != null && !courseResource.getUri().isEmpty()) {
-            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getCourseResourcePath(), courseResource.getUri());
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getCourseResourcePath(), String.valueOf(id), courseResource.getUri());
         }
         FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getCourseResourcePath() + "/" + id, file);
         courseResourceMapper.update(null,
                 new LambdaUpdateWrapper<CourseResource>()
                         .eq(CourseResource::getId, id)
-                        .set(CourseResource::getUri, "/" + id + "/" + file.getOriginalFilename()));
+                        .set(CourseResource::getUri, file.getOriginalFilename()));
     }
 
     // 通过课程获取所有未删除的教学资源

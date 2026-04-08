@@ -267,13 +267,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public void uploadUserPortrait(Integer id, MultipartFile file) throws IOException {
         User user = userMapper.selectById(id);
         if (user.getPortrait() != null && !user.getPortrait().isEmpty()) {
-            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getUserPath(), user.getPortrait());
+            FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getUserPath(), String.valueOf(id), user.getPortrait());
         }
         FileStorageUtils.saveFile(storageProperties.getRootPath() + storageProperties.getUserPath() + "/" + id, file);
         userMapper.update(null,
                 new LambdaUpdateWrapper<User>()
                         .eq(User::getId, id)
-                        .set(User::getPortrait, "/" + id + "/" + file.getOriginalFilename()));
+                        .set(User::getPortrait, file.getOriginalFilename()));
     }
 
     // 通过ID获取用户名
