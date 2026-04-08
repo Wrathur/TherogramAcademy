@@ -198,7 +198,10 @@ public class CourseResourceServiceImpl extends ServiceImpl<CourseResourceMapper,
     // 上传教学资源
     @Override
     public void uploadCourseResource(Integer id, MultipartFile file) throws IOException {
+        System.out.println(id);
+        System.out.println(file.getOriginalFilename());
         CourseResource courseResource = courseResourceMapper.selectById(id);
+        System.out.println(courseResource);
         if (courseResource.getUri() != null && !courseResource.getUri().isEmpty()) {
             FileStorageUtils.deleteFile(storageProperties.getRootPath() + storageProperties.getCourseResourcePath(), String.valueOf(id), courseResource.getUri());
         }

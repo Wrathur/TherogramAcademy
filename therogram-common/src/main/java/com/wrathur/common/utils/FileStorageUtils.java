@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -16,6 +17,7 @@ public class FileStorageUtils {
      */
     public static void saveFile(String baseDir, MultipartFile file) throws IOException {
         Path filePath = Paths.get(baseDir, file.getOriginalFilename());
+        Files.createDirectories(filePath.getParent());
         file.transferTo(filePath.toFile());
         log.info("文件保存成功: {}", filePath);
     }

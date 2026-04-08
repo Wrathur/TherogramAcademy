@@ -448,3 +448,128 @@ java.lang.IllegalStateException: No micrometer registry present (or more than on
 10:22:34:520  INFO 10508 --- [statistic-service] [http-nio-8084-exec-7] c.w.s.c.CourseStatisticController        : 全站课程完成率排行统计
 10:22:34:538  INFO 10508 --- [statistic-service] [http-nio-8084-exec-1] c.w.c.interceptors.UserInfoInterceptor   : 成功获取用户登录信息
 10:22:34:538  INFO 10508 --- [statistic-service] [http-nio-8084-exec-1] c.w.s.c.InstructionStatisticController   : 全站成绩排行统计
+11:41:04:473  WARN 10508 --- [statistic-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Start destroying ThreadPool
+11:41:04:473  WARN 10508 --- [statistic-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Start destroying common HttpClient
+11:41:04:474  WARN 10508 --- [statistic-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Start destroying Publisher
+11:41:04:475  WARN 10508 --- [statistic-service] [Thread-9] c.a.nacos.common.notify.NotifyCenter     : [NotifyCenter] Destruction of the end
+11:41:04:475  WARN 10508 --- [statistic-service] [Thread-1] c.a.n.common.executor.ThreadPoolManager  : [ThreadPoolManager] Destruction of the end
+11:41:04:477  WARN 10508 --- [statistic-service] [Thread-7] c.a.n.common.http.HttpClientBeanHolder   : [HttpClientBeanHolder] Destruction of the end
+11:41:04:484  INFO 10508 --- [statistic-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registering from Nacos Server now...
+11:41:04:497  INFO 10508 --- [statistic-service] [SpringApplicationShutdownHook] c.a.c.n.registry.NacosServiceRegistry    : De-registration finished.
+11:41:14:523  INFO 10508 --- [statistic-service] [SpringApplicationShutdownHook] c.a.c.n.r.NacosGracefulShutdownDelegate  : Nacos client graceful shutdown has been executed successfully. Graceful shutdown wait time is 10000
+11:41:14:532 DEBUG 10508 --- [statistic-service] [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutting down Rabbit listener container
+11:41:14:538 DEBUG 10508 --- [statistic-service] [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutting down Rabbit listener container
+11:41:14:539  INFO 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+11:41:14:539  INFO 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+11:41:14:540 DEBUG 10508 --- [statistic-service] [pool-5-thread-6] o.s.a.r.listener.BlockingQueueConsumer   : Received cancelOk for tag amq.ctag-OqnQQLFmdl8vm7_VKXm_sA (statistic.instruction.queue); Consumer@c10f7a8: tags=[[amq.ctag-OqnQQLFmdl8vm7_VKXm_sA]], channel=Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,2), conn: Proxy@62966c9f Shared Rabbit Connection: SimpleConnection@46f597f1 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58854], acknowledgeMode=AUTO local queue size=0
+11:41:14:541 DEBUG 10508 --- [statistic-service] [pool-5-thread-5] o.s.a.r.listener.BlockingQueueConsumer   : Received cancelOk for tag amq.ctag-en7C_keOZ3XSE-9KtaQ0Lg (statistic.course.queue); Consumer@51d41b97: tags=[[amq.ctag-en7C_keOZ3XSE-9KtaQ0Lg]], channel=Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,1), conn: Proxy@62966c9f Shared Rabbit Connection: SimpleConnection@46f597f1 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58854], acknowledgeMode=AUTO local queue size=0
+11:41:15:096  INFO 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+11:41:15:096  INFO 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+11:41:15:097 DEBUG 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] o.s.a.r.l.SimpleMessageListenerContainer : Cancelling Consumer@c10f7a8: tags=[[amq.ctag-OqnQQLFmdl8vm7_VKXm_sA]], channel=Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,2), conn: Proxy@62966c9f Shared Rabbit Connection: SimpleConnection@46f597f1 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58854], acknowledgeMode=AUTO local queue size=0
+11:41:15:097 DEBUG 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] o.s.a.r.listener.BlockingQueueConsumer   : Closing Rabbit Channel: Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,2), conn: Proxy@62966c9f Shared Rabbit Connection: SimpleConnection@46f597f1 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58854]
+11:41:15:098 DEBUG 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Cancelling Consumer@51d41b97: tags=[[amq.ctag-en7C_keOZ3XSE-9KtaQ0Lg]], channel=Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,1), conn: Proxy@62966c9f Shared Rabbit Connection: SimpleConnection@46f597f1 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58854], acknowledgeMode=AUTO local queue size=0
+11:41:15:098 DEBUG 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.listener.BlockingQueueConsumer   : Closing Rabbit Channel: Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,1), conn: Proxy@62966c9f Shared Rabbit Connection: SimpleConnection@46f597f1 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58854]
+11:41:15:098 DEBUG 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] o.s.a.r.c.CachingConnectionFactory       : Closing cached Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,2)
+11:41:15:098 DEBUG 10508 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.c.CachingConnectionFactory       : Closing cached Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,1)
+11:41:15:141 DEBUG 10508 --- [statistic-service] [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+11:41:15:141 DEBUG 10508 --- [statistic-service] [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+11:41:15:151  INFO 10508 --- [statistic-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+11:41:15:156  INFO 10508 --- [statistic-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+11:51:02:935  INFO 36124 --- [statistic-service] [main] c.w.statistic.StatisticApplication       : Starting StatisticApplication using Java 21.0.10 with PID 36124 (D:\Development\Java\Projects\IdeaProjects\TherogramAcademy\statistic-service\target\classes started by Integration-Wrathur in D:\Development\Java\Projects\IdeaProjects\TherogramAcademy)
+11:51:02:936  INFO 36124 --- [statistic-service] [main] c.w.statistic.StatisticApplication       : The following 1 profile is active: "dev"
+11:51:02:985  WARN 36124 --- [statistic-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=statistic-service.yaml, group=DEFAULT_GROUP] is empty
+11:51:02:985 DEBUG 36124 --- [statistic-service] [main] c.a.c.n.c.NacosConfigDataLoader          : [Nacos Config] config[dataId=statistic-service.yaml, group=DEFAULT_GROUP] content: 
+null
+11:51:03:740  INFO 36124 --- [statistic-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+11:51:03:744  INFO 36124 --- [statistic-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+11:51:03:772  INFO 36124 --- [statistic-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+11:51:04:028  INFO 36124 --- [statistic-service] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6665bff7-8327-3808-b86b-6ed43e4971a2
+11:51:04:453  INFO 36124 --- [statistic-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8084 (http)
+11:51:04:467  INFO 36124 --- [statistic-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+11:51:04:467  INFO 36124 --- [statistic-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+11:51:04:525  INFO 36124 --- [statistic-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+11:51:04:525  INFO 36124 --- [statistic-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1537 ms
+11:51:04:873  WARN 36124 --- [statistic-service] [main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.wrathur.statistic.domain.po.StudentCourse".
+11:51:04:875  WARN 36124 --- [statistic-service] [main] c.b.m.core.injector.DefaultSqlInjector   : class com.wrathur.statistic.domain.po.StudentCourse ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+11:51:06:210 DEBUG 36124 --- [statistic-service] [main] .a.r.l.a.MessagingMessageListenerAdapter : Inferred argument type for public void com.wrathur.statistic.consumer.CourseStatisticConsumer.handleCourseEvent(com.wrathur.common.event.StatisticEvent) is class com.wrathur.common.event.StatisticEvent
+11:51:06:219 DEBUG 36124 --- [statistic-service] [main] o.s.a.r.l.SimpleMessageListenerContainer : No global properties bean
+11:51:06:219 DEBUG 36124 --- [statistic-service] [main] o.s.a.r.l.SimpleMessageListenerContainer : No global properties bean
+11:51:06:220 DEBUG 36124 --- [statistic-service] [main] o.s.a.r.l.SimpleMessageListenerContainer : Could not enable micrometer timers
+
+java.lang.IllegalStateException: No micrometer registry present (or more than one and there is not exactly one marked with @Primary)
+	at org.springframework.amqp.rabbit.listener.MicrometerHolder.<init>(MicrometerHolder.java:64) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.ObservableListenerContainer.checkMicrometer(ObservableListenerContainer.java:107) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.afterPropertiesSet(AbstractMessageListenerContainer.java:1205) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry.createListenerContainer(RabbitListenerEndpointRegistry.java:192) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry.registerListenerContainer(RabbitListenerEndpointRegistry.java:157) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry.registerListenerContainer(RabbitListenerEndpointRegistry.java:130) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar.registerAllEndpoints(RabbitListenerEndpointRegistrar.java:199) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar.afterPropertiesSet(RabbitListenerEndpointRegistrar.java:188) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.annotation.RabbitListenerAnnotationBeanPostProcessor.afterSingletonsInstantiated(RabbitListenerAnnotationBeanPostProcessor.java:290) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:986) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.8.jar:3.3.8]
+	at com.wrathur.statistic.StatisticApplication.main(StatisticApplication.java:17) ~[classes/:na]
+
+11:51:06:224 DEBUG 36124 --- [statistic-service] [main] .a.r.l.a.MessagingMessageListenerAdapter : Inferred argument type for public void com.wrathur.statistic.consumer.InstructionStatisticConsumer.handleInstructionEvent(com.wrathur.common.event.StatisticEvent) is class com.wrathur.common.event.StatisticEvent
+11:51:06:224 DEBUG 36124 --- [statistic-service] [main] o.s.a.r.l.SimpleMessageListenerContainer : No global properties bean
+11:51:06:224 DEBUG 36124 --- [statistic-service] [main] o.s.a.r.l.SimpleMessageListenerContainer : No global properties bean
+11:51:06:224 DEBUG 36124 --- [statistic-service] [main] o.s.a.r.l.SimpleMessageListenerContainer : Could not enable micrometer timers
+
+java.lang.IllegalStateException: No micrometer registry present (or more than one and there is not exactly one marked with @Primary)
+	at org.springframework.amqp.rabbit.listener.MicrometerHolder.<init>(MicrometerHolder.java:64) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.ObservableListenerContainer.checkMicrometer(ObservableListenerContainer.java:107) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.afterPropertiesSet(AbstractMessageListenerContainer.java:1205) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry.createListenerContainer(RabbitListenerEndpointRegistry.java:192) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry.registerListenerContainer(RabbitListenerEndpointRegistry.java:157) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry.registerListenerContainer(RabbitListenerEndpointRegistry.java:130) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar.registerAllEndpoints(RabbitListenerEndpointRegistrar.java:199) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar.afterPropertiesSet(RabbitListenerEndpointRegistrar.java:188) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.amqp.rabbit.annotation.RabbitListenerAnnotationBeanPostProcessor.afterSingletonsInstantiated(RabbitListenerAnnotationBeanPostProcessor.java:290) ~[spring-rabbit-3.1.8.jar:3.1.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:986) ~[spring-beans-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.16.jar:6.1.16]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.8.jar:3.3.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.8.jar:3.3.8]
+	at com.wrathur.statistic.StatisticApplication.main(StatisticApplication.java:17) ~[classes/:na]
+
+11:51:06:237  INFO 36124 --- [statistic-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8084 (http) with context path '/'
+11:51:06:261  INFO 36124 --- [statistic-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+11:51:06:262  INFO 36124 --- [statistic-service] [main] c.a.n.p.a.s.c.ClientAuthPluginManager    : [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+11:51:06:373  INFO 36124 --- [statistic-service] [main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP statistic-service 172.22.148.153:8084 register finished
+11:51:06:377 DEBUG 36124 --- [statistic-service] [main] o.s.a.r.l.SimpleMessageListenerContainer : Starting Rabbit listener container.
+11:51:06:378  INFO 36124 --- [statistic-service] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+11:51:06:385 DEBUG 36124 --- [statistic-service] [main] c.r.client.impl.ConsumerWorkService      : Creating executor service with 20 thread(s) for consumer work service
+11:51:06:423  INFO 36124 --- [statistic-service] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7b9d602c:0/SimpleConnection@509e0253 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58757]
+11:51:06:426 DEBUG 36124 --- [statistic-service] [main] o.s.amqp.rabbit.core.RabbitAdmin         : Initializing declarations
+11:51:06:436 DEBUG 36124 --- [statistic-service] [main] o.s.a.r.c.CachingConnectionFactory       : Creating cached Rabbit Channel from AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,1)
+11:51:06:444 DEBUG 36124 --- [statistic-service] [main] o.s.amqp.rabbit.core.RabbitTemplate      : Executing callback RabbitAdmin$$Lambda/0x000002be819e4fc8 on RabbitMQ Channel: Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,1), conn: Proxy@35fd03d9 Shared Rabbit Connection: SimpleConnection@509e0253 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58757]
+11:51:06:444 DEBUG 36124 --- [statistic-service] [main] o.s.amqp.rabbit.core.RabbitAdmin         : declaring Exchange 'statistic.course.exchange'
+11:51:06:447 DEBUG 36124 --- [statistic-service] [main] o.s.amqp.rabbit.core.RabbitAdmin         : declaring Exchange 'statistic.instruction.exchange'
+11:51:06:448 DEBUG 36124 --- [statistic-service] [main] o.s.amqp.rabbit.core.RabbitAdmin         : declaring Queue 'statistic.course.queue'
+11:51:06:450 DEBUG 36124 --- [statistic-service] [main] o.s.amqp.rabbit.core.RabbitAdmin         : declaring Queue 'statistic.instruction.queue'
+11:51:06:450 DEBUG 36124 --- [statistic-service] [main] o.s.amqp.rabbit.core.RabbitAdmin         : Binding destination [statistic.course.queue (QUEUE)] to exchange [statistic.course.exchange] with routing key [statistic.course.routing.key]
+11:51:06:458 DEBUG 36124 --- [statistic-service] [main] o.s.amqp.rabbit.core.RabbitAdmin         : Binding destination [statistic.instruction.queue (QUEUE)] to exchange [statistic.instruction.exchange] with routing key [statistic.instruction.routing.key]
+11:51:06:466 DEBUG 36124 --- [statistic-service] [main] o.s.amqp.rabbit.core.RabbitAdmin         : Declarations finished
+11:51:06:471 DEBUG 36124 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.amqp.rabbit.core.RabbitTemplate      : Executing callback RabbitAdmin$$Lambda/0x000002be819eb390 on RabbitMQ Channel: Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,1), conn: Proxy@35fd03d9 Shared Rabbit Connection: SimpleConnection@509e0253 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58757]
+11:51:06:474 DEBUG 36124 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.listener.BlockingQueueConsumer   : Starting consumer Consumer@64a9fca7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+11:51:06:483 DEBUG 36124 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.listener.BlockingQueueConsumer   : Started on queue 'statistic.course.queue' with tag amq.ctag-g2otALqf7Wn5gKG6nHnqDg: Consumer@64a9fca7: tags=[[]], channel=Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,1), conn: Proxy@35fd03d9 Shared Rabbit Connection: SimpleConnection@509e0253 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58757], acknowledgeMode=AUTO local queue size=0
+11:51:06:483 DEBUG 36124 --- [statistic-service] [pool-5-thread-3] o.s.a.r.listener.BlockingQueueConsumer   : ConsumeOK: Consumer@64a9fca7: tags=[[amq.ctag-g2otALqf7Wn5gKG6nHnqDg]], channel=Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,1), conn: Proxy@35fd03d9 Shared Rabbit Connection: SimpleConnection@509e0253 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58757], acknowledgeMode=AUTO local queue size=0
+11:51:06:483 DEBUG 36124 --- [statistic-service] [main] o.s.a.r.l.SimpleMessageListenerContainer : Starting Rabbit listener container.
+11:51:06:484 DEBUG 36124 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] o.s.a.r.c.CachingConnectionFactory       : Creating cached Rabbit Channel from AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,2)
+11:51:06:485 DEBUG 36124 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] o.s.amqp.rabbit.core.RabbitTemplate      : Executing callback RabbitAdmin$$Lambda/0x000002be819eb390 on RabbitMQ Channel: Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,2), conn: Proxy@35fd03d9 Shared Rabbit Connection: SimpleConnection@509e0253 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58757]
+11:51:06:485 DEBUG 36124 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] o.s.a.r.listener.BlockingQueueConsumer   : Starting consumer Consumer@5da799: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+11:51:06:486 DEBUG 36124 --- [statistic-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] o.s.a.r.listener.BlockingQueueConsumer   : Started on queue 'statistic.instruction.queue' with tag amq.ctag-OXzRIfFudnE1Vx--7ueuFw: Consumer@5da799: tags=[[]], channel=Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,2), conn: Proxy@35fd03d9 Shared Rabbit Connection: SimpleConnection@509e0253 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58757], acknowledgeMode=AUTO local queue size=0
+11:51:06:486 DEBUG 36124 --- [statistic-service] [pool-5-thread-4] o.s.a.r.listener.BlockingQueueConsumer   : ConsumeOK: Consumer@5da799: tags=[[amq.ctag-OXzRIfFudnE1Vx--7ueuFw]], channel=Cached Rabbit Channel: AMQChannel(amqp://therogram@127.0.0.1:5672//therogram,2), conn: Proxy@35fd03d9 Shared Rabbit Connection: SimpleConnection@509e0253 [delegate=amqp://therogram@127.0.0.1:5672//therogram, localPort=58757], acknowledgeMode=AUTO local queue size=0
+11:51:06:495  INFO 36124 --- [statistic-service] [main] c.w.statistic.StatisticApplication       : Started StatisticApplication in 5.018 seconds (process running for 5.924)
+11:51:06:508  INFO 36124 --- [statistic-service] [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=statistic-service.yaml, group=DEFAULT_GROUP
